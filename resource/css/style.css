@@ -81,3 +81,8 @@
         -moz-box-shadow: 10px 10px 20px -9px rgba(0,0,0,0.6);
     }
 }
+
+/* Product Page */
+.product-cont {
+    min-height: 100vh;
+}
