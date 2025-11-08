@@ -13,7 +13,7 @@
         <title>Register</title>
     </head>
     <body>
-        <main class="reg-cont d-flex align-items-center justify-content-center w-100 m-auto">
+        <main class="reg-cont d-flex align-items-center justify-content-center w-100 m-auto shadow">
             <form class="reg-form p-5" action="" method="post">
                 <h1 class="h2 mb-4 fw-normal">Sign Up</h1>
                 <div class="form-floating">
@@ -35,10 +35,10 @@
                 <div class="form-floating mb-2">
                     <input class="form-control" type="password" name="validpwd_box" id="validpwd_input" placeholder="Repeat your password" aria-describedby="pwdinfo">
                     <label for="validpwd_input">Repeat Password</label>
-                    <span class="form-text" id="pwdinfo">Your password must be 8-20 characters long</span>
+                    <span class="form-text" id="pwdinfo">Your password must be <b>8-20 characters long</b> and have <br> at least <b>one uppercase</b>, <b>one lowercase</b>, and <b>one number</b></span>
                 </div>
                 <button class="btn btn-primary w-100 my-4 py-2 text-align-center" type="submit">Sign Up</button>
-                <p>Already have an account? Sign In <a class="logreg-link" href="./login-page.php">here.</a></p>
+                <p class="text-center">Already have an account? Sign In <a class="logreg-link" href="./login-page.php">here.</a></p>
             </form>
         </main>
         <footer class="foot-cont container-fluid">

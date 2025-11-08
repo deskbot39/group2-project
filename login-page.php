@@ -13,7 +13,7 @@
         <title>Login</title>
     </head>
     <body>
-        <main class="login-cont d-flex align-items-center justify-content-center w-100 m-auto">
+        <main class="login-cont d-flex align-items-center justify-content-center w-100 m-auto shadow">
             <form class="login-form p-5" action="" method="post">
                 <h1 class="h2 mb-4 fw-normal">Sign In</h1>
                 <div class="form-floating mb-2">
@@ -25,7 +25,7 @@
                     <label for="logpwd_input">Password</label>
                 </div>
                 <button class="btn btn-primary w-100 my-4 py-2 text-align-center" type="submit">Sign In</button>
-                <p>Don't have an account? Sign Up <a class="logreg-link" href="./register-page.php">here.</a></p>
+                <p class="text-center">Don't have an account? Sign Up <a class="logreg-link" href="./register-page.php">here.</a></p>
             </form>
         </main>
         <footer class="foot-cont container-fluid">

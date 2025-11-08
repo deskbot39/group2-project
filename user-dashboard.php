@@ -13,9 +13,50 @@
         <title>User Dashboard</title>
     </head>
     <body>
-        <header>
-
-        </header>
+        <div class="container-fluid fixed-top">
+            <nav class="py-2 bg-body-tertiary border-bottom">
+                <div class="container d-flex flex-wrap">
+                    <ul class="nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link px-2 link-body-emphasis" href="./index.php#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-2 link-body-emphasis" href="./index.php#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-2 link-body-emphasis" href="./product-page.php" aria-current="page">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-2 link-body-emphasis" href="./index.php#contacts">Contacts</a>
+                        </li>
+                    </ul>
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link link-body-emphasis px-2" href="./login-page.php">Sign In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-body-emphasis px-2" href="./register-page.php">Sign Up</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <header class="py-3 mb-4 border-bottom">
+                <div class="container d-flex flex-wrap justify-content-center">
+                    <a class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none" href="">
+                        <span class="bi me-2">LOGO</span>
+                        <span class="fs-4">Wang Scent PH</span>
+                    </a>
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0" action="" method="post" role="search">
+                        <div class="input-group">
+                            <input class="form-control" type="text" name="" id="" placeholder="Search..." aria-label="Search..." aria-describedby="btn-search">
+                            <button class="btn btn-outline secondary" type="button" id="btn-search">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </header>
+        </div>
         <main class="usrdash-cont">
 
         </main>
