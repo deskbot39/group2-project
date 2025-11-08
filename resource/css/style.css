@@ -30,6 +30,14 @@
         }
     }
 }
+.logreg-link {
+    color: blue;
+    transform: 0.5s;
+}
+.logreg-link:hover {
+    color: aqua;
+    transform: 0.5s;
+}
 
 /* Landing Page */
 #home {
@@ -84,5 +92,15 @@
 
 /* Product Page */
 .product-cont {
+    min-height: 100vh;
+}
+
+/* User Dashboard Page */
+.usrdash-cont {
+    min-height: 100vh;
+}
+
+/* Admin Dashboard Page */
+.admdash-cont {
     min-height: 100vh;
 }

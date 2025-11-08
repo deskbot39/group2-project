@@ -8,11 +8,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="User Account Page">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link href="./vendor/tailwind-normalize/css/preflight.css" rel="stylesheet">
         <link rel="stylesheet" href="./resource/css/style.css">
         <title>User Dashboard</title>
     </head>
     <body>
-        <h1>User Dashboard Page</h1>
+        <header>
+
+        </header>
+        <main class="usrdash-cont">
+
+        </main>
         <footer class="foot-cont container-fluid">
             <div class="py-2">
                 <ul class="footah nav justify-content-center border-bottom pb-3 mb-3">

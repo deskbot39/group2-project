@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Login Page of Wang Scent PH">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <link href="./vendor/tailwind-normalize/css/preflight.css" rel="stylesheet">
         <link rel="stylesheet" href="./resource/css/style.css">
         <title>Login</title>
     </head>
@@ -24,7 +25,7 @@
                     <label for="logpwd_input">Password</label>
                 </div>
                 <button class="btn btn-primary w-100 my-4 py-2 text-align-center" type="submit">Sign In</button>
-                <p>Don't have an account? Sign Up <a href="./register-page.php">here.</a></p>
+                <p>Don't have an account? Sign Up <a class="logreg-link" href="./register-page.php">here.</a></p>
             </form>
         </main>
         <footer class="foot-cont container-fluid">
