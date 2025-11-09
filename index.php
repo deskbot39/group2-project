@@ -1,5 +1,6 @@
 <?php
     require_once './resource/php/sesh_conf.php';
+    require_once './resource/php/loginviewer.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,42 +14,47 @@
         <title>Wang Scent PH</title>
     </head>
     <body>
-        <div class="navi-cont container-fluid fixed-top">
-            <header class="d-flex flex-wrap justify-content-center py-3">
-                <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-decoration-none" href="">
-                    <span class="bi me-2 text-white">LOGO</span>
-                    <span class="fs-4 text-white">Wang Scent PH</span>
-                </a>
-                <ul class="navi nav nav-pills id="scroller">
-                    <li class="nav-item">
-                        <a class="nav-link px-3" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-3" href="#about">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-3" href="#products">Products</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link px-3" href="#contacts">Contacts</a>
-                    </li>
-                </ul>
+        <div class="fixed-top">
+            <nav class="py-2 bg-body-tertiary border-bottom">
+                <div class="container d-flex flex-wrap">
+                    <ul class="nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link px-2 link-body-emphasis" href="./index.php#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-2 link-body-emphasis" href="./index.php#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-2 link-body-emphasis" href="./product-page.php">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-2 link-body-emphasis" href="./index.php#contacts">Contacts</a>
+                        </li>
+                    </ul>
+                    <ul class="nav">
+                        <?php user_login_output(); ?>
+                    </ul>
+                </div>
+            </nav>
+            <header class="py-3 mb-4 border-bottom">
+                <div class="container d-flex flex-wrap justify-content-center">
+                    <a class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none" href="">
+                        <span class="bi me-2">LOGO</span>
+                        <span class="fs-4">Wang Scent PH</span>
+                    </a>
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0" action="" method="post" role="search">
+                        <div class="input-group">
+                            <input class="form-control" type="text" name="" id="" placeholder="Search..." aria-label="Search..." aria-describedby="btn-search">
+                            <button class="btn btn-outline secondary" type="button" id="btn-search">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </header>
         </div>
-        <main data-bs-spy="scroll" data-bs-target="#scroller" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" tabindex="0">
-            <section id="home">
-                <h1>Home</h1>
-            </section>
-            <section id="about">
-                <h1>About</h1>
-            </section>
-            <section id="products">
-                <h1>Products</h1>
-                <p>will link to <a href="./product-page.php">product page</a></p>
-            </section>
-            <section id="contacts">
-                <h1>Contacts</h1>
-            </section>
+        <main class="index-cont">
+
         </main>
         <footer class="foot-cont container-fluid">
             <div class="py-2">
