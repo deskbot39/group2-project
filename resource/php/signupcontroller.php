@@ -31,7 +31,8 @@
         }
     }
     function phoneValid(string $phone) {
-        if (!preg_match('@[0-9]{11}@', $phone)) {
+        $clean_phone = filter_var($phone, FILTER_SANITIZE_NUMBER_INT);
+        if (!preg_match('/^[0-9]{11}$/', $clean_phone)) {
             return true;
         } else {
             return false;

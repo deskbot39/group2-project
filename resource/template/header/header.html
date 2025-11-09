@@ -1,0 +1,41 @@
+<div class="fixed-top">
+    <nav class="py-2 bg-body-tertiary border-bottom">
+        <div class="container d-flex flex-wrap">
+            <ul class="nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link px-2 link-body-emphasis" href="./index.php#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-2 link-body-emphasis" href="./index.php#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-2 link-body-emphasis" href="./product-page.php">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-2 link-body-emphasis" href="./index.php#contacts">Contacts</a>
+                </li>
+            </ul>
+            <ul class="nav">
+                <?php user_login_output(); ?>
+            </ul>
+        </div>
+    </nav>
+    <header class="py-3 mb-4 border-bottom">
+        <div class="container d-flex flex-wrap justify-content-center">
+            <a class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto link-body-emphasis text-decoration-none" href="">
+                <span class="bi me-2">LOGO</span>
+                <span class="fs-4">Wang Scent PH</span>
+            </a>
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0" action="" method="post" role="search">
+                <div class="input-group">
+                    <input class="form-control" type="text" name="" id="" placeholder="Search..." aria-label="Search..." aria-describedby="btn-search">
+                    <button class="btn btn-outline-secondary" type="button" id="btn-search">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </header>
+</div>
