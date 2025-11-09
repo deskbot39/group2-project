@@ -10,21 +10,38 @@
         'httponly' => true
     ]);
 
-    
     session_start();
-    
-    if (!isset($_SESSION['last_regeneration'])) {
-        regen_sesh_id();
-        $_SESSION['last_regeneration'] = time();
-    } else {
-        $interval = 60 * 15;
-        if (time() -  $_SESSION['last_regeneration'] >= $interval) {
+    if (isset($_SESSION['user_id'])) {
+        if (!isset($_SESSION['last_regeneration'])) {
             regen_sesh_id();
-        } 
+        } else {
+            $interval = 60 * 15;
+            if (time() -  $_SESSION['last_regeneration'] >= $interval) {
+                regen_sesh_id();
+            } 
+        }
+    } else {
+        if (!isset($_SESSION['last_regeneration'])) {
+            regen_sesh_id();
+        } else {
+            $interval = 60 * 15;
+            if (time() -  $_SESSION['last_regeneration'] >= $interval) {
+                regen_sesh_id();
+            } 
+        }
     }
     
+    function loggedIn_regen_sesh() {
+        session_regenerate_id(true);
+            $uid = $_SESSION['user_id'];
+            $new_id = session_create_id();
+            $sessionId = $new_id . "_" . $uid;
+            session_id($sessionId);        
+        $_SESSION['last_regeneration'] = time();
+    }
+
     function regen_sesh_id() {
-        session_regenerate_id();
-        $_SESSION['last_regeneration'];
+        session_regenerate_id(true);
+        $_SESSION['last_regeneration'] = time();
     }
 ?>

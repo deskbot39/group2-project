@@ -9,28 +9,28 @@
             return false;
         }
     }
-    function emailCheck(string $email) {
+    function emailValid(string $email) {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             return true;
         } else {
             return false;
         }
     }
-    function uniqueUser(object $pdo, string $user) {
-        if (fetchUser($pdo, $user)) {
+    function existingUsername(object $pdo, string $user) {
+        if (fetchUsername($pdo, $user)) {
             return true;
         } else {
             return false;
         }
     }
-    function uniqueEmail(object $pdo, string $email) {
+    function existingEmail(object $pdo, string $email) {
         if (fetchEmail($pdo, $email)) {
             return true;
         } else {
             return false;
         }
     }
-    function phoneCheck(string $phone) {
+    function phoneValid(string $phone) {
         if (!preg_match('@[0-9]{11}@', $phone)) {
             return true;
         } else {

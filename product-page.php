@@ -1,5 +1,6 @@
 <?php
     require_once './resource/php/sesh_conf.php';
+    require_once './resource/php/loginviewer.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,12 +32,7 @@
                         </li>
                     </ul>
                     <ul class="nav">
-                        <li class="nav-item">
-                            <a class="nav-link link-body-emphasis px-2" href="./login-page.php">Sign In</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link link-body-emphasis px-2" href="./register-page.php">Sign Up</a>
-                        </li>
+                        <?php user_login_output(); ?>
                     </ul>
                 </div>
             </nav>

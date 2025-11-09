@@ -15,16 +15,16 @@
             if (emptyInput($username,$email,$phone,$password,$cpassword)) {
                 $error_arr['empty_form'] = "Fill all fields!";
             } 
-            elseif (emailCheck($email)) {
+            elseif (emailValid($email)) {
                 $error_arr['invalid_email'] = "Invalid email!";
             } 
-            elseif (uniqueUser($pdo, $username)) {
+            elseif (existingUsername($pdo, $username)) {
                 $error_arr['user_taken'] = "Username already taken!";
             } 
-            elseif (uniqueEmail($pdo, $email)) {
+            elseif (existingEmail($pdo, $email)) {
                 $error_arr['email_taken'] = "Email already used!";
             }
-            elseif (phoneCheck($phone)) {
+            elseif (phoneValid($phone)) {
                 $error_arr['invalid_phone'] = "Invalid mobile number";
             }
             elseif (passwordLength($password, 8)) {
