@@ -1,3 +1,6 @@
+<?php
+    require_once './resource/php/sesh_conf.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
