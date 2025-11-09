@@ -1,6 +1,6 @@
 <?php
     if ($_SERVER['REQUEST_METHOD'] === "POST") {
-        $username = $_POST['username'];
+        $username = trim($_POST['username']);
         $email = $_POST['email'];
         $phone = $_POST['phone'];
         $password = $_POST['password'];
@@ -24,19 +24,19 @@
             elseif (uniqueEmail($pdo, $email)) {
                 $error_arr['email_taken'] = "Email already used!";
             }
-            elseif (strlen($password < 8)) {
+            elseif (passwordLength($password, 8)) {
                 $error_arr['invalid_password'] = "Password needs to be 8 characters";
             } 
-            else if (!preg_match("@[A-Z]@", $password)) {
+            else if (passwordUpper($password)) {
                 $error_arr['no_uppercase'] = "Password requires at least one uppercase character";
             }
-            else if (!preg_match("@[a-z]@", $password)) {
+            else if (passwordLower($password)) {
                 $error_arr['no_lowercase'] = "Password requires at least one lowercase character";
             }
-            else if (!preg_match("@[0-9]@", $password)) {
+            else if (passwordNum($password)) {
                 $error_arr['no_number'] = "Password requires at least one number character";
             }
-            else if (!preg_match("@[^\w]@", $password)) {
+            else if (passwordChar($password)) {
                 $error_arr['no_character'] = "Password requires at least one special character";
             }
             elseif ($password !== $cpassword) {
@@ -52,7 +52,8 @@
             }
 
             registerUser($pdo,$username,$email,$password,$phone);
-            header('Location: ../../admin-dashboard.php?signup=sucess');
+            header('Location: ../../register-page.php?signup=success');
+
             $pdo = null;
             $stmt = null;
             die();

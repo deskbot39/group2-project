@@ -12,9 +12,9 @@
                 echo '<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button></div>';
             } 
             unset($_SESSION['errors_signup']);
-        } elseif (isset($_GET['signup']) && $_GET['signup'] === "success") {
+        } elseif (isset($_GET['signup']) && $_GET['signup'] == "success") {
                 echo '<div class="alert alert-success alert-dismissible fade show" role="alert">';
-                echo '<p class=""fs-6>Successfully Signed In</p>';
+                echo '<p class=""fs-6>Successfully Signed Up</p>';
                 echo '<button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button></div>';
         }
     }
