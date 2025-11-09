@@ -16,28 +16,9 @@
     <body>
         <main class="reg-cont d-flex align-items-center justify-content-center w-100 m-auto">
             <form class="reg-form p-5" action="resource/php/signuphandler.php" method="post">
-                <?php signup_error_checker() ?>
+                <?php signup_error_checker(); ?>
                 <h1 class="h2 mb-4 fw-normal">Sign Up</h1>
-                <div class="form-floating">
-                    <input class="form-control mb-2" type="text" name="username" id="regusr_input" placeholder="Enter your name">
-                    <label for="regusr_input">Username</label>
-                </div>
-                <div class="form-floating mb-2">
-                    <input class="form-control" type="email" name="email" id="regmail_input" placeholder="Enter your email">
-                    <label for="regemail_input">Email Address</label>                    
-                </div>
-                <div class="form-floating mb-2">
-                    <input class="form-control" type="text" name="phone" id="regphone_input" placeholder="Enter your phone number">
-                    <label for="regphone_input">Phone Number</label>                    
-                </div>
-                <div class="form-floating mb-2">
-                    <input class="form-control" type="password" name="password" id="regpwd_input" placeholder="Enter your password">
-                    <label for="regpwd_input">Password</label>
-                </div>
-                <div class="form-floating mb-2">
-                    <input class="form-control" type="password" name="confirm_password" id="validpwd_input" placeholder="Repeat your password" aria-describedby="pwdinfo">
-                    <label for="validpwd_input">Repeat Password</label>
-                </div>
+                <?php signup_saved_input(); ?>
                 <button class="btn btn-primary w-100 my-4 py-2 text-align-center" type="submit">Sign Up</button>
                 <p class="text-center">Already have an account? Sign In <a class="logreg-link" href="./login-page.php">here.</a></p>
             </form>

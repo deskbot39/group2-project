@@ -30,6 +30,13 @@
             return false;
         }
     }
+    function phoneCheck(string $phone) {
+        if (!preg_match('@[0-9]{11}@', $phone)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     function passwordLength(string $pass, int $length) {
         if (strlen($pass) < $length) {
             return true;

@@ -24,6 +24,9 @@
             elseif (uniqueEmail($pdo, $email)) {
                 $error_arr['email_taken'] = "Email already used!";
             }
+            elseif (phoneCheck($phone)) {
+                $error_arr['invalid_phone'] = "Invalid mobile number";
+            }
             elseif (passwordLength($password, 8)) {
                 $error_arr['invalid_password'] = "Password needs to be 8 characters";
             } 
@@ -47,6 +50,14 @@
 
             if ($error_arr) {
                 $_SESSION['errors_signup'] = $error_arr;
+                
+                $signup_data = [
+                    "username" => $username,
+                    "email" => $email,
+                    "phone" => $phone
+                ];
+                $_SESSION['signup_data'] = $signup_data;
+
                 header('Location: ../../register-page.php');
                 die();
             }
@@ -62,7 +73,7 @@
             die("Query failed:" . $e->$getMessage());
         } 
     } else {
-        header('Location: ../../index.php');
+        header('Location: ../../product-page.php');
         die();
     }
 ?>

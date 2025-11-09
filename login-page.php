@@ -17,11 +17,11 @@
             <form class="login-form p-5" action="./resource/php/loginhandler.php" method="post">
                 <h1 class="h2 mb-4 fw-normal">Sign In</h1>
                 <div class="form-floating mb-2">
-                    <input class="form-control" type="email" name="logemail_box" id="logemail_input" placeholder="Enter your email">
+                    <input class="form-control" type="email" name="email" id="logemail_input" placeholder="Enter your email">
                     <label for="logemail_input">Email Address</label>
                 </div>
                 <div class="form-floating ">
-                    <input class="form-control" type="password" name="logpwd_box" id="logpwd_input" placeholder="Enter your password">
+                    <input class="form-control" type="password" name="password" id="logpwd_input" placeholder="Enter your password">
                     <label for="logpwd_input">Password</label>
                 </div>
                 <button class="btn btn-primary w-100 my-4 py-2 text-align-center" type="submit">Sign In</button>
