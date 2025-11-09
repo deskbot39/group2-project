@@ -1,6 +1,3 @@
-<?php
-    require_once './resource/php/loader.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
     <head>

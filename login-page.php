@@ -1,6 +1,3 @@
-<?php
-    require_once './resource/php/loader.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,8 +10,8 @@
         <title>Login</title>
     </head>
     <body>
-        <main class="login-cont d-flex align-items-center justify-content-center w-100 m-auto shadow">
-            <form class="login-form p-5" action="" method="post">
+        <main class="login-cont d-flex align-items-center justify-content-center w-100 m-auto">
+            <form class="login-form p-5" action="./resource/php/loginhandler.php" method="post">
                 <h1 class="h2 mb-4 fw-normal">Sign In</h1>
                 <div class="form-floating mb-2">
                     <input class="form-control" type="email" name="logemail_box" id="logemail_input" placeholder="Enter your email">

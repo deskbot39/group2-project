@@ -60,7 +60,7 @@
 
 /* Login Page */
 .login-cont {
-    min-height: 86vh;
+    min-height: 100vh;
 
     .login-form {
         outline-style: solid ;
@@ -68,12 +68,15 @@
         outline-width: 1px;
         border-radius: 1.5em;
         background-color: whitesmoke;
+        box-shadow: 10px 10px 20px -9px rgba(0,0,0,0.6);
+        -webkit-box-shadow: 10px 10px 20px -9px rgba(0,0,0,0.6);
+        -moz-box-shadow: 10px 10px 20px -9px rgba(0,0,0,0.6);
     }
 }
 
 /* Register Page */
 .reg-cont {
-    min-height: 86vh;
+    min-height: 100vh;
 
     .reg-form {
         outline-style: solid ;
@@ -81,6 +84,9 @@
         outline-width: 1px;
         border-radius: 1.5em;
         background-color: whitesmoke;
+        box-shadow: 10px 10px 20px -9px rgba(0,0,0,0.6);
+        -webkit-box-shadow: 10px 10px 20px -9px rgba(0,0,0,0.6);
+        -moz-box-shadow: 10px 10px 20px -9px rgba(0,0,0,0.6);
     }
 }
 

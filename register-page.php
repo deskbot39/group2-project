@@ -1,5 +1,6 @@
 <?php
-    require_once './resource/php/loader.php';
+    require_once 'resource/php/sesh_conf.php';
+    require_once 'resource/php/signupviewer.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,29 +14,29 @@
         <title>Register</title>
     </head>
     <body>
-        <main class="reg-cont d-flex align-items-center justify-content-center w-100 m-auto shadow">
-            <form class="reg-form p-5" action="" method="post">
+        <main class="reg-cont d-flex align-items-center justify-content-center w-100 m-auto">
+            <form class="reg-form p-5" action="resource/php/signuphandler.php" method="post">
+                <?php signup_error_checker() ?>
                 <h1 class="h2 mb-4 fw-normal">Sign Up</h1>
                 <div class="form-floating">
-                    <input class="form-control mb-2" type="text" name="regusr_box" id="regusr_input" placeholder="Enter your name">
+                    <input class="form-control mb-2" type="text" name="username" id="regusr_input" placeholder="Enter your name">
                     <label for="regusr_input">Username</label>
                 </div>
                 <div class="form-floating mb-2">
-                    <input class="form-control" type="email" name="regemail_box" id="regmail_input" placeholder="Enter your email">
+                    <input class="form-control" type="email" name="email" id="regmail_input" placeholder="Enter your email">
                     <label for="regemail_input">Email Address</label>                    
                 </div>
                 <div class="form-floating mb-2">
-                    <input class="form-control" type="tel" name="regphone_box" id="regphone_input" placeholder="Enter your phone number">
+                    <input class="form-control" type="text" name="phone" id="regphone_input" placeholder="Enter your phone number">
                     <label for="regphone_input">Phone Number</label>                    
                 </div>
                 <div class="form-floating mb-2">
-                    <input class="form-control" type="password" name="regpwd_box" id="regpwd_input" placeholder="Enter your password">
+                    <input class="form-control" type="password" name="password" id="regpwd_input" placeholder="Enter your password">
                     <label for="regpwd_input">Password</label>
                 </div>
                 <div class="form-floating mb-2">
-                    <input class="form-control" type="password" name="validpwd_box" id="validpwd_input" placeholder="Repeat your password" aria-describedby="pwdinfo">
+                    <input class="form-control" type="password" name="confirm_password" id="validpwd_input" placeholder="Repeat your password" aria-describedby="pwdinfo">
                     <label for="validpwd_input">Repeat Password</label>
-                    <span class="form-text" id="pwdinfo">Your password must be <b>8-20 characters long</b> and have <br> at least <b>one uppercase</b>, <b>one lowercase</b>, and <b>one number</b></span>
                 </div>
                 <button class="btn btn-primary w-100 my-4 py-2 text-align-center" type="submit">Sign Up</button>
                 <p class="text-center">Already have an account? Sign In <a class="logreg-link" href="./login-page.php">here.</a></p>
@@ -43,7 +44,7 @@
         </main>
         <footer class="foot-cont container-fluid">
             <div class="py-2">
-                <ul class="footah nav justify-content-center border-bottom pb-3 mb-3">
+                <ul class="footah nav justify-content-center border-bottom pb-3">
                     <li class="nav-item">
                         <a class="nav-link px-2 text-white" href="./index.php">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
