@@ -70,7 +70,7 @@ phone.addEventListener('input', function(event) {
     const phoneInput = event.target.value;
     if (phoneInput === "") {
         alertPhone.innerText = "Invalid Phone Number!";
-    } else if (!/[0-9]/.test(phoneInput)) { 
+    } else if (!/[\d+]/.test(phoneInput)) { 
         alertPhone.innerText = "Should only contain numbers";
     } else {
         alertPhone.innerText = "";

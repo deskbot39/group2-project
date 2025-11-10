@@ -1,5 +1,5 @@
 <?php
-    require_once './resource/php/sesh_conf.php';
+    require_once './resource/php/conf_session.php';
     require_once './resource/php/loginviewer.php';
 ?>
 <!DOCTYPE html>
@@ -9,7 +9,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Products page of Wang Scent PH">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <link href="./vendor/tailwind-normalize/css/preflight.css" rel="stylesheet">
         <link rel="stylesheet" href="./resource/css/style.css">
         <title>Wang Scent PH: Products</title>
     </head>

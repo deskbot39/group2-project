@@ -1,5 +1,5 @@
 <?php
-    require_once './resource/php/sesh_conf.php';
+    require_once './resource/php/conf_session.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,33 +8,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Administrator Dashboard for Management Purposes">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <link href="./vendor/tailwind-normalize/css/preflight.css" rel="stylesheet">
         <link rel="stylesheet" href="./resource/css/style.css">
         <title>Admin Dashboard</title>
     </head>
     <body>
-        <header class="navbar flex-md-nowrap p-0 shadow">
-            <a class="navbar-brand col-md-3 col-lg-2 m-3 me-0 fs-6" href="#">Wang Scent PH</a>
-            <ul class="navbar-nav flex-row d-md-none">
-                <li class="nav-item text-nowrap">
-                    <button class="nav-link px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navsearch" aria-controls="navsearch" aria-expanded="false" aria-label="search toggler">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                        </svg>
-                    </button>
-                </li>
-                <li class="nav-item text-nowrap">
-                    <button class="nav-link px-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="sidebar toggler">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
-                        </svg>
-                    </button>
-                </li>
-            </ul>
-            <div class="navbar-search w-100 collapse" id="navsearch">
-                <input class="form-control w-75 rounded-0 border-0 m-3" type="text" name="admsearch_box" id="admsearch_input" aria-label="searchbar" placeholder="Search...">
-            </div>
-        </header>
+        <?php include('./resource/template/header/admin-header.html') ?>
         <div class="container-fluid">
             <div class="row">
                 <div class="sidebar border border-right col-md-3 col-lg-2 p-0 bg-body-tertiary">
