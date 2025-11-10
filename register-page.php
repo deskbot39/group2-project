@@ -15,15 +15,22 @@
     </head>
     <body>
         <main class="reg-cont d-flex align-items-center justify-content-center w-100 m-auto">
-            <form class="reg-form p-5" action="resource/php/signuphandler.php" method="post">
-                <?php signup_error_checker(); ?>
-                <h1 class="h2 mb-4 fw-normal">Sign Up</h1>
-                <?php signup_saved_input(); ?>
-                <button class="btn btn-primary w-100 my-4 py-2 text-align-center" type="submit">Sign Up</button>
-                <p class="text-center">Already have an account? Sign In <a class="logreg-link" href="./login-page.php">here.</a></p>
-            </form>
+            <div class="container-fluid">
+                <div class="container w-25">
+                    <?php signup_error_checker(); ?>
+                </div>
+                <form class="container reg-form p-5 w-25" action="resource/php/signuphandler.php" method="post">
+                    <h1 class="h2 mb-4 fw-normal text-center">Sign Up</h1>
+                    <?php signup_saved_input(); ?>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <button class="btn btn-primary w-50 my-4 py-2 text-align-center rounded-pill" type="submit">Sign Up</button>
+                    </div>
+                    <p class="text-center">Already have an account? Sign In <a class="logreg-link" href="./login-page.php">here.</a></p>
+                </form>
+            </div>
         </main>
         <?php include('./resource/template/footer/footer.html'); ?>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <script src="./resource/js/register-validation.js"></script>
     </body>
 </html>

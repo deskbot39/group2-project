@@ -13,12 +13,12 @@
             if (emptyInput($email,$password)) {
                 $error_arr['empty_form'] = "Fill all fields!";
             }
-            elseif (wrongMail($result)) {
-                $error_arr['wrong_mail'] = "Incorrect email";
+            elseif ($result == 0) {
+                $error_arr['no_user'] = "Incorrect Email or User does not exist";
             }
-            elseif (!password_verify($password,$result['password'])) {
+            elseif (!wrongMail($result) && !password_verify($password,$result['password'])) {
                 $error_arr['wrong_info'] = "Incorrect password";
-            }
+            } 
 
             require_once 'sesh_conf.php';
 
