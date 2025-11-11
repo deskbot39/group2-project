@@ -13,8 +13,10 @@
         <title>Shopping Cart</title>
     </head>
     <body>
-        <?php include('./resource/template/header/header.html'); ?>
-        <main class="cart-cont d-flex align-items-center justify-content-center shadow">
+        <div class="sticky-top">
+            <?php userLoginDisplay(); ?>
+        </div>
+        <main class="cart-cont d-flex align-items-center justify-content-center">
             <div class="table-responsive w-50 p-5">
                 <h1 class="h2">Shopping Cart</h1>
                 <table class="table table-striped table-bordered table-hover">
@@ -84,7 +86,9 @@
                 </div>
             </div>
         </main>
-        <?php include('./resource/template/footer/footer.html'); ?>
+        <div class="container-fluid">
+            <?php include('./resource/template/footer/footer.html'); ?>
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     </body>
 </html>

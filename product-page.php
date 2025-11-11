@@ -13,11 +13,15 @@
         <title>Wang Scent PH: Products</title>
     </head>
     <body>
-        <?php include('./resource/template/header/header.html'); ?>
+        <div class="fixed-top">
+            <?php userLoginDisplay(); ?>
+        </div>
         <main class="product-cont">
 
         </main>
-        <?php include('./resource/template/footer/footer.html'); ?>
+        <div class="container-fluid">
+            <?php include('./resource/template/footer/footer.html'); ?>
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     </body>
 </html>

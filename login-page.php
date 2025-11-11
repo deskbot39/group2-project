@@ -1,5 +1,6 @@
 <?php
     require_once './resource/php/conf_session.php';
+    require_once './resource/php/loginviewer.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +13,9 @@
         <title>Login</title>
     </head>
     <body class="d-flex align-items-center justify-content-center py-4 bg-body-tertiary min-vh-100">
+        <div class="position-fixed top-0 end-0 container-fluid my-4 z-3">
+            <?php login_error_display(); ?>
+        </div>
         <main class="form-cont card w-100 m-auto shadow">
             <form class="" action="./resource/php/loginhandler.php" method="post">
                 <div class="card-header">

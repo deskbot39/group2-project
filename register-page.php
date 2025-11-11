@@ -13,11 +13,11 @@
         <title>Register</title>
     </head>
     <body class="d-flex align-items-center justify-content-center py-4 bg-body-tertiary min-vh-100">
+        <div class="position-fixed top-0 end-0 container-fluid my-4 z-3">
+            <?php register_error_display(); ?>
+        </div>
         <main class="form-cont card w-100 m-auto shadow">
-            <div class="position-relative">
-                <?php register_error_display(); ?>
-            </div>
-            <form action="resource/php/registerhandler.php" method="post" novalidate>
+            <form action="resource/php/registerhandler.php" method="post">
                 <div class="card-header">
                     <h1 class="h2 text-center">Sign Up</h1>
                 </div>
