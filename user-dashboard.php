@@ -13,7 +13,9 @@
         <title>User Dashboard</title>
     </head>
     <body>
-        <?php include('./resource/template/header/header.html'); ?>
+        <div class="fixed-top">
+            <?php userLoginDisplay(); ?>
+        </div>
         <main class="usrdash-cont">
 
         </main>

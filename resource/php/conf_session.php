@@ -16,40 +16,25 @@
         session_regenerate_id(true);
         $_SESSION['last_regeneration'] = time();
     }
-    function regenerate_login_id() {
-        session_regenerate_id(true);
-        $user_id = $_SESSION['user_id'];
-        $fresh_id = session_create_id();
-        $login_session_id = $fresh_id . "_" . $user_id;
-        $session_id($login_session_id);
-    }
 
     // CSRF Token
     $csrf_token = bin2hex(random_bytes(32));
     $_SESSION['csrf_token'] = $csrf_token;
+    $time_interval = 60 * 15;
 
     if (isset($_SESSION['user_id'])) {
-        if (!isset($_SERVER['last_regeneration'])) {
-            regenerate_login_id();
-        } else {
-            // Regenerates every 15mins
-            $time_interval = 60 * 15;
-    
-            if (time() - $_SESSION['last_regeneration'] >= $time_interval) {
-                regenerate_login_id();
-            }
-        }
-    } else {
-        if (!isset($_SERVER['last_regeneration'])) {
-            regenerate_id();
-        } else {
-            // Regenerates every 15mins
-            $time_interval = 60 * 15;
-    
-            if (time() - $_SESSION['last_regeneration'] >= $time_interval) {
-                regenerate_id();
-            }
-        }
+        // Login Regen
+        regenerate_id();
+    } elseif (isset($_SESSION['user_id']) && !isset($_SERVER['last_regeneration'])) {
+        // Login Regen
+        regenerate_id();
+    } elseif (isset($_SESSION['user_id']) && time() - $_SESSION['last_regeneration'] >= $time_interval) {
+        // Login Regen
+        regenerate_id();
+    } elseif (!isset($_SERVER['last_regeneration'])) {
+        regenerate_id();
+    } elseif (time() - $_SESSION['last_regeneration'] >= $time_interval) {
+        regenerate_id();
     }
 
 ?>

@@ -13,7 +13,7 @@
         <title>Wang Scent PH</title>
     </head>
     <body>
-        <div class="sticky-top">
+        <div class="fixed-top">
             <?php userLoginDisplay(); ?>
         </div>
         <main class="index-cont">

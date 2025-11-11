@@ -13,7 +13,7 @@
         <title>Login</title>
     </head>
     <body class="d-flex align-items-center justify-content-center py-4 bg-body-tertiary min-vh-100">
-        <div class="position-fixed top-0 end-0 container-fluid my-4 z-3">
+        <div class="position-fixed top-0 end-0 container-fluid my-4 z-3 d-flex justify-content-center">
             <?php login_error_display(); ?>
         </div>
         <main class="form-cont card w-100 m-auto shadow">
@@ -23,10 +23,10 @@
                 </div>
                 <div class="card-body">
                     <div class="form-floating mb-2">
-                        <input class="form-control" type="email" name="email" id="logemail_input" placeholder="Enter your email" required>
+                        <input class="form-control" type="email" name="email" id="logemail_input" inputmode="email" placeholder="Enter your email" required>
                         <label for="logemail_input">Email Address</label>
                     </div>
-                    <div class="form-floating ">
+                    <div class="form-floating mb-2">
                         <input class="form-control" type="password" name="password" id="logpwd_input" placeholder="Enter your password" required>
                         <label for="logpwd_input">Password</label>
                     </div>

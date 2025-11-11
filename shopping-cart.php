@@ -13,7 +13,7 @@
         <title>Shopping Cart</title>
     </head>
     <body>
-        <div class="sticky-top">
+        <div class="fixed-top">
             <?php userLoginDisplay(); ?>
         </div>
         <main class="cart-cont d-flex align-items-center justify-content-center">

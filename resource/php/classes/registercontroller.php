@@ -15,28 +15,28 @@
         }
 
         public function registerUser() {
-            if ($this->emptyInput() == true) {
+            if ($this->emptyInput()) {
                 $this->saveRegInputs();
                 $this->errorSetter('empty_form', 'Fill all fields');
-            } else if ($this->usernameInvalid() == true) {
+            } else if ($this->usernameInvalid()) {
                 $this->saveRegInputs();
                 $this->errorSetter('invalid_name','Username must be at least 4 characters long');
-            } else if ($this->emailInvalid() == true) {
+            } else if ($this->emailInvalid()) {
                 $this->saveRegInputs();
                 $this->errorSetter('invalid_email','Please use a valid email');
-            } else if ($this->phoneInvalid() == true) {
+            } else if ($this->phoneInvalid()) {
                 $this->saveRegInputs();
                 $this->errorSetter('invalid_phone','Please use a valid phone number');
-            } else if ($this->passwordInvalid() == true) {
+            } else if ($this->passwordInvalid()) {
                 $this->saveRegInputs();
                 $this->errorSetter('invalid_pass','Please use a valid password');
-            } else if ($this->passwordMatch() == false) {
+            } else if (!$this->passwordMatch()) {
                 $this->saveRegInputs();
                 $this->errorSetter('diff_pass','Entered passwords do not match');
-            } else if ($this->userExists() == true) {
+            } else if ($this->userExists()) {
                 $this->saveRegInputs();
                 $this->errorSetter('user_taken','Username is already taken');
-            } else if ($this->emailExists() == true) {
+            } else if ($this->emailExists()) {
                 $this->saveRegInputs();
                 $this->errorSetter('email_taken','Email is already used');
             } else {
