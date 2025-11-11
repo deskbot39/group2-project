@@ -4,7 +4,7 @@
     $head_desc = htmlspecialchars("User Profile Page of Wang Scent PH");
     $head_title = htmlspecialchars("Wang Scent PH | User Profile");
     $head_class = htmlspecialchars("");
-    $js_loc = htmlspecialchars("");
+    $js_locs = array();
     include('resource/template/html/html_head.html');
     userLoginDisplay();
 ?>

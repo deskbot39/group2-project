@@ -28,8 +28,9 @@
 }
 
 /* Landing Page */
-.index-cont {
+#home {
     min-height: 100vh;
+    padding-top: 5rem;
 }
 
 

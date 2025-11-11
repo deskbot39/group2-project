@@ -4,7 +4,7 @@
     $head_desc = htmlspecialchars("User Shopping Cart");
     $head_title = htmlspecialchars("Wang Scent PH | Shopping Cart");
     $head_class = htmlspecialchars("");
-    $js_loc = htmlspecialchars("");
+    $js_locs = array();
     include('resource/template/html/html_head.html');
     userLoginDisplay();
 ?>
