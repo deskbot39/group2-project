@@ -9,7 +9,12 @@
     userLoginDisplay();
 ?>
     <main class="index-cont">
-
+        <?php
+            include('./resource/template/landing-page/hero1.html');
+            include('./resource/template/landing-page/product-section.html');
+            include('./resource/template/landing-page/about-section.html');
+            include('./resource/template/landing-page/contact-section.html');
+        ?>
     </main>
 <?php 
     include('./resource/template/footer/footer.html');
