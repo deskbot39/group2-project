@@ -1,25 +1,17 @@
 <?php
     require_once './resource/php/conf_session.php';
     require_once './resource/php/loginviewer.php';
+    $head_desc = htmlspecialchars("User Profile Page of Wang Scent PH");
+    $head_title = htmlspecialchars("Wang Scent PH | User Profile");
+    $head_class = htmlspecialchars("");
+    $js_loc = htmlspecialchars("");
+    include('resource/template/html/html_head.html');
+    userLoginDisplay();
 ?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="User Account Page">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <link rel="stylesheet" href="./resource/css/style.css">
-        <title>User Dashboard</title>
-    </head>
-    <body>
-        <div class="fixed-top">
-            <?php userLoginDisplay(); ?>
-        </div>
         <main class="usrdash-cont">
 
         </main>
-        <?php include('./resource/template/footer/footer.html'); ?>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    </body>
-</html>
+<?php 
+    include('./resource/template/footer/footer.html'); 
+    include('./resource/template/html/html_foot.html');
+?>
