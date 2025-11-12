@@ -1,5 +1,10 @@
 /* Custom CSS Here */
-
+:target::before {
+  content: "";
+  display: block;
+  height: 5rem;
+  margin: -5rem 0 0;
+}
 /* Universal */
 .foot-cont {
     min-height: 5vh;
@@ -33,7 +38,10 @@
     padding-top: 5rem;
 }
 
-
+/* Contact Page */
+.contact-cont {
+    min-height: 100vh;
+}
 
 /* Product Page */
 .product-cont {
@@ -54,10 +62,13 @@
 .cart-cont {
     min-height: 100vh;
 
-    .cart-total {
-        outline-style: solid ;
-        outline-color: darkgray;
-        outline-width: 1px;
-        background-color: whitesmoke;
+    .cart-item {
+        img {
+            max-width: 100px;
+            height: auto;
+        }
+    }
+    .qty-input {
+        width: 50px;
     }
 }
