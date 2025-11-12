@@ -8,9 +8,11 @@
     include('resource/template/html/html_head.html');
     userLoginDisplay();
 ?>
-        <main class="usrdash-cont">
-
-        </main>
+<main class="usrdash-cont">
+<?php
+    include('./resource/template/user-dashboard/user-dashboard.html'); 
+?>
+</main>
 <?php 
     include('./resource/template/footer/footer.html'); 
     include('./resource/template/html/html_foot.html');

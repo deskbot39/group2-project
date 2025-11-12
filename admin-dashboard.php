@@ -3,7 +3,7 @@
     $head_desc = htmlspecialchars("Admin Dashboard");
     $head_title = htmlspecialchars("Administrator Dashboard");
     $head_class = "";
-    $js_loc = "";
+    $js_locs = array();
     include('resource/template/html/html_head.html');
     include('./resource/template/admin-dashboard/admin-header.html');
 ?>

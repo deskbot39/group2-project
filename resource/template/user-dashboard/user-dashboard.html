@@ -1,0 +1,41 @@
+<div class="container py-5">
+    <div class="text-start mb-4">
+        <a href="./product-page.php" class="btn btn-outline-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/></svg>
+            Go to Products
+        </a>
+    </div>
+    <h2 class="mb-5">User Profile</h2>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="position-sticky m-5" style="top: 20rem;">
+                <h4 class="my-3 text-center">User Information</h4>
+                <div class="row mb-3">
+                    <h5 class="col">Username</h5>
+                    <span class="col"><?= htmlspecialchars($_SESSION['username']); ?></span>
+                </div>
+                <hr>
+                <div class="row mb-3">
+                    <h5 class="col">Email</h5>
+                    <span class="col"><?= htmlspecialchars($_SESSION['email']); ?></span>
+                </div>
+                <hr>
+                <div class="row mb-3">
+                    <h5 class="col">Phone Number</h5>
+                    <span class="col"><?= htmlspecialchars($_SESSION['phone']); ?></span>
+                </div>
+                <div class="row mb-2 d-flex px-3">
+                    <button class="btn btn-outline-danger">Edit User Info</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="bg-body-secondary border border-2 p-3">
+                <h4 class="my-3 text-center">Order History</h4>
+
+            </div>
+        </div>
+    </div>
+    <section>
+    </section>
+</div>

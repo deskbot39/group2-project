@@ -1,7 +1,7 @@
 <?php
     function userLoginDisplay() {
         if (isset($_SESSION['user_id'])) {
-            include ('./resource/template/nav/nav-logged.html');
+            // include ('./resource/template/nav/nav-logged.html');
             include ('./resource/template/header/header.html');
         } 
         else {

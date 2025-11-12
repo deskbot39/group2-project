@@ -1,9 +1,17 @@
 <div class="container my-5 py-5">
+    <!-- Back to Shopping Start -->
+    <div class="text-start mb-4">
+        <a href="./product-page.php" class="btn btn-outline-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/></svg>
+            Continue Shopping
+        </a>
+    </div>
+    <!-- Back to Shopping End -->
     <h1 class="mb-5">Your Shopping Cart</h1>
     <div class="row">
         <div class="col-lg-8">
             <!-- Product Cont Start -->
-             <div class="card mb-4 border border-2">
+             <div class="card mb-4">
                 <div class="card-body">
                     <!-- Cart Item Start -->
                     <div class="cart-item row mb-3">
@@ -17,7 +25,7 @@
                         <div class="col-md-2">
                             <div class="input-group">
                                 <button class="btn btn-outline-secondary btn-sm" type="button">-</button>
-                                <input style="max-width: 100px;" type="text" class="form-control form-control-sm text-center qty-input" value="1">
+                                <input type="text" class="form-control form-control-sm text-center qty-input" value="1" readonly>
                                 <button class="btn btn-outline-secondary btn-sm" type="button">+</button>
                             </div>
                         </div>
@@ -42,7 +50,7 @@
                         <div class="col-md-2">
                             <div class="input-group">
                                 <button class="btn btn-outline-secondary btn-sm" type="button">-</button>
-                                <input style="max-width: 100px;" type="text" class="form-control form-control-sm text-center qty-input" value="1">
+                                <input style="max-width: 100px;" type="text" class="form-control form-control-sm text-center qty-input" value="1" readonly>
                                 <button class="btn btn-outline-secondary btn-sm" type="button">+</button>
                             </div>
                         </div>
@@ -54,17 +62,9 @@
                         </div>
                     </div>
                     <!-- Cart Item End; hr is the separator-->
-                    <hr>
                 </div>
              </div>
-             <!-- Product Cont End, Back to Shopping Start -->
-              <div class="text-start mb-4">
-                <a href="./product-page.php" class="btn btn-outline-primary">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/></svg>
-                    Continue Shopping
-                </a>
-              </div>
-              <!-- Back to Shopping End -->
+             <!-- Product Cont End -->
         </div>
         <!-- Item Details Start -->
         <div class="col-lg-4">

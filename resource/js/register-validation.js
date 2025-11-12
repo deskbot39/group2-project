@@ -15,9 +15,9 @@ function pwdCompare() {
     const pass2 = cpassword.value;
 
     if (pass1 === pass2) {
-        alertVPass.innerText = ""
+        alertVPass.textContent = ""
     } else {
-        alertVPass.innerText = "Passwords do not match"
+        alertVPass.textContent = "Passwords do not match"
     }
 }
 
@@ -30,50 +30,50 @@ function pwdValid() {
     const pass1 = password.value;
 
     if (pass1.length < 8) { 
-        alertPass.innerText = "Should be at least 8 characters long";
+        alertPass.textContent = "Should be at least 8 characters long";
     } else if (!reg_low.test(pass1)) {
-        alertPass.innerText = "Should contain at least one lowercase";
+        alertPass.textContent = "Should contain at least one lowercase";
     } else if (!reg_upr.test(pass1)) {
-        alertPass.innerText = "Should contain at least one uppercase";
+        alertPass.textContent = "Should contain at least one uppercase";
     } else if (!reg_num.test(pass1)) {
-        alertPass.innerText = "Should contain at least one number";
+        alertPass.textContent = "Should contain at least one number";
     } else if (!reg_schar.test(pass1)) {
-        alertPass.innerText = "Should contain at least one special character";
+        alertPass.textContent = "Should contain at least one special character";
     } else if (reg_space.test(pass1)) {
-        alertPass.innerText = "Should not contain any spaces";
+        alertPass.textContent = "Should not contain any spaces";
     } else {
-        alertPass.innerText = "";
+        alertPass.textContent = "";
     }
 }
 
 username.addEventListener('input', function(event) {
     const usrInput = event.target.value;
     if (usrInput === "") {
-        alertUsr.innerText = "Invalid Username!";
+        alertUsr.textContent = "Invalid Username!";
     } else if (usrInput.length < 4) {
-        alertUsr.innerText = "Username should be at least be 4 characters long";
+        alertUsr.textContent = "Username should be at least be 4 characters long";
     } else {
-        alertUsr.innerText = "";
+        alertUsr.textContent = "";
     }
 });
 
 email.addEventListener('input', function(event) {
     const emailInput = event.target.value;
     if (emailInput === "") {
-        alertMail.innerText = "Invalid Email!";
+        alertMail.textContent = "Invalid Email!";
     } else {
-        alertMail.innerText = "";
+        alertMail.textContent = "";
     }
 });
 
 phone.addEventListener('input', function(event) {
     const phoneInput = event.target.value;
     if (phoneInput === "") {
-        alertPhone.innerText = "Invalid Phone Number!";
+        alertPhone.textContent = "Invalid Phone Number!";
     } else if (!/[\d+]/.test(phoneInput)) { 
-        alertPhone.innerText = "Should only contain numbers";
+        alertPhone.textContent = "Should only contain numbers";
     } else {
-        alertPhone.innerText = "";
+        alertPhone.textContent = "";
     }
 });
 
