@@ -30,12 +30,55 @@
             </div>
         </div>
         <div class="col-lg-8">
-            <div class="bg-body-secondary border border-2 p-3">
+            <div class="p-2">
                 <h4 class="my-3 text-center">Order History</h4>
+                <form class="" action="" method="get">
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group input-group-sm mb-3">
+                                <label for="sorter" class="input-group-text">Sort by:</label>
+                                <select name="" id="sorter" class="form-select" aria-label="table-sorter">
+                                    <option selected>Choose option...</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Processing">Processing</option>
+                                    <option value="Cancelled">Cancelled</option>
+                                    <option value="Shipped">Shipped</option>
+                                    <option value="Received">Received</option>
+                                </select>
+                            </div>
 
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-outline-primary btn-sm w-100" type="submit">Sort</button>
+                        </div>
+                    </div>
+                </form>
+                <table class="table table-responsive table-bordered table-striped table-sm">
+                    <thead>
+                        <th scope="1">Order No.</th>
+                        <th scope="1">Total Price</th>
+                        <th scope="1">Status</th>
+                        <th scope="1">Last Updated</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td scope="row">1</td>
+                            <td>100.00</td>
+                            <td>Pending</td>
+                            <td>2025-11-11</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <nav class="d-flex justify-content-center">
+                    <ul class="pagination">
+                        <li class="page-item disabled"><a class="page-link" href="">Prev</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="">Next</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
-    <section>
-    </section>
 </div>
