@@ -30,7 +30,7 @@
                 $_SESSION['user_id'] = $result['user_id'];
                 $_SESSION['username'] = $result['username'];
                 $_SESSION['email'] = $result['email'];
-                $_SESSION['phone'] = $result['phone_number'];
+                $_SESSION['phone'] = $result['phone'];
                 $_SESSION['role'] = $role_result['role_id'];
                 $_SESSION['last_regeneration'] = time();
                 session_id($sessionID);

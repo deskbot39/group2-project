@@ -24,7 +24,7 @@
 
         protected function setUser(string $username, string $email, string $pass, string $phone) {
             $hashed_pwd = password_hash($pass, PASSWORD_BCRYPT);
-            $query = "INSERT INTO users (`username`, `email`, `password`, `phone_number`) VALUES (:username, :email, :password1, :phone)";
+            $query = "INSERT INTO users (`username`, `email`, `password`, `phone`) VALUES (:username, :email, :password1, :phone)";
             $stmt = $this->connect()->prepare($query);
             $stmt->bindParam(":username", $username);
             $stmt->bindParam(":email", $email);

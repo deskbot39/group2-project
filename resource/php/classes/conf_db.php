@@ -3,7 +3,7 @@
     class conf_db {
         private $usr = "root";
         private $pwd = "";
-        private $info = "mysql:host=localhost;dbname=testing;";
+        private $info = "mysql:host=localhost;dbname=prototype;";
         
         protected function connect() {
             try {

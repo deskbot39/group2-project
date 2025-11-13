@@ -22,7 +22,7 @@
         }
 
         protected function updateOrderStatus(int $order_id, string $order_status) {
-            $query = "UPDATE orders SET order_status = :ostat WHERE order_id = :orid";
+            $query = "UPDATE orders SET status = :ostat WHERE order_id = :orid";
             $stmt = $this->connect()->prepare($query);
             $stmt->bindParam(":ostat", $order_status);
             $stmt->bindParam(":orid", $order_id);
