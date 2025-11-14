@@ -12,11 +12,11 @@
             return $result;
         }
 
-        protected function updateProductQuantity(int $user_id, int $product_id, int $item_quantity) {
-            $query = "UPDATE cart SET item_quantity = :iqty WHERE user_id = :usid AND product_id = :pid";
+        protected function updateProductQuantity(int $cart_id, int $product_id, int $item_quantity) {
+            $query = "UPDATE cart_item SET quantity = :iqty WHERE cart_id = :cid AND product_id = :pid";
             $stmt = $this->connect()->prepare($query);
             $stmt->bindParam(":iqty", $item_quantity);
-            $stmt->bindParam(":usid", $user_id);
+            $stmt->bindParam(":cid", $cart_id);
             $stmt->bindParam(":pid", $product_id);
 
             if ($stmt->execute()) {

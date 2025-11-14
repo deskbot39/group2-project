@@ -41,7 +41,6 @@
                 $this->errorSetter('email_taken','Email is already used');
             } else {
                 $this->setUser($this->username,$this->email,$this->password,$this->phone);
-                // $this->setUserRoles($this->username);
                 unset($_SESSION['saved_input']);
             }
         }

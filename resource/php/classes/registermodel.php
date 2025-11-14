@@ -32,15 +32,5 @@
             $stmt->bindParam(":phone", $phone);
             $stmt->execute();
         }
-
-        protected function setUserRoles(string $username) {
-            $uid = $this->getUser($username);
-            $rid =  1;
-            $query = "INSERT INTO user_roles(`user_id`, `role_id`) VALUES (:usrid, :roid)";
-            $stmt = $this->connect()->prepare($query);
-            $stmt->bindParam(":usrid", $uid['user_id']);
-            $stmt->bindParam(":roid", $rid);
-            $stmt->execute();
-        }
     }
 ?>
