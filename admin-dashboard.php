@@ -1,5 +1,7 @@
 <?php
     require_once './resource/php/conf_session.php';
+    require_once './resource/php/loginviewer.php';
+    userAdminLock();
     $head_desc = htmlspecialchars("Admin Dashboard");
     $head_title = htmlspecialchars("Dashboard | Home");
     $head_class = "";

@@ -1,5 +1,8 @@
 <?php
     require_once './resource/php/conf_session.php';
+    require_once './resource/php/producthandler.php';
+    require_once './resource/php/loginviewer.php';
+    userAdminLock();
     $head_desc = htmlspecialchars("Dashboard Products Page");
     $head_title = htmlspecialchars("Dashboard | Products");
     $head_class = "";

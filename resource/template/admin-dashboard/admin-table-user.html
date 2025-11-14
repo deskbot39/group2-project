@@ -4,52 +4,106 @@
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 min-vh-100">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h2>Users</h2>
-                <div class="row">
+                <form class="row d-flex justify-content-between" action="" method="get">
+                    <?php
+                        if (!isset($_GET['role-sort']) || empty($_GET['role-sort'])) {
+                            $wan = 'selected';
+                            $tuu = $tri = $por = "";
+                        } else {
+                            if ($_GET['role-sort'] === 'Customer') {
+                                $tuu = 'selected';
+                                $wan = $tri = $por = "";
+                            } elseif ($_GET['role-sort'] === 'Staff') {
+                                $tri = 'selected';
+                                $wan = $tuu = $por = "";
+                            } elseif ($_GET['role-sort'] === 'Admin') {
+                                $por = 'selected';
+                                $wan = $tri = $tuu = "";
+                            }
+                        }
+                    ?>
                     <div class="col">
-                        <form action="" method="get">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control" type="text" placeholder="Search...">
-                                <button class="btn btn-outline-success" type="submit">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/></svg>
-                                </button>
-                            </div>
-                        </form>
+                        <select class="form-select" name="role-sort" id="sorter">
+                            <option value="" <?= $wan; ?>>All</option>
+                            <option value="Customer" <?= $tuu; ?>>Customer</option>
+                            <option value="Staff" <?= $tri; ?>>Staff</option>
+                            <option value="Admin" <?= $por; ?>>Administrator</option>
+                        </select>
                     </div>
                     <div class="col">
-                        <div class="input-group input-group-sm">
-                            <label class="input-group-text" for="sorter">Sort by:</label>
-                            <select class="form-select" name="" id="sorter">
-                                <option value="">Wow</option>
-                                <option value="">Amazing</option>
-                                <option value="">Piss</option>
-                                <option value="">Ass</option>
-                            </select>
-                        </div>
+                        <button class="btn btn-success" type="submit">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel-fill" viewBox="0 0 16 16"><path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5z"/></svg>
+                            Sort
+                        </button>
                     </div>
-                </div>
+                </form>
             </div>
-            <table class="table table-sm table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Sample</th>
-                        <th scope="col">Sample</th>
-                        <th scope="col">Sample</th>
-                        <th scope="col">Sample</th>
-                        <th scope="col">Sample</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td scope="row">1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                </tbody>
-            </table>         
+            <div class="table-responsive">
+                <table class="table table-sm table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">UID</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone No.</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($usr_table as $data) { ?>
+                        <tr>
+                            <td scope="row"><?= htmlspecialchars($data['user_id']); ?></</td>
+                            <td><?= htmlspecialchars($data['username']); ?></td>
+                            <td><?= htmlspecialchars($data['email']); ?></td>
+                            <td><?= htmlspecialchars($data['phone']); ?></td>
+                            <td>
+                                <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#item<?= $data['user_id']; ?>">
+                                    Edit
+                                </button>
+                            </td>
+                        </tr>
+                        <div class="modal fade" id="item<?= $data['user_id']; ?>" tabindex="-1" aria-hidden="true" aria-labelledby="item<?= $data['user_id']; ?>">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title" id="edit-label">Edit User</h1>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="" method="post">
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" type="text" name="ename" id="editname" value="<?= $data['username']; ?>" required>
+                                                <label for="editname">Username</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" type="email" name="eemail" id="editmail" value="<?= $data['email'] ?>" required>
+                                                <label for="editmail">Email</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" type="tel" name="ephone" id="editphone" value="<?= $data['phone'] ?>" required>
+                                                <label for="editphone">Phone Number</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" type="text" name="epass" id="editpass" required>
+                                                <label for="editpass">Password</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" type="text" name="veepass" id="vepass" required>
+                                                <label for="vepass">Verify Password</label>
+                                            </div>
+                                            <div class="d-flex row justify-content-center align-items-center gap-2 p-2">
+                                                <button class="btn btn-success" type="submit">Save Changes</button>
+                                                <button class="btn btn-danger" type="reset" data-bs-dismiss="modal">Discard Changes</button>
+                                            </div>
+                                            </form
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php } ?>
+                    </tbody>
+                </table>         
+            </div>
         </main>
     </div>
 </div>

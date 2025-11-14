@@ -36,7 +36,11 @@
             <ul class="nav flex-column mb-auto">
                 <li class="nav-item">
                     <p class=" text-muted d-flex align-items-center justify-content-center gap-2">
-                        Welcome Admin <?= htmlspecialchars($_SESSION['username']); ?>
+                        <?php if ($_SESSION['role'] === 'Admin') { ?>
+                        Welcome Administrator <b><?= htmlspecialchars($_SESSION['username']); ?></b>
+                        <?php } else { ?>
+                        Welcome Staff Member <b><?= htmlspecialchars($_SESSION['username']); ?></b>
+                        <?php } ?> 
                     </p>
                 </li>
                 <li class="nav-item">

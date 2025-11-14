@@ -11,7 +11,7 @@
         $login = new logincontroller($email,$password);
         $login->loginUser();
 
-        if ($_SESSION['role'] > 1) {
+        if ($_SESSION['role'] === 'Admin' || $_SESSION['role'] === 'Staff') {
             header("location: ../../admin-dashboard.php");
             die();
         } else {

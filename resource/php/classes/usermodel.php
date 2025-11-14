@@ -2,26 +2,23 @@
     declare(strict_types=1);
     class usermodel extends conf_db {
 
-        protected function getAllUsers() {
+        public function getAllUsers() {
             $query = "SELECT * FROM users";
             $stmt = $this->connect()->prepare($query);
             $stmt->execute();
 
-            $result = $stmt->fetch(PDO:FETCH_ASSOC);
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         }
 
-        protected function getUser() {
-            $query = "SELECT";
+        public function getByRole(string $role) {
+            $query = "SELECT * FROM users WHERE role = :role";
             $stmt = $this->connect()->prepare($query);
-            $stmt->bindParam("", $test);
-            $stmt->bindParam("", $test);
-            
-            if ($stmt->execute()) {
-                return true;
-            } else {
-                return false;
-            }
+            $stmt->bindParam(":role", $role);
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
         }
     }
 ?>

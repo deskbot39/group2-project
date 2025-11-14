@@ -9,6 +9,12 @@
         }
     }
 
+    function userAdminLock() {
+        if (isset($_SESSION['role']) && $_SESSION['role'] === 'Customer') {
+            header('location: ./user-dashboard.php');
+        }
+    }
+
     function login_error_display() {
         if (isset($_SESSION['login_errors'])) {
             $error_arr = $_SESSION['login_errors'];

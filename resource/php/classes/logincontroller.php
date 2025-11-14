@@ -26,12 +26,11 @@
                 $result = $this->getUser($this->email);
                 $new_session = session_create_id();
                 $sessionID = $new_session . "_" . $result['user_id'];
-                $role_result = $this->getUserRole($result['user_id']);
                 $_SESSION['user_id'] = $result['user_id'];
                 $_SESSION['username'] = $result['username'];
                 $_SESSION['email'] = $result['email'];
                 $_SESSION['phone'] = $result['phone'];
-                $_SESSION['role'] = $role_result['role_id'];
+                $_SESSION['role'] = $result['role'];
                 $_SESSION['last_regeneration'] = time();
                 session_id($sessionID);
             }
