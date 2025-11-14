@@ -36,11 +36,51 @@
                             <td><?= htmlspecialchars($data['price']); ?></td>
                             <td><?= htmlspecialchars($data['stock']); ?></td>
                             <td>
-                                <button class="btn btn-outline-success btn-sm">
+                                <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#item<?= $data['product_id']; ?>">
                                     Edit
                                 </button>
                             </td>
                         </tr>
+                        <div class="modal fade" id="item<?= $data['product_id']; ?>" tabindex="-1" aria-hidden="true" aria-labelledby="item<?= $data['product_id']; ?>">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title" id="edit-label">Edit Product</h1>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="" method="post">
+                                            <input type="hidden" value="<?= $data['product_id']; ?>" name="hidden_pid">
+                                            <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>" >
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" type="text" value="<?= $data['name']; ?>" name="pname" id="ename" required>
+                                                <label for="ename">Product Name</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <textarea class="form-control h-100" id="edescr" rows="10" style="resize: none;" name="pdesc" required></textarea>
+                                                <label for="edescr">Product Description</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" type="number" value="<?= $data['price']; ?>" name="pprice" id="eprays" required>
+                                                <label for="eprays">Product Price</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" type="number" value="<?= $data['stock']; ?>" name="pstock" id="eistok" required>
+                                                <label for="eistok">Product Stock</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" type="text" placeholder="image link" name="plink" id="elink" required>
+                                                <label for="elink">Product Image Link</label>
+                                            </div>
+                                            <div class="d-flex row justify-content-center align-items-center gap-2 p-2">
+                                                <button class="btn btn-success" type="submit">Save Changes</button>
+                                                <button class="btn btn-danger" type="reset" data-bs-dismiss="modal">Discard Changes</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <?php } ?>
                     </tbody>
                 </table>         
