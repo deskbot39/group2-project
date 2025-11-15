@@ -26,7 +26,7 @@
         header("location: ../../register-page.php?register=success");
         die();
 } else {
-    header('location: ../index.php');
+    header('location: ../../index.php');
     die();
 }
 ?>

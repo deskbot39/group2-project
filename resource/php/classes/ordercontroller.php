@@ -1,4 +1,4 @@
-<?php
+    <?php
     class ordercontroller extends ordermodel {
         private $user_id;
         private $order_status;
@@ -8,6 +8,14 @@
             $this->user_id = $user_id;
             $this->order_status = $order_status;
             $this->total_price = $total_price;
+        }
+
+        public function putinOrder() {
+            if ($this->emptyInput()) {
+                $this->errorSetter('empty_order', 'Must have at least 1 product');
+            } else {
+                
+            }
         }
 
         private function errorSetter($code, $text) {

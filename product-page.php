@@ -1,5 +1,6 @@
 <?php
     require_once './resource/php/conf_session.php';
+    require_once './resource/php/productviewer.php';
     require_once './resource/php/loginviewer.php';
     $head_desc = htmlspecialchars("A product page");
     $head_title = htmlspecialchars("Wang Scent PH | Products");

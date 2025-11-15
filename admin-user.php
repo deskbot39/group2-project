@@ -1,8 +1,9 @@
 <?php
     require_once './resource/php/conf_session.php';
-    require_once './resource/php/userhandler.php';
+    require_once './resource/php/userviewer.php';
     require_once './resource/php/loginviewer.php';
-    userAdminLock();
+    roleLock();
+    highRoleLock();
     $head_desc = htmlspecialchars("Dashboard Users Page");
     $head_title = htmlspecialchars("Dashboard | Users");
     $head_class = "";

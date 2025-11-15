@@ -57,7 +57,7 @@
                                                 <label for="ename">Product Name</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <textarea class="form-control h-100" id="edescr" rows="10" style="resize: none;" name="pdesc" required></textarea>
+                                                <textarea class="form-control h-100" id="edescr" rows="10" style="resize: none;" name="pdesc" required><?= htmlspecialchars($data['description']); ?></textarea>
                                                 <label for="edescr">Product Description</label>
                                             </div>
                                             <div class="form-floating mb-3">

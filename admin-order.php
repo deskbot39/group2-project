@@ -1,7 +1,8 @@
 <?php
     require_once './resource/php/conf_session.php';
     require_once './resource/php/loginviewer.php';
-    userAdminLock();
+    roleLock();
+    highRoleLock();
     $head_desc = htmlspecialchars("Dashboard Orders Page");
     $head_title = htmlspecialchars("Dashboard | Orders");
     $head_class = "";

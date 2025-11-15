@@ -9,9 +9,18 @@
         }
     }
 
-    function userAdminLock() {
-        if (isset($_SESSION['role']) && $_SESSION['role'] === 'Customer') {
-            header('location: ./user-dashboard.php');
+    function roleLock() {
+        if (!isset($_SESSION['role'])) {
+            header('location: ./product-page.php');
+            die();
+        }
+    }
+
+    function highRoleLock() {
+        $roles = array('Admin', 'Staff');
+        if (!in_array($_SESSION['role'], $roles)) {
+            header('location: ./product-page.php');
+            die();
         }
     }
 

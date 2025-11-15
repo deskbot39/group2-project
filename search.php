@@ -1,6 +1,7 @@
 <?php
     require_once './resource/php/conf_session.php';
     require_once './resource/php/loginviewer.php';
+    roleLock();
     $head_desc = htmlspecialchars("Search Page of Wang Scent PH");
     $head_title = htmlspecialchars("Wang Scent PH | Search");
     $head_class = "";
@@ -9,7 +10,7 @@
     userLoginDisplay();
 ?>
 <main class="search-cont">
-
+<?= print_r($_SESSION); ?>
 </main>
 <?php
     include('./resource/template/footer/footer.html'); 

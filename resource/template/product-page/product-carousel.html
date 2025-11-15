@@ -6,34 +6,34 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <svg aria-label="Placeholder: First slide" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" height="400" preserveAspectRatio="xMidYMid slice" role="img" width="800" xmlns="http://www.w3.org/2000/svg"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#555" dy=".3em">First slide</text></svg>
+            <img class="d-block w-100" src="<?= htmlspecialchars($prod_carousel[0]['image_link']); ?>" alt="" width="800" height="400">
             <div class="container">
                 <div class="carousel-caption text-start">
-                    <h1>Product 1</h1>
+                    <h1><?= htmlspecialchars($prod_carousel[0]['name']); ?></h1>
                     <p class="opacity-75">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        <?= htmlspecialchars($prod_carousel[0]['description']); ?>
                     </p>
                 </div>
             </div>
         </div>
         <div class="carousel-item">
-            <svg aria-label="Placeholder: Second slide" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" height="400" preserveAspectRatio="xMidYMid slice" role="img" width="800" xmlns="http://www.w3.org/2000/svg"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#555" dy=".3em">Second slide</text></svg>
+            <img class="d-block w-100" src="<?= htmlspecialchars($prod_carousel[1]['image_link']); ?>" alt="" width="800" height="400">
             <div class="container">
                 <div class="carousel-caption text-start">
-                    <h1>Product 2</h1>
+                    <h1><?= htmlspecialchars($prod_carousel[1]['name']); ?></h1>
                     <p class="opacity-75">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        <?= htmlspecialchars($prod_carousel[1]['description']); ?>
                     </p>
                 </div>
             </div>
         </div>
         <div class="carousel-item">
-            <svg aria-label="Placeholder: Third slide" class="bd-placeholder-img bd-placeholder-img-lg d-block w-100" height="400" preserveAspectRatio="xMidYMid slice" role="img" width="800" xmlns="http://www.w3.org/2000/svg"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#555" dy=".3em">Third slide</text></svg>
+            <img class="d-block w-100" src="<?= htmlspecialchars($prod_carousel[2]['image_link']); ?>" alt="" width="800" height="400">
             <div class="container">
                 <div class="carousel-caption text-start">
-                    <h1>Product 3</h1>
+                    <h1><?= htmlspecialchars($prod_carousel[2]['name']); ?></h1>
                     <p class="opacity-75">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        <?= htmlspecialchars($prod_carousel[2]['description']); ?>
                     </p>
                 </div>
             </div>
