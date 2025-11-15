@@ -66,7 +66,12 @@
                         <strong>Total Price</strong>
                         <strong>&#8369; <?= htmlspecialchars($total); ?></strong>
                     </div>
-                    <button class="btn btn-primary w-100">Order Now</button>
+                    <form action="./resource/php/orderhandler.php" method="post">
+                        <input type="hidden" name="ouid" value="<?= htmlspecialchars($_SESSION['user_id']); ?>">
+                        <input type="hidden" name="ocid" value="<?= htmlspecialchars($_SESSION['cart_id']); ?>">
+                        <input type="hidden" name="ototal" value="<?= htmlspecialchars($total); ?>">
+                        <button class="btn btn-primary w-100" type="submit" name="order-btn">Order Now</button>
+                    </form>
                 </div>
             </div>
         </div>

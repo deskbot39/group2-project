@@ -1,5 +1,5 @@
 <div class="container py-5">
-    <div class="text-start mb-4">
+    <div class="text-start mb-4 mt-5">
         <a href="./product-page.php" class="btn btn-outline-primary">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/></svg>
             Go to Products
@@ -8,7 +8,7 @@
     <h2 class="mb-5">User Profile</h2>
     <div class="row">
         <div class="col-lg-4">
-            <div class="position-sticky m-5" style="top: 20rem;">
+            <div class="m-5" style="top: 50rem;">
                 <h4 class="my-3 text-center">User Information</h4>
                 <div class="row mb-3">
                     <h5 class="col">Username</h5>
@@ -52,7 +52,7 @@
                 <div class="tab-content" id="table-tab-content">
                     <div class="tab-pane fade active show" id="all" role="tabpanel" aria-labelledby="all-tab" tabindex="0">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-sm">
+                            <table class="table table-hover table-sm">
                                 <thead>
                                     <th scope="col">Order No.</th>
                                     <th scope="col">Total Price</th>
@@ -61,32 +61,29 @@
                                     <th scope="col">Action</th>
                                 </thead>
                                 <tbody>
+                                <?php 
+                                    foreach($ord_table as $data) { 
+                                    $time = $data['date_updated'];
+                                    $timestamp = strtotime($time);
+                                    $date = date("M-d-Y, h:i a", $timestamp);
+                                ?>
                                     <tr>
-                                        <td scope="row">1</td>
-                                        <td>100.00</td>
-                                        <td>Pending</td>
-                                        <td>2025-11-11</td>
-                                        <td class="d-flex align-items-center justify-content-center">
+                                        <td scope="row"><?= htmlspecialchars($data['order_id']); ?></td>
+                                        <td><?= htmlspecialchars($data['total_amount']); ?></td>
+                                        <td><?= htmlspecialchars($data['status']); ?></td>
+                                        <td><?= htmlspecialchars($date); ?></td>
+                                        <td>
                                             <button class="btn btn-outline-primary btn-sm">View</button>
                                         </td>
                                     </tr>
+                                <?php } ?>
                                 </tbody>
                             </table>
-                            <nav class="d-flex justify-content-center">
-                                <ul class="pagination">
-                                    <li class="page-item disabled"><a class="page-link" href="">Prev</a></li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item"><a class="page-link" href="">Next</a></li>
-                                </ul>
-                            </nav>
-
                         </div>
                     </div>
                     <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab" tabindex="0">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-sm">
+                            <table class="table table-hover table-sm">
                                 <thead>
                                     <th scope="col">Order No.</th>
                                     <th scope="col">Total Price</th>
@@ -95,16 +92,29 @@
                                     <th scope="col">Action</th>
                                 </thead>
                                 <tbody>
+                                    <?php 
+                                        foreach($ord_table_pend as $data_p) {
+                                            $time = $data['date_updated'];
+                                            $timestamp = strtotime($time);
+                                            $date = date("M-d-Y, h:i a", $timestamp);
+                                    ?>
                                     <tr>
-
+                                        <td scope="row"><?= htmlspecialchars($data_p['order_id']); ?></td>
+                                        <td><?= htmlspecialchars($data_p['total_amount']); ?></td>
+                                        <td><?= htmlspecialchars($data_p['status']); ?></td>
+                                        <td><?= htmlspecialchars($date); ?></td>
+                                        <td>
+                                            <button class="btn btn-outline-primary btn-sm">View</button>
+                                        </td>
                                     </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="shipped" role="tabpanel" aria-labelledby="shipped-tab" tabindex="0">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-sm">
+                            <table class="table table-hover table-sm">
                                 <thead>
                                     <th scope="col">Order No.</th>
                                     <th scope="col">Total Price</th>
@@ -113,16 +123,29 @@
                                     <th scope="col">Action</th>
                                 </thead>
                                 <tbody>
+                                    <?php 
+                                        foreach($ord_table_ship as $data_s) { 
+                                            $time = $data['date_updated'];
+                                            $timestamp = strtotime($time);
+                                            $date = date("M-d-Y, h:i a", $timestamp);
+                                    ?>
                                     <tr>
-
+                                        <td scope="row"><?= htmlspecialchars($data_s['order_id']); ?></td>
+                                        <td><?= htmlspecialchars($data_s['total_amount']); ?></td>
+                                        <td><?= htmlspecialchars($data_s['status']); ?></td>
+                                        <td><?= htmlspecialchars($date); ?></td>
+                                        <td>
+                                            <button class="btn btn-outline-primary btn-sm">View</button>
+                                        </td>
                                     </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="received" role="tabpanel" aria-labelledby="received-tab" tabindex="0">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-sm">
+                            <table class="table table-hover table-sm">
                                 <thead>
                                     <th scope="col">Order No.</th>
                                     <th scope="col">Total Price</th>
@@ -131,16 +154,29 @@
                                     <th scope="col">Action</th>
                                 </thead>
                                 <tbody>
+                                    <?php 
+                                        foreach($ord_table_rece as $data_r) {
+                                            $time = $data['date_updated'];
+                                            $timestamp = strtotime($time);
+                                            $date = date("M-d-Y, h:i a", $timestamp); 
+                                    ?>
                                     <tr>
-
+                                        <td scope="row"><?= htmlspecialchars($data_r['order_id']); ?></td>
+                                        <td><?= htmlspecialchars($data_r['total_amount']); ?></td>
+                                        <td><?= htmlspecialchars($data_r['status']); ?></td>
+                                        <td><?= htmlspecialchars($date); ?></td>
+                                        <td>
+                                            <button class="btn btn-outline-primary btn-sm">View</button>
+                                        </td>
                                     </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="cancelled" role="tabpanel" aria-labelledby="cancelled-tab" tabindex="0">
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped table-sm">
+                            <table class="table table-hover table-sm">
                                 <thead>
                                     <th scope="col">Order No.</th>
                                     <th scope="col">Total Price</th>
@@ -149,9 +185,22 @@
                                     <th scope="col">Action</th>
                                 </thead>
                                 <tbody>
+                                    <?php 
+                                        foreach($ord_table_canc as $data_c) {
+                                            $time = $data['date_updated'];
+                                            $timestamp = strtotime($time);
+                                            $date = date("M-d-Y, h:i a", $timestamp); 
+                                    ?>
                                     <tr>
-
+                                        <td scope="row"><?= htmlspecialchars($data_c['order_id']); ?></td>
+                                        <td><?= htmlspecialchars($data_c['total_amount']); ?></td>
+                                        <td><?= htmlspecialchars($data_c['status']); ?></td>
+                                        <td><?= htmlspecialchars($date); ?></td>
+                                        <td>
+                                            <button class="btn btn-outline-primary btn-sm">View</button>
+                                        </td>
                                     </tr>
+                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>
