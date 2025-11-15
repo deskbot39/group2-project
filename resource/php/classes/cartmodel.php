@@ -59,18 +59,6 @@
             return $total;
         }
 
-        protected function addtoCart(int $cart_id, int $product_id) {
-            $item_info = $this->getProductInfo($product_id);
-            $query = "INSERT INTO cart_item (`cart_id`, `product_id`, `price`) VALUES (:cid, :pid, :price)";
-            $stmt = $this->connect()->prepare($query);
-            $stmt->bindParam(":cid", $cart_id);
-            $stmt->bindParam(":pid", $product_id);
-            $stmt->bindParam(":price", $item_info['price']);
-
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            return $result;
-        }
-
         protected function updateProductQuantity(int $cart_id, int $product_id, int $item_quantity) {
             $query = "UPDATE cart_item SET quantity = :iqty WHERE cart_id = :cid AND product_id = :pid";
             $stmt = $this->connect()->prepare($query);

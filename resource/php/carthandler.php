@@ -11,11 +11,13 @@
 
         $cart = new cartcontroller($cid,$pid,$iqty);
         $cart->deleteZero();
-        $upd_count = $cart->getCartItemCount();
+        $upd_count = $cart->getCartItemCount($cid,0,0);
         $_SESSION['cart_item_count'] = $upd_count;  
 
         if (isset($_POST['sub-citm'])) {
             $cart->subItem();
+            $cart->deleteZero();
+            
             header('location: ../../shopping-cart.php');
             die();
             
@@ -24,11 +26,10 @@
             header('location: ../../shopping-cart.php');
             die();
         } elseif (isset($_POST['del-citm'])) {
+            $cart->delItem();
             header('location: ../../shopping-cart.php');
             die();
-        } elseif (isset($_POST['add-p'])) {
-            $cart->add2Cart();
-        }
+        } 
 } else {
     header ('location: ../../product-page.php');
     die();

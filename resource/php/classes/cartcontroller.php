@@ -32,15 +32,9 @@
             }
             
         }
-        
-        public function add2Cart() {
-            if ($this->emptyInput()) {
-                $this->errorSetter('empty_data', 'Fill all fields');
-            } elseif ($this->nullValue()) {
-                $this->errorSetter('invalid_val', 'Value cannot be negative or 0');
-            } else {
-                $this->addtoCart($this->cart_id, $this->product_id);
-            }
+
+        public function delItem() {
+            $this->deleteCartItem($this->cart_id, $this->product_id);
 
         }
 

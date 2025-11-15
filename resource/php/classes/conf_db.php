@@ -5,7 +5,7 @@
         private $pwd = "";
         private $info = "mysql:host=localhost;dbname=prototype;";
         
-        protected function connect() {
+        public function connect() {
             try {
                 $pdo = new PDO($this->info,$this->usr,$this->pwd);
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

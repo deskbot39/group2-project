@@ -11,8 +11,10 @@
 ?>
 <main class="product-cont">
 <?php
+    product_error_display();
     include('./resource/template/product-page/product-carousel.html');
     include('./resource/template/product-page/hero2.html');
+    include('./resource/template/pagination/pagination.html');
     include('./resource/template/product-page/product-display.html');
 
 ?>
