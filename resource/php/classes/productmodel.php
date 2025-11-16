@@ -20,30 +20,36 @@
             return $result;
         }
 
-        public function paginateProduct(int $ipp) {
-            $itm_per_page = $ipp;
-            $query = "SELECT COUNT(*) AS total FROM products";
+        public function getProductDetail(int $product_id) {
+            $query = "SELECT * FROM products WHERE product_id = :pid";
             $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":pid", $product_id);
             $stmt->execute();
-            $total_result = $stmt->fetch(PDO::FETCH_ASSOC)['total'];
-            $total_pages = ceil($total_result / $itm_per_page);
+            
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
 
-            if (isset($_GET['page'])) {
-                $page = (int) $_GET['page'];
-            } else {
-                $page = 1;
-            }
-            $page = max(1, min($page, $total_pages));
-            $start = ($page - 1) * $itm_per_page;
-
-            $query1 = "SELECT * FROM products LIMIT :starter, :ipp";
-            $stmt = $this->connect()->prepare($query1);
-            $stmt->bindValue(":starter", $start, PDO::PARAM_INT);
-            $stmt->bindValue(":ipp", $itm_per_page, PDO::PARAM_INT);
+        public function searchProduct(string $pattern) {
+            $query = "SELECT * FROM products WHERE LOCATE(:pattern, name)";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":pattern", $pattern);
             $stmt->execute();
-            $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            return $products;
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
+        public function searchProductPaginate(string $pattern, int $page, int $total) {
+            $query = "SELECT * FROM products WHERE LOCATE(:pattern, name) LIMIT :page, :total";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":pattern", $pattern);
+            $stmt->bindValue(":page", $page, PDO::PARAM_INT);
+            $stmt->bindValue(":total", $total, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
         }
 
         public function getAllProductCount() {

@@ -6,7 +6,7 @@
     highRoleLock();
     $head_desc = htmlspecialchars("Dashboard Products Page");
     $head_title = htmlspecialchars("Dashboard | Products");
-    $head_class = "";
+    $head_class = htmlspecialchars("");
     $js_locs = array();
     include('resource/template/html/html_head.html');
     include('./resource/template/admin-dashboard/admin-header.html');

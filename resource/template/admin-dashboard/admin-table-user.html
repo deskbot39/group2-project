@@ -6,20 +6,21 @@
                 <h2>Users</h2>
                 <form class="row d-flex justify-content-between" action="" method="get">
                     <?php
-                        if (!isset($_GET['role-sort']) || empty($_GET['role-sort'])) {
-                            $wan = 'selected';
-                            $tuu = $tri = $por = "";
-                        } else {
-                            if ($_GET['role-sort'] === 'Customer') {
+                        $arr = array('Customer', 'Staff', 'Admin');
+                        if (isset($_GET['role-sort']) && in_array($_GET['role-sort'],$arr)) {
+                            if ($_GET['role-sort'] == $arr[0]) {
                                 $tuu = 'selected';
                                 $wan = $tri = $por = "";
-                            } elseif ($_GET['role-sort'] === 'Staff') {
+                            } elseif ($_GET['role-sort'] == $arr[1]) {
                                 $tri = 'selected';
                                 $wan = $tuu = $por = "";
-                            } elseif ($_GET['role-sort'] === 'Admin') {
+                            } elseif ($_GET['role-sort'] == $arr[2]) {
                                 $por = 'selected';
-                                $wan = $tri = $tuu = "";
+                                $wan = $tuu = $tri = "";
                             }
+                        } else {
+                            $wan = 'selected';
+                            $tuu = $tri = $por = "";
                         }
                     ?>
                     <div class="col">
@@ -85,7 +86,7 @@
                                                 <label for="editmail">Email</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" type="tel" name="ephone" id="editphone" value="<?= htmlspecialchars(html$data['phone']); ?>" required>
+                                                <input class="form-control" type="tel" name="ephone" id="editphone" value="<?= htmlspecialchars($data['phone']); ?>" required>
                                                 <label for="editphone">Phone Number</label>
                                             </div>
                                             <div class="form-floating mb-3">
@@ -107,7 +108,7 @@
                         </div>
                         <?php } ?>
                     </tbody>
-                </table>         
+                </table>
             </div>
         </main>
     </div>

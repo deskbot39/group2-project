@@ -21,6 +21,26 @@
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         }
+        
+        public function getOrderItems(int $order_id) {
+            $query = "SELECT * FROM order_item WHERE order_id = :oid";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":oid", $order_id);
+            $stmt->execute();
+    
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
+        public function getProductName(int $prod_id) {
+            $query = "SELECT name FROM products WHERE product_id = :pid";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":pid", $prod_id);
+            $stmt->execute();
+    
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
 
         public function getAllOrder() {
             $query = "SELECT * FROM orders";

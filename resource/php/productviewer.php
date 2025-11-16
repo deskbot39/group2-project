@@ -2,14 +2,25 @@
     include "classes/conf_db.php";
     include "classes/productmodel.php";
 
-    $prod = new productmodel();
     $db = new conf_db();
-    // $prod_table = $prod->getAllProducts();
-    // $prod_table = $prod->paginateProduct(6);
+    $prod = new productmodel();
+    $prod_table_a = search_prod();
     $prod_carousel = $prod->getCarouselProduct();
     $count = $prod->getCartItemCount($_SESSION['cart_id']);
     $_SESSION['cart_item_count'] = $count;
 
+    function search_prod() {
+        $db = new conf_db();
+        $prod = new productmodel();
+        if (isset($_GET['search'])) {
+            $query = $_GET['search'];
+            $prod_table_a = $prod->searchProduct($query);
+            return $prod_table_a;
+        } else {
+            $prod_table_a = $prod->getAllProducts();
+            return $prod_table_a;
+        }
+    }
 
     function product_error_display() {
         if (isset($_SESSION['prod_errors'])) {

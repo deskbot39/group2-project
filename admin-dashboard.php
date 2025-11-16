@@ -1,6 +1,7 @@
 <?php
     require_once './resource/php/conf_session.php';
     require_once './resource/php/loginviewer.php';
+    require_once './resource/php/dashboardviewer.php';
     roleLock();
     highRoleLock();
     $head_desc = htmlspecialchars("Admin Dashboard");
