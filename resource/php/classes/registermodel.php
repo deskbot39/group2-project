@@ -22,6 +22,16 @@
             return $result;
         }
 
+        protected function getPhone(string $phone) {
+            $query = "SELECT `phone` FROM users WHERE phone = :phone";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":phone", $phone);
+            $stmt->execute();
+            
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
         protected function setUser(string $username, string $email, string $pass, string $phone) {
             $hashed_pwd = password_hash($pass, PASSWORD_BCRYPT);
             $query = "INSERT INTO users (`username`, `email`, `password`, `phone`) VALUES (:username, :email, :password1, :phone)";

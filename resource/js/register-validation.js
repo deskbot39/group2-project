@@ -72,6 +72,8 @@ phone.addEventListener('input', function(event) {
         alertPhone.textContent = "Invalid Phone Number!";
     } else if (!/[\d+]/.test(phoneInput)) { 
         alertPhone.textContent = "Should only contain numbers";
+    } else if (!/09\d{9}/.test(phoneInput)) {
+        alertPhone.textContent = "Should start with 09... and 11 characters long";
     } else {
         alertPhone.textContent = "";
     }
