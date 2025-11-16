@@ -4,6 +4,7 @@
         $ocid = $_POST['ocid'];
         $ototal = $_POST['ototal'];
 
+        require_once 'conf_session.php';
         include "classes/conf_db.php";
         include "classes/ordermodel.php";
         include "classes/userordercontroller.php";
@@ -12,7 +13,7 @@
 
         if (isset($_POST['order-btn'])) {
             $user_order->putinOrder();
-            header('location: ../../user-dashboard.php');
+            header('location: ../../shopping-cart.php');
             die();
         }
 } else {

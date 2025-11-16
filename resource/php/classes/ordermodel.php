@@ -70,6 +70,26 @@
             return $result;
         }
 
+        protected function userCheck(int $user_id) {
+            $query = "SELECT * FROM users WHERE user_id = :uid";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":uid", $user_id);
+            $stmt->execute();
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
+        protected function cartCheck(int $cart_id) {
+            $query = "SELECT * FROM carts WHERE cart_id = :cid";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":cid", $cart_id);
+            $stmt->execute();
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
         protected function deleteOrder(int $order_id) {
             $query = "DELETE FROM orders WHERE order_id = :orid";
             $stmt = $this->connect()->prepare($query);
@@ -154,6 +174,17 @@
             $stmt->bindValue(":qty", $qty, PDO::PARAM_INT);
             $stmt->bindParam(":pid", $prod_id, PDO::PARAM_INT);
             $stmt->execute();
+        }
+
+        protected function getCartItemCount(int $cart_id) {
+            $query = "SELECT COUNT(*) AS totalCount FROM cart_item WHERE cart_id = :cid";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":cid", $cart_id);
+            $stmt->execute();
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $total = $result['totalCount'];
+            return $total;
         }
     }
 ?>

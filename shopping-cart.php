@@ -12,6 +12,7 @@
 ?>
 <main class="cart-cont">
 <?php
+    cart_order_error_display();
     include('./resource/template/cart-page/cart-page.html');
 ?>
 </main>
