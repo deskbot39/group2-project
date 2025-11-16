@@ -4,8 +4,8 @@
     require_once './resource/php/productviewer.php';
     require_once './resource/php/productdetailviewer.php';
     roleLock();
-    $head_desc = htmlspecialchars("Product Page of Wang Scent PH");
-    $head_title = htmlspecialchars("Wang Scent PH | Product Page");
+    $head_desc = htmlspecialchars("Detail of a Product of Wang Scent PH");
+    $head_title = htmlspecialchars("Wang Scent PH | ". $details['name']);
     $head_class = htmlspecialchars("");
     $js_locs = array();
     include('resource/template/html/html_head.html');
