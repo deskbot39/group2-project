@@ -1,5 +1,6 @@
 <?php
     require_once './resource/php/conf_session.php';
+    require_once './resource/php/orderviewer.php';
     require_once './resource/php/loginviewer.php';
     roleLock();
     highRoleLock();

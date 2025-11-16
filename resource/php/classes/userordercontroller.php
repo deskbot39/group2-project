@@ -12,6 +12,7 @@
 
         public function putinOrder() {
             $this->insertOrder($this->user_id, $this->total_price);
+            $this->insertCartItem($this->user_id, $this->cart_id);
         }
 
         private function errorSetter($code, $text) {

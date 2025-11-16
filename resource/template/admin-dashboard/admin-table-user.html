@@ -57,9 +57,15 @@
                             <td><?= htmlspecialchars($data['email']); ?></td>
                             <td><?= htmlspecialchars($data['phone']); ?></td>
                             <td>
+                                <?php if ($_SESSION['role'] == 'Staff') { ?>
                                 <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#user<?= $data['user_id']; ?>">
                                     Edit
                                 </button>
+                                <?php } else { ?>
+                                    <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#user<?= $data['user_id']; ?>">
+                                        Edit
+                                    </button>
+                                <?php } ?>
                             </td>
                         </tr>
                         <div class="modal fade" id="user<?= $data['user_id']; ?>" tabindex="-1" aria-hidden="true" aria-labelledby="user<?= $data['user_id']; ?>">
@@ -71,15 +77,15 @@
                                     <div class="modal-body">
                                         <form action="" method="post">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" type="text" name="ename" id="editname" value="<?= $data['username']; ?>" required>
+                                                <input class="form-control" type="text" name="ename" id="editname" value="<?= htmlspecialchars($data['username']); ?>" required>
                                                 <label for="editname">Username</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" type="email" name="eemail" id="editmail" value="<?= $data['email'] ?>" required>
+                                                <input class="form-control" type="email" name="eemail" id="editmail" value="<?= htmlspecialchars($data['email']); ?>" required>
                                                 <label for="editmail">Email</label>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" type="tel" name="ephone" id="editphone" value="<?= $data['phone'] ?>" required>
+                                                <input class="form-control" type="tel" name="ephone" id="editphone" value="<?= htmlspecialchars(html$data['phone']); ?>" required>
                                                 <label for="editphone">Phone Number</label>
                                             </div>
                                             <div class="form-floating mb-3">

@@ -8,12 +8,31 @@
             $stmt->bindParam(":usid", $user_id);
             $stmt->bindParam(":status", $status);
             $stmt->execute();
+            
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+        public function getAllUserOrder(int $user_id) {
+            $query = "SELECT * FROM orders WHERE user_id = :usid";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":usid", $user_id);
+            $stmt->execute();
 
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         }
-        public function getAllUserOrder() {
+
+        public function getAllOrder() {
             $query = "SELECT * FROM orders";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
+        public function getOrderItem(int $order_id) {
+            $query = "SELECT * FROM order_item WHERE order_id = :orid";
             $stmt = $this->connect()->prepare($query);
             $stmt->execute();
 
@@ -49,7 +68,7 @@
             $stmt->bindParam(":cid", $cart_id);
             $stmt->execute();
 
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         }
 
@@ -66,11 +85,43 @@
             }
         }
 
+        protected function deleteCartItem(int $cart_id) {
+            $query = "DELETE FROM cart_item WHERE cart_id = :cid";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":cid", $cart_id);
+
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        protected function getLastID(int $user_id) {
+            $query = "SELECT MAX(order_id) as recent FROM orders WHERE user_id = :uid";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":uid", $user_id);
+            $stmt->execute();
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
         protected function insertCartItem(int $user_id, int $cart_id) {
             $cart_items = $this->getCartItems($cart_id);
-            $get_oid = $this->getUserOrder($user_id);
-            $oid = $get_oid['order_id'];
-            $query = "INSERT INTO order_item (`order_id`, `product_id`, `quantity`, `price`) VALUES ('')";
+            $get_oid = $this->getLastID($user_id);
+            $oid = $get_oid['recent'];
+
+            foreach ($cart_items as $items) {
+                $query = "INSERT INTO order_item (`order_id`, `product_id`, `quantity`, `price`) VALUES (:oid, :pid, :qty, :price)";
+                $stmt = $this->connect()->prepare($query);
+                $stmt->bindParam(":oid", $oid);
+                $stmt->bindParam(":pid", $items['product_id']);
+                $stmt->bindParam(":qty", $items['quantity']);
+                $stmt->bindParam(":price", $items['price']);
+                $stmt->execute();
+            }
+            $this->deleteCartItem($cart_id);
         }
     }
 ?>

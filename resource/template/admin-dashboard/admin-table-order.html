@@ -31,22 +31,30 @@
                     <thead>
                         <tr>
                             <th scope="col">OID</th>
-                            <th scope="col">Sample</th>
-                            <th scope="col">Sample</th>
-                            <th scope="col">Sample</th>
-                            <th scope="col">Sample</th>
-                            <th scope="col">Sample</th>
+                            <th scope="col">UID</th>
+                            <th scope="col">Total Price</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Date Created</th>
+                            <th scope="col">Date Updated</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <?php foreach ($ord_admin as $data) { ?>
                         <tr>
-                            <td scope="row">1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
+                            <td scope="row"><?= htmlspecialchars($data['order_id']); ?></td>
+                            <td><?= htmlspecialchars($data['user_id']); ?></td>
+                            <td><?= htmlspecialchars($data['total_amount']); ?></td>
+                            <td><?= htmlspecialchars($data['status']); ?></td>
+                            <td><?= htmlspecialchars($data['date_created']); ?></td>
+                            <td><?= htmlspecialchars($data['date_updated']); ?></td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-success">
+                                    Edit
+                                </button>
+                            </td>
                         </tr>
+                        <?php } ?>
                     </tbody>
                 </table>
             </div>
