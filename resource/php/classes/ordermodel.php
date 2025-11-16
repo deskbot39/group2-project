@@ -140,8 +140,20 @@
                 $stmt->bindParam(":qty", $items['quantity']);
                 $stmt->bindParam(":price", $items['price']);
                 $stmt->execute();
+
+                $quantity = (int) $items['quantity'];
+                $pid = (int) $items['product_id'];
+                $this->subtractFromStock($quantity, $pid);
             }
             $this->deleteCartItem($cart_id);
+        }
+
+        protected function subtractFromStock(int $qty, int $prod_id) {
+            $query = "UPDATE products SET stock = stock - :qty WHERE product_id = :pid";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindValue(":qty", $qty, PDO::PARAM_INT);
+            $stmt->bindParam(":pid", $prod_id, PDO::PARAM_INT);
+            $stmt->execute();
         }
     }
 ?>
