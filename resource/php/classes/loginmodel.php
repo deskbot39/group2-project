@@ -32,5 +32,15 @@
             $total = $result['totalCount'];
             return $total;
         }
+
+        protected function getEmailHash(string $email) {
+            $query = "SELECT email_hash FROM users WHERE email = :mail";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":mail", $email);
+            $stmt->execute();
+            
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
     }
 ?>

@@ -1,6 +1,7 @@
 <?php
     require_once './resource/php/conf_session.php';
     require_once './resource/php/loginviewer.php';
+    require_once './resource/php/pwd-resetviewer.php';
     include "./resource/php/classes/conf_db.php";
     $head_desc = htmlspecialchars("Reset Password Page");
     $head_title = htmlspecialchars("Wang Scent PH | Reset Password");
@@ -33,6 +34,7 @@
     }
 
     include('resource/template/html/html_head.html');
+    reset_pwd_error_display();
     include('resource/template/verification/reset-pwd.html');
     include('./resource/template/html/html_foot.html');
 ?>

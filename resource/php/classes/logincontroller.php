@@ -21,6 +21,9 @@
             } elseif ($this->emailExists() && !$this->passwordSame()) {
                 // Incorrect password
                 $this->errorSetter('wrong_pass', 'Wrong Password');
+            } elseif ($this->emailNotVerified()) {
+                // Email Not verified
+                $this->errorSetter('mail_null', 'Email Not Verified');
             } else {
                 // Login User
                 $result = $this->getUser($this->email);
@@ -74,6 +77,14 @@
                 return true;
             } else {
                 return false;
+            }
+        }
+        private function emailNotVerified() {
+            $result = $this->getEmailHash($this->email);
+            if ($result['email_hash'] === NULL) {
+                return false;
+            } else {
+                return true;
             }
         }
     }

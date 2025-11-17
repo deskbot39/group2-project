@@ -20,7 +20,7 @@
 
         function mailExists($str) {
             $db = new conf_db();
-            $query = "SELECT * FROM users WHERE email = :mail";
+            $query = "SELECT email FROM users WHERE email = :mail";
             $stmt = $db->connect()->prepare($query);
             $stmt->bindParam(":mail", $str);
             $stmt->execute();
@@ -28,15 +28,36 @@
             return $result;
         }
 
-        if (filter_var($email, FILTER_VALIDATE_EMAIL) && mailExists($email)) {
+        function mailNotFound($test) {
+            if (mailExists($test) === NULL) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        function errorSetter($code, $text) {
+            $error_arr = [];
+            $error_arr[$code] = $text;
+            $_SESSION['reset_errors'] = $error_arr;
+        }
+        
+        function successSetter($code, $text) {
+            $succ_arr = [];
+            $succ_arr[$code] = $text;
+            $_SESSION['reset_good'] = $succ_arr;
+        }
+
+        if (filter_var($email, FILTER_VALIDATE_EMAIL) && mailNotFound($email) !== NULL) {
             $query = "UPDATE users SET pwd_token = :rhash, pwd_token_expire = :expiry WHERE email = :mail";
             $stmt = $db->connect()->prepare($query);
             $stmt->bindParam(":rhash", $reset_hash);
             $stmt->bindParam(":expiry", $reset_expiry);
             $stmt->bindParam(":mail", $email);
             $stmt->execute();
+            $return = $stmt->rowCount();
 
-            if ($stmt->rowCount()) {
+            if ($return) {
                 $mail->isSMTP();
                 $mail->SMTPAuth = true;
 
@@ -57,15 +78,23 @@
                     $mail->send();
 
                 } catch (Exception $e) {
-                    echo "Message not sent. {$mail->ErrorInfo}";
+                    echo $mail->ErrorInfo;
                 }
-            }
-            echo 'Please check your email';
-        } else {
-            echo 'Foo';
-        }
 
+            }
+
+            successSetter("sent_mail", "Reset Email has been sent");
+            header('location: ../../forgot-pass.php');
+            die();
+
+        } else {
+            errorSetter("invalid_mail", "Invalid Email");
+            header('location: ../../forgot-pass.php');
+            die();
+        }
+        
     } else {
-        echo 'Bar';
+        header('location: ../../forgot-pass.php');
+        die();
     }
 ?>
