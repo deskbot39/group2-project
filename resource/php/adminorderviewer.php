@@ -10,14 +10,12 @@
         $role = $_GET['status-sort'];
         $ord_admin = $ord->getByStatus($role);
         return $ord_admin;
+    } elseif (isset($_GET['search'])) {
+        $query = $_GET['search'];
+        $ord_admin = $ord->searchOrder($query);
     } else {
         $status = "";
         $ord_admin = $ord->getAllOrder();
         return $ord_admin;
-    }
-    function statusSort() {
-        $ord = new ordermodel();
-        $db = new conf_db();
-
     }
 ?>

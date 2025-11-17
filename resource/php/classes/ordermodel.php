@@ -14,7 +14,7 @@
         }
 
         public function searchOrder(string $pattern) {
-            $query = "SELECT * FROM orders WHERE LOCATE(:pattern, name)";
+            $query = "SELECT * FROM orders WHERE LOCATE(:pattern, user_id)";
             $stmt = $this->connect()->prepare($query);
             $stmt->bindParam(":pattern", $pattern);
             $stmt->execute();
