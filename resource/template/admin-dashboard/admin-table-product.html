@@ -30,28 +30,28 @@
                     <tbody>
                         <tr>
                             <td scope="row">ID</td>
-                            <form action="" method="post">
+                            <form action="./resource/php/adminproducthandler.php" method="post">
                                 <td>
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="nbox" required>
+                                        <input class="form-control" type="text" name="name" id="nbox" required>
                                         <label for="nbox">Name</label>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-floating">
-                                        <textarea class="form-control" name="" id="tbox" rows="1" style="resize: none;" required></textarea>
+                                        <textarea class="form-control" name="desc" id="tbox" rows="1" style="resize: none;" required></textarea>
                                         <label for="tbox">Description</label>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-floating">
-                                        <input class="form-control" type="number" min="1" pattern="[0-9]*" id="pbox" required>
+                                        <input class="form-control" type="number" name="price" min="0.01" step="0.01" value="0.00" pattern="[0-9]*" id="pbox" required>
                                         <label for="pbox">Price</label>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="form-floating">
-                                        <input class="form-control" type="number" min="1" pattern="[0-9]*" id="sbox" required>
+                                        <input class="form-control" type="number" name="stock" min="1" value="1" pattern="[0-9]*" id="sbox" required>
                                         <label for="sbox">Stock</label>
                                     </div>
                                 </td>

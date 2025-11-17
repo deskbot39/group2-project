@@ -12,6 +12,7 @@
 ?>
 <main class="usrdash-cont">
 <?php
+    cancelled_order_error_display();
     include('./resource/template/user-dashboard/user-dashboard.html'); 
 ?>
 </main>
