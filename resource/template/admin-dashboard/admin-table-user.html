@@ -67,17 +67,45 @@
                             <td><?= htmlspecialchars($data['phone']); ?></td>
                             <td>
                                 <?php if ($_SESSION['role'] == 'Staff') { ?>
-                                    <button disabled class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#user<?= $data['user_id']; ?>">
-                                        Edit
-                                    </button>
+                                    <div class="btn-group">
+                                        <button disabled class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#user<?= htmlspecialchars($data['user_id']); ?>">
+                                            Edit
+                                        </button>
+                                        <button disabled class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#userd<?= htmlspecialchars($data['user_id']); ?>">
+                                            Delete
+                                        </button>
+                                    </div>
                                 <?php } else { ?>
-                                    <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#user<?= $data['user_id']; ?>">
-                                        Edit
-                                    </button>
+                                    <div class="btn-group">
+                                        <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#user<?= htmlspecialchars($data['user_id']); ?>">
+                                            Edit
+                                        </button>
+                                        <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#userd<?= htmlspecialchars($data['user_id']); ?>">
+                                            Delete
+                                        </button>
+                                    </div>
                                 <?php } ?>
                             </td>
                         </tr>
-                        <div class="modal fade" id="user<?= $data['user_id']; ?>" tabindex="-1" aria-hidden="true" aria-labelledby="user<?= $data['user_id']; ?>">
+                        <div class="modal fade" id="userd<?= htmlspecialchars($data['user_id']); ?>" tabindex="-1" aria-hidden="true" aria-labelledby="userd<?= htmlspecialchars($data['user_id']); ?>">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title" id="del-label">Delete User</h1>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="" method="post">
+                                            <h3 class="text-danger mb-3">Are you sure?</h3>
+                                            <div class="d-flex justify-content-center gap-5">
+                                                <button class="btn btn-danger btn-lg rounded-pill w-75" type="submit" name="delete-usr">Yes</button>
+                                                <button class="btn btn-warning btn-lg rounded-pill w-75" type="reset" data-bs-dismiss="modal">No</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="user<?= $data['user_id']; ?>" tabindex="-1" aria-hidden="true" aria-labelledby="user<?= htmlspecialchars($data['user_id']); ?>">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">

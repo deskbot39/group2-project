@@ -28,6 +28,40 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td scope="row">ID</td>
+                            <form action="" method="post">
+                                <td>
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text" id="nbox" required>
+                                        <label for="nbox">Name</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-floating">
+                                        <textarea class="form-control" name="" id="tbox" rows="1" style="resize: none;" required></textarea>
+                                        <label for="tbox">Description</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-floating">
+                                        <input class="form-control" type="number" min="1" pattern="[0-9]*" id="pbox" required>
+                                        <label for="pbox">Price</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-floating">
+                                        <input class="form-control" type="number" min="1" pattern="[0-9]*" id="sbox" required>
+                                        <label for="sbox">Stock</label>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="p-3">
+                                        <button class="btn btn-sm btn-success" type="submit" name="new-itm">Submit</button>
+                                    </div>
+                                </td>
+                            </form>
+                        </tr>
                         <?php foreach($prod_table_a as $data) { ?>
                         <tr>
                             <td scope="row"><?= htmlspecialchars($data['product_id']); ?></td>
@@ -36,12 +70,34 @@
                             <td><?= htmlspecialchars($data['price']); ?></td>
                             <td><?= htmlspecialchars($data['stock']); ?></td>
                             <td>
-                                <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#item<?= htmlspecialchars($data['product_id']); ?>">
-                                    Edit
-                                </button>
+                                <div class="btn-group">
+                                    <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#item<?= htmlspecialchars($data['product_id']); ?>">
+                                        Edit
+                                    </button>
+                                    <button class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#itemd<?= htmlspecialchars($data['product_id']); ?>">
+                                        Delete
+                                    </button>
+                                </div>
                             </td>
                         </tr>
+                        <div class="modal fade" id="itemd<?= htmlspecialchars($data['product_id']); ?>" tabindex="-1" aria-hidden="true" aria-labelledby="itemd<?= htmlspecialchars($data['product_id']); ?>">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title" id="del-label">Delete Product</h1>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="" method="post">
+                                            <h3 class="text-danger mb-3">Are you sure?</h3>
+                                            <div class="d-flex justify-content-center gap-5">
+                                                <button class="btn btn-danger btn-lg rounded-pill w-75" type="submit" name="delete-usr">Yes</button>
+                                                <button class="btn btn-warning btn-lg rounded-pill w-75" type="reset" data-bs-dismiss="modal">No</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="modal fade" id="item<?= htmlspecialchars($data['product_id']); ?>" tabindex="-1" aria-hidden="true" aria-labelledby="item<?= htmlspecialchars($data['product_id']); ?>">
                             <div class="modal-dialog">
                                 <div class="modal-content">
