@@ -61,7 +61,7 @@
             return $result;
         }
 
-        protected function deleteUser(int $uid) {
+        public function deleteUser(int $uid) {
             $query = "DELETE FROM users WHERE user_id = :uid";
             $stmt = $this->connect()->prepare($query);
             $stmt->bindParam(":uid", $uid);

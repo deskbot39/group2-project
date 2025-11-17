@@ -9,6 +9,7 @@
     $head_class = htmlspecialchars("");
     $js_locs = array();
     include('resource/template/html/html_head.html');
+    admin_product_error_display();
     include('./resource/template/admin-dashboard/admin-header.html');
     include('./resource/template/admin-dashboard/admin-table-order.html');
     include('./resource/template/html/html_foot.html');

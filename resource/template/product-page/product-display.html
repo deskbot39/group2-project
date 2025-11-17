@@ -13,7 +13,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 <form action="./resource/php/producthandler.php" method="post">
-                                    <input type="hidden" name="cid" value="<?= htmlspecialchars($_SESSION['cart_id']); ?>">
+                                    <input type="hidden" name="cid" value="<?= htmlspecialchars($cart_id); ?>">
                                     <input type="hidden" name="cpid" value="<?= htmlspecialchars($data['product_id']); ?>">
                                     <input type="hidden" name="price" value="<?= htmlspecialchars($data['price']); ?>">
                                     <button class="btn btn-sm btn-success" type="submit" name="add-p">

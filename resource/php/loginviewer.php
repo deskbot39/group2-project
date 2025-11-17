@@ -11,7 +11,7 @@
 
     function roleLock() {
         if (!isset($_SESSION['role'])) {
-            header('location: ./product-page.php');
+            header('location: ./index.php');
             die();
         }
     }

@@ -15,5 +15,21 @@
         $query = "";
         $usr_table = $user->getAllUsers();
     }
-     
+
+    function admin_product_error_display() {
+        if (isset($_SESSION['admin_errors'])) {
+            $error_arr = $_SESSION['admin_errors'];
+            foreach ($error_arr as $error) {
+                include ('./resource/template/alerts/alert-warning.html');
+            }
+            unset($_SESSION['admin_errors']);
+        } elseif(isset($_SESSION['admin_good'])) {
+            $succ_arr = $_SESSION['admin_good'];
+            foreach ($succ_arr as $succ) {
+                include ('./resource/template/alerts/alert-successOrder.html');
+            }
+            unset($_SESSION['admin_good']);
+        }
+    }
+
 ?>

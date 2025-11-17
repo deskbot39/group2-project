@@ -89,9 +89,10 @@
                                         <h1 class="modal-title">Delete Order</h1>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="" method="post">
+                                        <form action="./resource/php/adminorderdeletehandler.php" method="post">
                                             <h3 class="text-danger mb-3">Are you sure?</h3>
                                             <div class="d-flex justify-content-center gap-5">
+                                                <input type="hidden" name="id" value="<?= htmlspecialchars($data['order_id']); ?>">
                                                 <button class="btn btn-danger btn-lg rounded-pill w-75" type="submit" name="delete-usr">Yes</button>
                                                 <button class="btn btn-warning btn-lg rounded-pill w-75" type="reset" data-bs-dismiss="modal">No</button>
                                             </div>
@@ -104,9 +105,28 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title" id="order-label">Edit Order</h1>
+                                        <h1 class="modal-title" id="order-label">Edit Order <?= htmlspecialchars($data['order_id']); ?></h1>
                                     </div>
                                     <div class="modal-body">
+                                        <div class="">
+                                            <span class="fs-5">Order Details</span>
+                                            <?php 
+                                                $order_items = $ord->getOrderItems($data['order_id']);
+                                                foreach ($order_items as $items) {
+                                                    $prod_name = $ord->getProductName($items['product_id']);
+                                            ?>
+                                            <div class="row mb-2 p-2">
+                                                <div class="col">
+                                                    <span class="text-muted fw-bold">Product Name:</span> <br>
+                                                    <?= htmlspecialchars($prod_name['name']); ?>
+                                                </div>
+                                                <div class="col">
+                                                    <span class="text-muted fw-bold">Price:</span> &#8369;<?= htmlspecialchars($items['price']); ?> <br>
+                                                    <span class="text-muted fw-bold">Quantity:</span> <?= htmlspecialchars($items['quantity']); ?> <br>
+                                                </div>
+                                            </div>
+                                            <?php } ?>
+                                        </div>
                                         <form action="" method="post">
                                             <input type="hidden" name="hidden_oid" value="<?= htmlspecialchars($data['order_id']); ?>">
                                             <input type="hidden" name="hidden_uid" value="<?= htmlspecialchars($data['user_id']); ?>">

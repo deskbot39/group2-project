@@ -28,8 +28,8 @@
                 $cart_item_count = $this->getCartItemCount($cart_result['cart_id']);
                 $new_session = session_create_id();
                 $sessionID = $new_session . "_" . $result['user_id'];
-                $_SESSION['user_id'] = $result['user_id'];
-                $_SESSION['cart_id'] = $cart_result['cart_id'];
+                $_SESSION['user_id'] = (int)$result['user_id'];
+                $_SESSION['cart_id'] = (int)$cart_result['cart_id'];
                 $_SESSION['cart_item_count'] = $cart_item_count;
                 $_SESSION['username'] = $result['username'];
                 $_SESSION['email'] = $result['email'];

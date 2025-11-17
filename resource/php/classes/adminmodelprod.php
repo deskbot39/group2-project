@@ -12,7 +12,7 @@
             return $result;
         }
 
-        protected function deleteProduct(int $pid) {
+        public function deleteProduct(int $pid) {
             $query = "DELETE FROM products WHERE product_id = :pid";
             $stmt = $this->connect()->prepare($query);
             $stmt->bindParam(":pid", $pid);

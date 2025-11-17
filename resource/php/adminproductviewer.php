@@ -1,23 +1,24 @@
 <?php
     include "classes/conf_db.php";
-    include "classes/ordermodel.php";
+    include "classes/productmodel.php";
 
-    // admin Stuff
-    $ord = new ordermodel();
-    
-    $status_arr = array('Pending', 'Shipped', 'Cancelled', 'Received');
-    if (isset($_GET['status-sort']) && in_array($_GET['status-sort'], $status_arr)) {
-        $role = $_GET['status-sort'];
-        $ord_admin = $ord->getByStatus($role);
-        return $ord_admin;
-    } elseif (isset($_GET['search'])) {
-        $query = $_GET['search'];
-        $ord_admin = $ord->searchOrder($query);
-    } else {
-        $status = "";
-        $ord_admin = $ord->getAllOrder();
-        return $ord_admin;
+    $db = new conf_db();
+    $prod = new productmodel();
+    $prod_table_a = search_prod();
+
+    function search_prod() {
+        $db = new conf_db();
+        $prod = new productmodel();
+        if (isset($_GET['search'])) {
+            $query = $_GET['search'];
+            $prod_table_a = $prod->searchProduct($query);
+            return $prod_table_a;
+        } else {
+            $prod_table_a = $prod->getAllProducts();
+            return $prod_table_a;
+        }
     }
+
 
     function admin_product_error_display() {
         if (isset($_SESSION['admin_errors'])) {
@@ -34,4 +35,5 @@
             unset($_SESSION['admin_good']);
         }
     }
+
 ?>

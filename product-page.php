@@ -2,6 +2,7 @@
     require_once './resource/php/conf_session.php';
     require_once './resource/php/productviewer.php';
     require_once './resource/php/loginviewer.php';
+    roleLock();
     $head_desc = htmlspecialchars("A product page");
     $head_title = htmlspecialchars("Wang Scent PH | Products");
     $head_class = htmlspecialchars("");

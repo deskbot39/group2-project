@@ -84,12 +84,13 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title" id="del-label">Delete Product</h1>
+                                        <h1 class="modal-title" id="del-label">Delete Product #<?= htmlspecialchars($data['product_id']); ?></h1>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="" method="post">
+                                        <form action="./resource/php/adminproductdeletehandler.php" method="post">
                                             <h3 class="text-danger mb-3">Are you sure?</h3>
                                             <div class="d-flex justify-content-center gap-5">
+                                                <input type="hidden" name="id" value="<?= htmlspecialchars($data['product_id']); ?>">
                                                 <button class="btn btn-danger btn-lg rounded-pill w-75" type="submit" name="delete-usr">Yes</button>
                                                 <button class="btn btn-warning btn-lg rounded-pill w-75" type="reset" data-bs-dismiss="modal">No</button>
                                             </div>
@@ -102,7 +103,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title" id="edit-label">Edit Product</h1>
+                                        <h1 class="modal-title" id="edit-label">Edit Product #<?= htmlspecialchars($data['product_id']); ?></h1>
                                     </div>
                                     <div class="modal-body">
                                         <form action="" method="post">

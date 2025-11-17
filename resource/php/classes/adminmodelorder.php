@@ -15,7 +15,7 @@
             }
         }
 
-        protected function deleteOrder(int $order_id) {
+        public function deleteOrder(int $order_id) {
             $query = "DELETE FROM orders WHERE order_id = :oid";
             $stmt = $this->connect()->prepare($query);
             $stmt->bindParam(":oid", $order_id);

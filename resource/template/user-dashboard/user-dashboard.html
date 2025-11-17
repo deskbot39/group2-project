@@ -132,7 +132,7 @@
                                 <tbody>
                                     <?php 
                                         foreach($ord_table_pend as $data_p) {
-                                            $time = $data['date_updated'];
+                                            $time = $data_p['date_updated'];
                                             $timestamp = strtotime($time);
                                             $date = date("M-d-Y, h:i a", $timestamp);
                                     ?>
@@ -197,7 +197,7 @@
                                 <tbody>
                                     <?php 
                                         foreach($ord_table_ship as $data_s) { 
-                                            $time = $data['date_updated'];
+                                            $time = $data_s['date_updated'];
                                             $timestamp = strtotime($time);
                                             $date = date("M-d-Y, h:i a", $timestamp);
                                     ?>
@@ -255,7 +255,7 @@
                                 <tbody>
                                     <?php 
                                         foreach($ord_table_rece as $data_r) {
-                                            $time = $data['date_updated'];
+                                            $time = $data_r['date_updated'];
                                             $timestamp = strtotime($time);
                                             $date = date("M-d-Y, h:i a", $timestamp); 
                                     ?>
@@ -313,7 +313,7 @@
                                 <tbody>
                                     <?php 
                                         foreach($ord_table_canc as $data_c) {
-                                            $time = $data['date_updated'];
+                                            $time = $data_c['date_updated'];
                                             $timestamp = strtotime($time);
                                             $date = date("M-d-Y, h:i a", $timestamp); 
                                     ?>
