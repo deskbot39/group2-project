@@ -96,7 +96,7 @@
         }
         private function phoneInvalid() {
             $sanitized_phone = filter_var($this->phone, FILTER_SANITIZE_NUMBER_INT);
-            if (!preg_match('/^[0-9]{11}$/', $sanitized_phone)) {
+            if (!preg_match('/^09\d{9}$/', $sanitized_phone)) {
                 return true;
             } else {
                 return false;

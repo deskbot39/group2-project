@@ -42,7 +42,7 @@
         }
         
         protected function getEmail(string $email) {
-            $query = "SELECT `email` FROM users WHERE email = :email";
+            $query = "SELECT `user_id` FROM users WHERE email = :email";
             $stmt = $this->connect()->prepare($query);
             $stmt->bindParam(":email", $email);
             $stmt->execute();
@@ -59,6 +59,39 @@
             
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             return $result;
+        }
+
+        protected function updateUsername(string $user, int $uid) {
+            $query = "UPDATE users SET username = :user WHERE user_id = :uid";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":user", $user);
+            $stmt->bindParam(":uid", $uid);
+            $stmt->execute();
+        }
+
+        protected function updateEmail(string $email, int $uid) {
+            $query = "UPDATE users SET email = :email WHERE user_id = :uid";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":email", $email);
+            $stmt->bindParam(":uid", $uid);
+            $stmt->execute();
+        }
+
+        protected function updatePhone(string $phone, int $uid) {
+            $query = "UPDATE users SET phone = :phone WHERE user_id = :uid";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":phone", $phone);
+            $stmt->bindParam(":uid", $uid);
+            $stmt->execute();
+        }
+
+        protected function updatePassword(string $pwd, int $uid) {
+            $hashed_pwd = password_hash($pwd, PASSWORD_BCRYPT);
+            $query = "UPDATE users SET password = :pwd WHERE user_id = :uid";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":pwd", $hashed_pwd);
+            $stmt->bindParam(":uid", $uid);
+            $stmt->execute();
         }
 
         public function deleteUser(int $uid) {

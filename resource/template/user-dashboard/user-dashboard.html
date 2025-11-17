@@ -25,7 +25,50 @@
                     <span class="col"><?= htmlspecialchars($_SESSION['phone']); ?></span>
                 </div>
                 <div class="row mb-2 d-flex px-3">
-                    <button class="btn btn-outline-danger">Edit User Info</button>
+                    <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#editusr">Edit User Info</button>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="editusr" aria-labelledby="editusr" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title">Edit User Information</h1>
+                    </div>
+                    <div class="modal-body">
+                        <form action="./resource/php/usreditorhandler.php" method="post">
+                            <input type="hidden" name="euid" value="<?= htmlspecialchars($_SESSION['user_id']) ?>">
+                            <div class="form-floating mb-3">
+                                <input class="form-control editname" type="text" name="ename"value="<?= htmlspecialchars($_SESSION['username']); ?>">
+                                <label for="editname">Username</label>
+                                <div class="form-text text-danger text-center eusr_in"></div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input class="form-control editmail" type="email" name="eemail" value="<?= htmlspecialchars($_SESSION['email']); ?>">
+                                <label for="editmail">Email</label>
+                                <div class="form-text text-danger text-center eml_in"></div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input class="form-control editnum" type="tel" name="ephone" value="<?= htmlspecialchars($_SESSION['phone']); ?>" maxlength="11" inputmode="numeric" pattern="09\d{9}">
+                                <label for="editphone">Phone Number</label>
+                                <div class="form-text text-danger text-center enum_in"></div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input class="form-control editpass" type="text" name="epass">
+                                <label for="editpass">New Password</label>
+                                <div class="form-text text-danger text-center epwd_in"></div>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input class="form-control vepass" type="text" name="veepass">
+                                <label for="vepass">Verify New Password</label>
+                                <div class="form-text text-danger text-center evpwd_in"></div>
+                            </div>
+                            <div class="d-flex row justify-content-center align-items-center gap-2 p-2">
+                                <button class="btn btn-success" type="submit" name="edit-user">Save Changes</button>
+                                <button class="btn btn-danger" type="reset" data-bs-dismiss="modal">Discard Changes</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

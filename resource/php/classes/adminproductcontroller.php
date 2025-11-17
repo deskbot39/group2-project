@@ -16,7 +16,7 @@
             if ($this->emptyCheck()) {
                 $this->errorSetter("blank_form", "Please fill up form");
             } elseif ($this->productExists()) {
-                $this->errorSetter("item_err","Product always exists");
+                $this->errorSetter("item_err","Product already exists");
             } elseif ($this->InvalidVal()) {
                 $this->errorSetter("val_err","There should be no negative values");
             } else {
