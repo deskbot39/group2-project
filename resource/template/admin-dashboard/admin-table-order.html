@@ -4,27 +4,50 @@
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 min-vh-100">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h2>Orders</h2>
-                <form class="row" action="" method="get">
-                    <div class="col">
+                <div class="row">
+                    <form class="col" action="" method="get">
                         <div class="input-group input-group-sm">
                             <input class="form-control" type="text" name="search" placeholder="Search...">
                             <button class="btn btn-outline-success" type="submit">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/></svg>
                             </button>
                         </div>
-                    </div>
-                    <!-- <div class="col">
+                    </form>
+                    <form class="col" action="" method="get">
+                        <?php
+                            $arr = array('Pending', 'Shipped', 'Cancelled', 'Received');
+                            if (isset($_GET['status-sort']) && in_array($_GET['status-sort'],$arr)) {
+                                if ($_GET['status-sort'] == $arr[0]) {
+                                    $tuu = 'selected';
+                                    $wan = $tri = $por = $payb = "";
+                                } elseif ($_GET['status-sort'] == $arr[1]) {
+                                    $tri = 'selected';
+                                    $wan = $tuu = $por = $payb = "";
+                                } elseif ($_GET['status-sort'] == $arr[2]) {
+                                    $por = 'selected';
+                                    $wan = $tuu = $tri = $payb = "";
+                                } elseif ($_GET['status-sort'] == $arr[3]) {
+                                    $payb = 'selected';
+                                    $wan = $tuu = $tri = $por = "";
+                                }
+                            } else {
+                                $wan = 'selected';
+                                $tuu = $tri = $por = $payb = "";
+                            }
+                        ?>
                         <div class="input-group input-group-sm">
                             <label class="input-group-text" for="sorter">Sort by:</label>
-                            <select class="form-select" name="date-sort" id="sorter">
-                                <option value="1">Wow</option>
-                                <option value="2">Amazing</option>
-                                <option value="3">Piss</option>
-                                <option value="4">Ass</option>
+                            <select class="form-select" name="status-sort" id="sorter">
+                                <option value="" <?= $wan; ?>>All</option>
+                                <option value="Pending" <?= $tuu; ?>>Pending</option>
+                                <option value="Shipped" <?= $tri; ?>>Shipped</option>
+                                <option value="Cancelled" <?= $por; ?>>Cancelled</option>
+                                <option value="Received" <?= $payb; ?>>Received</option>
                             </select>
+                            <button class="btn btn-outline-success" type="submit">Sort</button>
                         </div>
-                    </div> -->
-                </form>
+                    </form>
+                </div>
             </div>
             <div class="table-responsive">
                 <table class="table table-sm table-hover">
@@ -49,11 +72,40 @@
                             <td><?= htmlspecialchars($data['date_created']); ?></td>
                             <td><?= htmlspecialchars($data['date_updated']); ?></td>
                             <td>
-                                <button class="btn btn-sm btn-outline-success">
+                                <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#order<?= htmlspecialchars($data['order_id']); ?>">
                                     Edit
                                 </button>
                             </td>
                         </tr>
+                        <div class="modal fade" id="order<?= htmlspecialchars($data['order_id']); ?>" tabindex="-1" aria-hidden="true" aria-labelledby="order<?= htmlspecialchars($data['order_id']); ?>">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title" id="order-label">Edit Order</h1>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="" method="post">
+                                            <input type="hidden" name="hidden_oid" value="<?= htmlspecialchars($data['order_id']); ?>">
+                                            <input type="hidden" name="hidden_uid" value="<?= htmlspecialchars($data['user_id']); ?>">
+                                            <div class="form-floating mb-3">
+                                                <select name="ostatus" id="esel" class="form-control">
+                                                    <option disabled value="<?= htmlspecialchars($data['status']); ?>">Current Status: <?= htmlspecialchars($data['status']); ?></option>
+                                                    <option value="Pending">Pending</option>
+                                                    <option value="Received">Received</option>
+                                                    <option value="Cancelled">Cancelled</option>
+                                                    <option value="Shipped">Shipped</option>
+                                                </select>
+                                                <label for="esel">Status</label>
+                                            </div>
+                                            <div class="d-flex row justify-content-center align-items-center gap-2 p-2">
+                                                <button class="btn btn-success" type="submit" name="edit-ord">Save Changes</button>
+                                                <button class="btn btn-danger" type="reset" data-bs-dismiss="modal">Discard Changes</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <?php } ?>
                     </tbody>
                 </table>

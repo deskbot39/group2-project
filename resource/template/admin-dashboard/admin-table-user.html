@@ -4,7 +4,15 @@
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 min-vh-100">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h2>Users</h2>
-                <form class="row d-flex justify-content-between" action="" method="get">
+                <div class="row d-flex justify-content-between">
+                  <form class="col" action="" method="get">
+                        <div class="input-group input-group-sm">
+                            <input class="form-control" type="text" name="search" placeholder="Search...">
+                            <button class="btn btn-outline-success" type="submit">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/></svg>
+                            </button>
+                        </div>
+                    </form>
                     <?php
                         $arr = array('Customer', 'Staff', 'Admin');
                         if (isset($_GET['role-sort']) && in_array($_GET['role-sort'],$arr)) {
@@ -23,21 +31,21 @@
                             $tuu = $tri = $por = "";
                         }
                     ?>
-                    <div class="col">
-                        <select class="form-select form-select-sm" name="role-sort" id="sorter">
-                            <option value="" <?= $wan; ?>>All</option>
-                            <option value="Customer" <?= $tuu; ?>>Customer</option>
-                            <option value="Staff" <?= $tri; ?>>Staff</option>
-                            <option value="Admin" <?= $por; ?>>Administrator</option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <button class="btn btn-success btn-sm" type="submit">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel-fill" viewBox="0 0 16 16"><path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5z"/></svg>
-                            Sort
-                        </button>
-                    </div>
-                </form>
+                    <form class="col" action="" method="get">
+                        <div class="input-group input-group-sm">
+                            <select class="form-select" name="role-sort" id="sorter">
+                                <option value="" <?= $wan; ?>>All</option>
+                                <option value="Customer" <?= $tuu; ?>>Customer</option>
+                                <option value="Staff" <?= $tri; ?>>Staff</option>
+                                <option value="Admin" <?= $por; ?>>Administrator</option>
+                            </select>
+                            <button class="btn btn-success btn-sm" type="submit">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel-fill" viewBox="0 0 16 16"><path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5z"/></svg>
+                                Sort
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div class="table-responsive">
                 <table class="table table-sm table-hover">
@@ -59,9 +67,9 @@
                             <td><?= htmlspecialchars($data['phone']); ?></td>
                             <td>
                                 <?php if ($_SESSION['role'] == 'Staff') { ?>
-                                <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#user<?= $data['user_id']; ?>">
-                                    Edit
-                                </button>
+                                    <button disabled class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#user<?= $data['user_id']; ?>">
+                                        Edit
+                                    </button>
                                 <?php } else { ?>
                                     <button class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#user<?= $data['user_id']; ?>">
                                         Edit
@@ -78,27 +86,32 @@
                                     <div class="modal-body">
                                         <form action="" method="post">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" type="text" name="ename" id="editname" value="<?= htmlspecialchars($data['username']); ?>" required>
+                                                <input class="form-control editname" type="text" name="ename"value="<?= htmlspecialchars($data['username']); ?>">
                                                 <label for="editname">Username</label>
+                                                <div class="form-text text-danger text-center eusr_in"></div>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" type="email" name="eemail" id="editmail" value="<?= htmlspecialchars($data['email']); ?>" required>
+                                                <input class="form-control editmail" type="email" name="eemail" value="<?= htmlspecialchars($data['email']); ?>">
                                                 <label for="editmail">Email</label>
+                                                <div class="form-text text-danger text-center eml_in"></div>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" type="tel" name="ephone" id="editphone" value="<?= htmlspecialchars($data['phone']); ?>" required>
+                                                <input class="form-control editnum" type="tel" name="ephone" value="<?= htmlspecialchars($data['phone']); ?>" maxlength="11" inputmode="numeric" pattern="09\d{9}">
                                                 <label for="editphone">Phone Number</label>
+                                                <div class="form-text text-danger text-center enum_in"></div>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" type="text" name="epass" id="editpass" required>
+                                                <input class="form-control editpass" type="text" name="epass">
                                                 <label for="editpass">Password</label>
+                                                <div class="form-text text-danger text-center epwd_in"></div>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" type="text" name="veepass" id="vepass" required>
+                                                <input class="form-control vepass" type="text" name="veepass">
                                                 <label for="vepass">Verify Password</label>
+                                                <div class="form-text text-danger text-center evpwd_in"></div>
                                             </div>
                                             <div class="d-flex row justify-content-center align-items-center gap-2 p-2">
-                                                <button class="btn btn-success" type="submit">Save Changes</button>
+                                                <button class="btn btn-success" type="submit" name="edit-user">Save Changes</button>
                                                 <button class="btn btn-danger" type="reset" data-bs-dismiss="modal">Discard Changes</button>
                                             </div>
                                         </form>

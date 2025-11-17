@@ -1,6 +1,6 @@
 <?php
     require_once './resource/php/conf_session.php';
-    require_once './resource/php/userviewer.php';
+    require_once './resource/php/adminuserviewer.php';
     require_once './resource/php/loginviewer.php';
     roleLock();
     highRoleLock();

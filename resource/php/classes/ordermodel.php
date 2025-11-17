@@ -12,6 +12,27 @@
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         }
+
+        public function searchOrder(string $pattern) {
+            $query = "SELECT * FROM orders WHERE LOCATE(:pattern, name)";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":pattern", $pattern);
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
+        public function getByStatus(string $status) {
+            $query = "SELECT * FROM orders WHERE status = :status";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":status", $status);
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
         public function getAllUserOrder(int $user_id) {
             $query = "SELECT * FROM orders WHERE user_id = :usid";
             $stmt = $this->connect()->prepare($query);
@@ -176,6 +197,14 @@
             $stmt->execute();
         }
 
+        protected function addBacktoStock(int $qty, int $pid) {
+            $query = "UPDATE products SET stock = stock + :qty WHERE product_id = :pid";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindValue(":qty", $qty, PDO::PARAM_INT);
+            $stmt->bindParam(":pid", $pid, PDO::PARAM_INT);
+            $stmt->execute();
+        }
+
         protected function getCartItemCount(int $cart_id) {
             $query = "SELECT COUNT(*) AS totalCount FROM cart_item WHERE cart_id = :cid";
             $stmt = $this->connect()->prepare($query);
@@ -186,5 +215,23 @@
             $total = $result['totalCount'];
             return $total;
         }
+
+        protected function cancelledReturn(int $order_id) {
+            $o_items = $this->getOrderItems($order_id);
+
+            foreach ($o_items as $itm) {
+                $qty = (int)$itm['quantity'];
+                $pid = (int)$itm['product_id'];
+                $this->addBacktoStock($qty, $pid);
+            }
+        }
+
+        protected function cancelOrder(int $order_id) {
+            $query = "UPDATE orders SET status = 'Cancelled' WHERE order_id = :oid";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":oid", $order_id);
+            $stmt->execute();
+        }
+
     }
 ?>
