@@ -1,12 +1,17 @@
 <?php
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $oid = $_POST['ord-val'];
+        $oid = (int)$_POST['ord-id'];
+        $uid = (int)$_POST['ord-uid'];
 
+        require_once 'conf_session.php';
         include "classes/conf_db.php";
         include "classes/ordermodel.php";
-        include "classes/ordercontroller.php";
+        include "classes/userordercontroller.php";
+        
+        $user_order = new userordercontroller($uid, $oid, 0);
 
         if (isset($_POST['cancel-ord'])) {
+            $user_order->cancelledOrder();
             header('location: ../../user-dashboard.php');
             die();
         }

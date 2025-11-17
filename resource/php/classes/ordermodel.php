@@ -81,6 +81,16 @@
             return $result;
         }
 
+        protected function orderCheck(int $order_id) {
+            $query = "SELECT * FROM orders WHERE order_id = :oid";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":oid", $order_id);
+            $stmt->execute();
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
         protected function getUserOrder(int $user_id) {
             $query = "SELECT * FROM orders WHERE user_id = :usid";
             $stmt = $this->connect()->prepare($query);

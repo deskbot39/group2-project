@@ -103,7 +103,8 @@
                                                 <?php if ($data['status'] == 'Pending') { ?>
                                                     <div class="modal-footer">
                                                         <form action="./resource/php/userorderhandler.php" method="post">
-                                                            <input type="hidden" name="ord-val" value="<?= htmlspecialchars($data['order_id']); ?>">
+                                                            <input type="hidden" name="ord-id" value="<?= htmlspecialchars($data['order_id']); ?>">
+                                                            <input type="hidden" name="ord-uid" value="<?= htmlspecialchars($data['user_id']); ?>">
                                                             <button class="btn btn-outline-danger" name="cancel-ord">Cancel Order</button>
                                                         </form>
                                                     </div>
@@ -169,7 +170,11 @@
                                                     <?php } ?>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button class="btn btn-outline-danger">Cancel Order</button>
+                                                    <form action="./resource/php/userorderhandler.php" method="post">
+                                                        <input type="hidden" name="ord-id" value="<?= htmlspecialchars($data_p['order_id']); ?>">
+                                                        <input type="hidden" name="ord-uid" value="<?= htmlspecialchars($data_p['user_id']); ?>">
+                                                        <button class="btn btn-outline-danger" name="cancel-ord">Cancel Order</button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>

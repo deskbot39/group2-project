@@ -29,6 +29,18 @@
             }
         }
 
+        public function cancelledOrder() {
+            if(!$this->userExists()) {
+                $this->errorSetter("no_user", "User doesn't exist");
+            } elseif (!$this->orderExists()) {
+                $this->errorSetter("no_order", "Order doesn't exist");
+            } else {
+                $this->cancelledReturn($this->cart_id);
+                $this->cancelOrder($this->cart_id);
+                $this->successSetter("canc_succ", "Order has been successfully cancelled!");
+            }
+        }
+
         private function errorSetter($code, $text) {
             $error_arr = [];
             $error_arr[$code] = $text;
@@ -68,6 +80,14 @@
 
         private function hasCartItem () {
             if ($this->getCartItemCount($this->cart_id)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        private function orderExists() {
+            if ($this->orderCheck($this->cart_id)) {
                 return true;
             } else {
                 return false;

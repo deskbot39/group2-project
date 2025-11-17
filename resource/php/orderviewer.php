@@ -34,4 +34,20 @@
     $stmt->bindValue(":ipp", $itm_per_page, PDO::PARAM_INT);
     $stmt->execute();
     $ord_table = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    function cancelled_order_error_display() {
+        if (isset($_SESSION['cart_errors'])) {
+            $error_arr = $_SESSION['cart_errors'];
+            foreach ($error_arr as $error) {
+                include ('./resource/template/alerts/alert-warning.html');
+            }
+            unset($_SESSION['cart_errors']);
+        } elseif(isset($_SESSION['cart_good'])) {
+            $succ_arr = $_SESSION['cart_good'];
+            foreach ($succ_arr as $succ) {
+                include ('./resource/template/alerts/alert-successOrder.html');
+            }
+            unset($_SESSION['cart_good']);
+        }
+    }
 ?>
