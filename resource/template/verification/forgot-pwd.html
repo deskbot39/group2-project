@@ -1,0 +1,19 @@
+<div class="card shadow" style="width: 300px;">
+    <div class="card-body">
+        <h4 class="mb-2 text-center">Forgot Password</h4>
+        <p class="mb-4">Enter your email and we'll reset your password</p>
+        <form action="./resource/php/reset-passhandler.php" method="post">
+            <div class="form-floating mb-3">
+                <input class="form-control" type="email" name="reset-email" id="rmail" required>
+                <label class="form-label" for="rmail">Email</label>
+            </div>
+            <button class="btn btn-outline-primary w-100 d-grid" type="submit">Send Reset Link</button>
+        </form>
+        <div class="text-center mt-4">
+            <a class="text-decoration-none" href="./login-page.php">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5"/></svg>
+                Back to Login
+            </a>
+        </div>
+    </div>
+</div>

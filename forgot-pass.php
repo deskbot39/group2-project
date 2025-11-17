@@ -6,5 +6,6 @@
     $head_class = htmlspecialchars("d-flex align-items-center justify-content-center py-4 bg-body-tertiary min-vh-100");
     $js_locs = array();
     include('resource/template/html/html_head.html');
+    include('resource/template/verification/forgot-pwd.html');
     include('./resource/template/html/html_foot.html');
 ?>

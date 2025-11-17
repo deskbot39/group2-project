@@ -11,6 +11,7 @@
     ]);
     
     session_start();
+    date_default_timezone_set('Asia/Manila');
 
     function regenerate_id() {
         session_regenerate_id(true);
