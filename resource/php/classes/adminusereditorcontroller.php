@@ -1,5 +1,5 @@
 <?php
-    class usereditorcontroller extends adminmodeluser {
+    class adminusereditorcontroller extends adminmodeluser {
         private $id;
         private $username;
         private $email;
@@ -21,11 +21,10 @@
                 $this->errorSetter('empty_name', 'Empty username');
             } elseif ($this->usernameInvalid()) {
                 $this->errorSetter('invalid_name', 'Invalid username');
-
-            } elseif ($this->username !== $_SESSION['username']) {
+                
+            } else {
                 $this->updateUsername($this->username, $this->id);
                 $this->successSetter("uname_upd", "Updated User Information!");
-                $_SESSION['username'] = $this->username;
             }
         }
         
@@ -35,11 +34,10 @@
                 
             } elseif ($this->emailInvalid()) {
                 $this->errorSetter('invalid_email', 'Invalid email');
-
-            } elseif ($this->email !== $_SESSION['email']) {
+                
+            } else {
                 $this->updateEmail($this->email, $this->id);
                 $this->successSetter("email_upd", "Updated User Information!");
-                $_SESSION['email'] = $this->email;
             }
         }
 
@@ -50,10 +48,9 @@
             } elseif ($this->phoneInvalid()) {
                 $this->errorSetter('invalid_phone', 'Invalid phone number');
 
-            } elseif ($this->phone !== $_SESSION['phone']) {
+            } else {
                 $this->updatePhone($this->phone, $this->id);
                 $this->successSetter("phone_upd", "Updated User Information!");
-                $_SESSION['phone'] = $this->phone;
 
             }
         }
@@ -77,24 +74,24 @@
         private function errorSetter($code, $text) {
             $error_arr = [];
             $error_arr[$code] = $text;
-            $_SESSION['cart_errors'] = $error_arr;
+            $_SESSION['admin_errors'] = $error_arr;
         }
 
         private function successSetter($code, $text) {
             $success_arr = [];
             $success_arr[$code] = $text;
-            $_SESSION['cart_good'] = $success_arr;
+            $_SESSION['admin_good'] = $success_arr;
         }
 
         private function userExists() {
-            if ($this->getUser($this->username) !== $_SESSION['user_id']) {
+            if ($this->getUser($this->username)) {
                 return true;
             } else {
                 return false;
             }
         }
         private function emailExists() {
-            if ($this->getEmail($this->email) !== $_SESSION['user_id']) {
+            if ($this->getEmail($this->email)) {
                 return true;
             } else {
                 return false;

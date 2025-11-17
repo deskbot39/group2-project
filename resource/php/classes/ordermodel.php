@@ -22,6 +22,31 @@
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $result;
         }
+        public function searchOrderJoined(string $pattern) {
+            $query = "SELECT users.username, orders.order_id, orders.total_amount, orders.`status`, orders.date_created, orders.date_updated 
+                        FROM orders JOIN users 
+                        ON orders.user_id = users.user_id
+                        WHERE LOCATE(:pattern, username)";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":pattern", $pattern);
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
+        public function getByStatusJoined(string $status) {
+            $query = "SELECT users.username, orders.order_id, orders.total_amount, orders.`status`, orders.date_created, orders.date_updated 
+                        FROM orders JOIN users 
+                        ON orders.user_id = users.user_id
+                        WHERE status = :status";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":status", $status);
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
 
         public function getByStatus(string $status) {
             $query = "SELECT * FROM orders WHERE status = :status";
@@ -65,6 +90,17 @@
 
         public function getAllOrder() {
             $query = "SELECT * FROM orders";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->execute();
+
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
+
+        public function getAllOrderJoined() {
+            $query = "SELECT users.username, orders.order_id, orders.total_amount, orders.`status`, orders.date_created, orders.date_updated 
+                        FROM users 
+                        INNER JOIN orders ON orders.user_id = users.user_id;";
             $stmt = $this->connect()->prepare($query);
             $stmt->execute();
 

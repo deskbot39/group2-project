@@ -2,7 +2,7 @@
     declare(strict_types=1);
     class adminmodelorder extends conf_db {
 
-        protected function updatedOrder(int $order_id, string $status) {
+        public function updatedOrder(int $order_id, string $status) {
             $query = "UPDATE orders SET status = :status WHERE order_id = :oid";
             $stmt = $this->connect()->prepare($query);
             $stmt->bindParam(":status", $status);

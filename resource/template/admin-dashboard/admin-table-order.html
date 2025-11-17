@@ -54,7 +54,7 @@
                     <thead>
                         <tr>
                             <th scope="col">OID</th>
-                            <th scope="col">UID</th>
+                            <th scope="col">Username</th>
                             <th scope="col">Total Price</th>
                             <th scope="col">Status</th>
                             <th scope="col">Date Created</th>
@@ -66,8 +66,8 @@
                         <?php foreach ($ord_admin as $data) { ?>
                         <tr>
                             <td scope="row"><?= htmlspecialchars($data['order_id']); ?></td>
-                            <td><?= htmlspecialchars($data['user_id']); ?></td>
-                            <td><?= htmlspecialchars($data['total_amount']); ?></td>
+                            <td><?= htmlspecialchars($data['username']); ?></td>
+                            <td>&#8369; <?= htmlspecialchars($data['total_amount']); ?></td>
                             <td><?= htmlspecialchars($data['status']); ?></td>
                             <td><?= htmlspecialchars($data['date_created']); ?></td>
                             <td><?= htmlspecialchars($data['date_updated']); ?></td>
@@ -127,9 +127,8 @@
                                             </div>
                                             <?php } ?>
                                         </div>
-                                        <form action="" method="post">
+                                        <form action="./resource/php/adminorderhandler.php" method="post">
                                             <input type="hidden" name="hidden_oid" value="<?= htmlspecialchars($data['order_id']); ?>">
-                                            <input type="hidden" name="hidden_uid" value="<?= htmlspecialchars($data['user_id']); ?>">
                                             <div class="form-floating mb-3">
                                                 <select name="ostatus" id="esel" class="form-control">
                                                     <option disabled value="<?= htmlspecialchars($data['status']); ?>">Current Status: <?= htmlspecialchars($data['status']); ?></option>

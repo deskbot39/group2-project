@@ -97,7 +97,7 @@
                                         <form action="./resource/php/adminuserdeletehandler.php" method="post">
                                             <h3 class="text-danger mb-3">Are you sure?</h3>
                                             <div class="d-flex justify-content-center gap-5">
-                                                <input type="hidden" name="id" value="?= htmlspecialchars($data['user_id']); ?>">
+                                                <input type="hidden" name="id" value="<?= htmlspecialchars($data['user_id']); ?>">
                                                 <button class="btn btn-danger btn-lg rounded-pill w-75" type="submit" name="delete-usr">Yes</button>
                                                 <button class="btn btn-warning btn-lg rounded-pill w-75" type="reset" data-bs-dismiss="modal">No</button>
                                             </div>
@@ -113,8 +113,8 @@
                                         <h1 class="modal-title" id="edit-label">Edit User</h1>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="" method="post">
-                                            <input type="hidden" name="euid" value="<?= htmlspecialchars($_SESSION['user_id']) ?>">
+                                        <form action="./resource/php/adminusreditorhandler.php" method="post">
+                                            <input type="hidden" name="euid" value="<?= htmlspecialchars($data['user_id']) ?>">
                                             <div class="form-floating mb-3">
                                                 <input class="form-control editname" type="text" name="ename" value="<?= htmlspecialchars($data['username']); ?>">
                                                 <label for="editname">Username</label>
@@ -131,12 +131,12 @@
                                                 <div class="form-text text-danger text-center enum_in"></div>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control editpass" type="text" name="epass">
+                                                <input class="form-control editpass" type="password" minlength="8" name="epass">
                                                 <label for="editpass">New Password</label>
                                                 <div class="form-text text-danger text-center epwd_in"></div>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control vepass" type="text" name="veepass">
+                                                <input class="form-control vepass" type="password" minlength="8" name="veepass">
                                                 <label for="vepass">New Verify Password</label>
                                                 <div class="form-text text-danger text-center evpwd_in"></div>
                                             </div>
