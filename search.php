@@ -3,9 +3,9 @@
     require_once './resource/php/loginviewer.php';
     require_once './resource/php/searcher.php';
     roleLock();
-    $head_desc = htmlspecialchars("Search Page of Wang Scent PH");
-    $head_title = htmlspecialchars("Wang Scent PH | Search");
-    $head_class = htmlspecialchars("");
+    $head_desc = htmlspecialchars("Search Page of Wang Scent PH" ?? '');
+    $head_title = htmlspecialchars("Wang Scent PH | Search" ?? '');
+    $head_class = htmlspecialchars("" ?? '');
     $js_locs = array();
     include('resource/template/html/html_head.html');
     userLoginDisplay();

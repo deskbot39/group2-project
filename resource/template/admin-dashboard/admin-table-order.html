@@ -65,24 +65,24 @@
                     <tbody>
                         <?php foreach ($ord_admin as $data) { ?>
                         <tr>
-                            <td scope="row"><?= htmlspecialchars($data['order_id']); ?></td>
-                            <td><?= htmlspecialchars($data['username']); ?></td>
-                            <td>&#8369; <?= htmlspecialchars($data['total_amount']); ?></td>
-                            <td><?= htmlspecialchars($data['status']); ?></td>
-                            <td><?= htmlspecialchars($data['date_created']); ?></td>
-                            <td><?= htmlspecialchars($data['date_updated']); ?></td>
+                            <td scope="row"><?= htmlspecialchars($data['order_id'] ?? ''); ?></td>
+                            <td><?= htmlspecialchars($data['username'] ?? ''); ?></td>
+                            <td>&#8369; <?= htmlspecialchars($data['total_amount'] ?? ''); ?></td>
+                            <td><?= htmlspecialchars($data['status'] ?? ''); ?></td>
+                            <td><?= htmlspecialchars($data['date_created'] ?? ''); ?></td>
+                            <td><?= htmlspecialchars($data['date_updated'] ?? ''); ?></td>
                             <td>
                                 <div class="btn-group">
-                                    <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#order<?= htmlspecialchars($data['order_id']); ?>">
+                                    <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#order<?= htmlspecialchars($data['order_id'] ?? ''); ?>">
                                         Edit
                                     </button>
-                                    <button class="btn btn-sm btn-outline-danger" name="delete-ord" data-bs-toggle="modal" data-bs-target="#orderd<?= htmlspecialchars($data['order_id']); ?>">
+                                    <button class="btn btn-sm btn-outline-danger" name="delete-ord" data-bs-toggle="modal" data-bs-target="#orderd<?= htmlspecialchars($data['order_id'] ?? ''); ?>">
                                         Delete
                                     </button>
                                 </div>
                             </td>
                         </tr>
-                        <div class="modal fade" id="orderd<?= htmlspecialchars($data['order_id']); ?>" tabindex="-1" aria-hidden="true" aria-labelledby="itemd<?= htmlspecialchars($data['order_id']); ?>">
+                        <div class="modal fade" id="orderd<?= htmlspecialchars($data['order_id'] ?? ''); ?>" tabindex="-1" aria-hidden="true" aria-labelledby="itemd<?= htmlspecialchars($data['order_id'] ?? ''); ?>">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -92,7 +92,7 @@
                                         <form action="./resource/php/adminorderdeletehandler.php" method="post">
                                             <h3 class="text-danger mb-3">Are you sure?</h3>
                                             <div class="d-flex justify-content-center gap-5">
-                                                <input type="hidden" name="id" value="<?= htmlspecialchars($data['order_id']); ?>">
+                                                <input type="hidden" name="id" value="<?= htmlspecialchars($data['order_id'] ?? ''); ?>">
                                                 <button class="btn btn-danger btn-lg rounded-pill w-75" type="submit" name="delete-usr">Yes</button>
                                                 <button class="btn btn-warning btn-lg rounded-pill w-75" type="reset" data-bs-dismiss="modal">No</button>
                                             </div>
@@ -101,37 +101,37 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="modal fade" id="order<?= htmlspecialchars($data['order_id']); ?>" tabindex="-1" aria-hidden="true" aria-labelledby="order<?= htmlspecialchars($data['order_id']); ?>">
+                        <div class="modal fade" id="order<?= htmlspecialchars($data['order_id'] ?? ''); ?>" tabindex="-1" aria-hidden="true" aria-labelledby="order<?= htmlspecialchars($data['order_id'] ?? ''); ?>">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title" id="order-label">Edit Order <?= htmlspecialchars($data['order_id']); ?></h1>
+                                        <h1 class="modal-title" id="order-label">Edit Order <?= htmlspecialchars($data['order_id'] ?? ''); ?></h1>
                                     </div>
                                     <div class="modal-body">
                                         <div class="">
                                             <span class="fs-5">Order Details</span>
                                             <?php 
-                                                $order_items = $ord->getOrderItems($data['order_id']);
+                                                $order_items = $ord->getOrderItems($data['order_id'] ?? '');
                                                 foreach ($order_items as $items) {
-                                                    $prod_name = $ord->getProductName($items['product_id']);
+                                                    $prod_name = $ord->getProductName($items['product_id'] ?? '');
                                             ?>
                                             <div class="row mb-2 p-2">
                                                 <div class="col">
                                                     <span class="text-muted fw-bold">Product Name:</span> <br>
-                                                    <?= htmlspecialchars($prod_name['name']); ?>
+                                                    <?= htmlspecialchars($prod_name['name'] ?? ''); ?>
                                                 </div>
                                                 <div class="col">
-                                                    <span class="text-muted fw-bold">Price:</span> &#8369;<?= htmlspecialchars($items['price']); ?> <br>
-                                                    <span class="text-muted fw-bold">Quantity:</span> <?= htmlspecialchars($items['quantity']); ?> <br>
+                                                    <span class="text-muted fw-bold">Price:</span> &#8369;<?= htmlspecialchars($items['price'] ?? ''); ?> <br>
+                                                    <span class="text-muted fw-bold">Quantity:</span> <?= htmlspecialchars($items['quantity'] ?? ''); ?> <br>
                                                 </div>
                                             </div>
                                             <?php } ?>
                                         </div>
                                         <form action="./resource/php/adminorderhandler.php" method="post">
-                                            <input type="hidden" name="hidden_oid" value="<?= htmlspecialchars($data['order_id']); ?>">
+                                            <input type="hidden" name="hidden_oid" value="<?= htmlspecialchars($data['order_id'] ?? ''); ?>">
                                             <div class="form-floating mb-3">
                                                 <select name="ostatus" id="esel" class="form-control">
-                                                    <option disabled value="<?= htmlspecialchars($data['status']); ?>">Current Status: <?= htmlspecialchars($data['status']); ?></option>
+                                                    <option disabled value="<?= htmlspecialchars($data['status'] ?? ''); ?>">Current Status: <?= htmlspecialchars($data['status'] ?? ''); ?></option>
                                                     <option value="Pending">Pending</option>
                                                     <option value="Received">Received</option>
                                                     <option value="Cancelled">Cancelled</option>

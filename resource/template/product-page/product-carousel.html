@@ -6,34 +6,34 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100" src="<?= htmlspecialchars($prod_carousel[0]['image_link']); ?>" alt="Image of <?= htmlspecialchars($prod_carousel[0]['name']); ?>" width="800" height="400">
+            <img class="d-block w-100" src="<?= htmlspecialchars($prod_carousel[0]['image_link'] ?? ''); ?>" alt="Image of <?= htmlspecialchars($prod_carousel[0]['name'] ?? ''); ?>" width="800" height="400">
             <div class="container">
                 <div class="carousel-caption text-start">
-                    <h1><?= htmlspecialchars($prod_carousel[0]['name']); ?></h1>
+                    <h1><?= htmlspecialchars($prod_carousel[0]['name'] ?? ''); ?></h1>
                     <p class="opacity-75">
-                        <?= htmlspecialchars($prod_carousel[0]['description']); ?>
+                        <?= htmlspecialchars($prod_carousel[0]['description'] ?? ''); ?>
                     </p>
                 </div>
             </div>
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="<?= htmlspecialchars($prod_carousel[1]['image_link']); ?>" alt="Image of <?= htmlspecialchars($prod_carousel[1]['name']); ?>" width="800" height="400">
+            <img class="d-block w-100" src="<?= htmlspecialchars($prod_carousel[1]['image_link'] ?? ''); ?>" alt="Image of <?= htmlspecialchars($prod_carousel[1]['name'] ?? ''); ?>" width="800" height="400">
             <div class="container">
                 <div class="carousel-caption text-start">
-                    <h1><?= htmlspecialchars($prod_carousel[1]['name']); ?></h1>
+                    <h1><?= htmlspecialchars($prod_carousel[1]['name'] ?? ''); ?></h1>
                     <p class="opacity-75">
-                        <?= htmlspecialchars($prod_carousel[1]['description']); ?>
+                        <?= htmlspecialchars($prod_carousel[1]['description'] ?? ''); ?>
                     </p>
                 </div>
             </div>
         </div>
         <div class="carousel-item">
-            <img class="d-block w-100" src="<?= htmlspecialchars($prod_carousel[2]['image_link']); ?>" alt="Image of <?= htmlspecialchars($prod_carousel[2]['name']); ?>" width="800" height="400">
+            <img class="d-block w-100" src="<?= htmlspecialchars($prod_carousel[2]['image_link'] ?? ''); ?>" alt="Image of <?= htmlspecialchars($prod_carousel[2]['name'] ?? ''); ?>" width="800" height="400">
             <div class="container">
                 <div class="carousel-caption text-start">
-                    <h1><?= htmlspecialchars($prod_carousel[2]['name']); ?></h1>
+                    <h1><?= htmlspecialchars($prod_carousel[2]['name'] ?? ''); ?></h1>
                     <p class="opacity-75">
-                        <?= htmlspecialchars($prod_carousel[2]['description']); ?>
+                        <?= htmlspecialchars($prod_carousel[2]['description'] ?? ''); ?>
                     </p>
                 </div>
             </div>

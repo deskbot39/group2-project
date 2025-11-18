@@ -3,9 +3,9 @@
     require_once './resource/php/cartviewer.php';
     require_once './resource/php/loginviewer.php';
     roleLock();
-    $head_desc = htmlspecialchars("User Shopping Cart");
-    $head_title = htmlspecialchars("Wang Scent PH | Shopping Cart");
-    $head_class = htmlspecialchars("");
+    $head_desc = htmlspecialchars("User Shopping Cart" ?? '');
+    $head_title = htmlspecialchars("Wang Scent PH | Shopping Cart" ?? '');
+    $head_class = htmlspecialchars("" ?? '');
     $js_locs = array();
     include('resource/template/html/html_head.html');
     userLoginDisplay();

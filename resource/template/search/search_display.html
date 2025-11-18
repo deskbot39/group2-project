@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col">
                     <div class="card mb-3 p-3 shadow-sm">
-                        <a href="./product-detail.php?product_id=<?= htmlspecialchars($prod['product_id']) ?>">
+                        <a href="./product-detail.php?product_id=<?= htmlspecialchars($prod['product_id'] ?? '') ?>">
                             <h5 class="card-title fw-bold">
                                 <?= htmlspecialchars($prod['name']); ?>
                             </h5>

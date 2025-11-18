@@ -15,9 +15,16 @@
         $stmt = $db->connect()->prepare($query);
         $stmt->bindParam(":mo", $month);
         $stmt->bindParam(":yr", $year);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($result);
+        
+        if($stmt->execute()) {
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            echo json_encode($result);
+        } else {
+            $foo = array('bar', 'wow');
+            $result = json_encode($foo);
+	        echo $result;
+        }
+ 
 } else {
     header('location: ../../../admin-dashboard.php');
     die();

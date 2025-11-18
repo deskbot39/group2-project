@@ -3,8 +3,8 @@
     require_once './resource/php/loginviewer.php';
     require_once './resource/php/pwd-resetviewer.php';
     include "./resource/php/classes/conf_db.php";
-    $head_desc = htmlspecialchars("Reset Password Page");
-    $head_title = htmlspecialchars("Wang Scent PH | Reset Password");
+    $head_desc = htmlspecialchars("Reset Password Page" ?? '');
+    $head_title = htmlspecialchars("Wang Scent PH | Reset Password" ?? '');
     $head_class = htmlspecialchars("d-flex align-items-center justify-content-center py-4 bg-body-tertiary min-vh-100");
     $js_locs = array("./resource/js/reset-validation.js");
     

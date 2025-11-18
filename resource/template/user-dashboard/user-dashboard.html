@@ -37,9 +37,9 @@
                     </div>
                     <div class="modal-body">
                         <form action="./resource/php/usreditorhandler.php" method="post">
-                            <input type="hidden" name="euid" value="<?= htmlspecialchars($_SESSION['user_id']) ?>">
+                            <input type="hidden" name="euid" value="<?= htmlspecialchars($_SESSION['user_id'] ?? '') ?>">
                             <div class="form-floating mb-3">
-                                <input class="form-control editname" type="text" name="ename"value="<?= htmlspecialchars($_SESSION['username']); ?>">
+                                <input class="form-control editname" type="text" name="ename"value="<?= htmlspecialchars($_SESSION['username'] ?? ''); ?>">
                                 <label for="editname">Username</label>
                                 <div class="form-text text-danger text-center eusr_in"></div>
                             </div>

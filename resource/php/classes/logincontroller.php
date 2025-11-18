@@ -39,6 +39,7 @@
                 $_SESSION['phone'] = $result['phone'];
                 $_SESSION['role'] = $result['role'];
                 $_SESSION['last_regeneration'] = time();
+                $_SESSION['csrf_token'] = $_POST['csrf_token'];
                 session_id($sessionID);
             }
         }

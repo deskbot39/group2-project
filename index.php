@@ -1,9 +1,9 @@
 <?php
     require_once './resource/php/conf_session.php';
     require_once './resource/php/loginviewer.php';
-    $head_desc = htmlspecialchars("Landing Page of Wang Scent PH");
-    $head_title = htmlspecialchars("Wang Scent PH | Home");
-    $head_class = htmlspecialchars("");
+    $head_desc = htmlspecialchars("Landing Page of Wang Scent PH" ?? '');
+    $head_title = htmlspecialchars("Wang Scent PH | Home" ?? '');
+    $head_class = htmlspecialchars("" ?? '');
     $js_locs = array();
     include('resource/template/html/html_head.html');
     userLoginDisplay();

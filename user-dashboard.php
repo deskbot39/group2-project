@@ -3,8 +3,8 @@
     require_once './resource/php/orderviewer.php';
     require_once './resource/php/loginviewer.php';
     roleLock();
-    $head_desc = htmlspecialchars("User Profile Page of Wang Scent PH");
-    $head_title = htmlspecialchars("Wang Scent PH | User Profile");
+    $head_desc = htmlspecialchars("User Profile Page of Wang Scent PH" ?? '');
+    $head_title = htmlspecialchars("Wang Scent PH | User Profile" ?? '');
     $head_class = htmlspecialchars("");
     $js_locs = array();
     include('resource/template/html/html_head.html');

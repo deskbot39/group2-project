@@ -3,6 +3,7 @@
         <h4 class="mb-2 text-center">Forgot Password</h4>
         <p class="mb-4">Enter your email and we'll reset your password</p>
         <form action="./resource/php/reset-passhandler.php" method="post">
+            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token'] ?? ''); ?>" >
             <div class="form-floating mb-3">
                 <input class="form-control" type="email" name="reset-email" id="rmail" required>
                 <label class="form-label" for="rmail">Email</label>

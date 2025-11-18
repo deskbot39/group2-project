@@ -1,5 +1,6 @@
 <?php
     // Cookie Configuration
+    date_default_timezone_set('Asia/Manila');
     ini_set('session.use_only_cookies', 1);
     ini_set('session.use_strict_mode', 1);
     session_set_cookie_params([
@@ -11,31 +12,42 @@
     ]);
     
     session_start();
-    date_default_timezone_set('Asia/Manila');
 
+    // Session ID regen
     function regenerate_id() {
-        session_regenerate_id(true);
+        session_regenerate_id();
         $_SESSION['last_regeneration'] = time();
     }
 
     // CSRF Token
-    $csrf_token = bin2hex(random_bytes(32));
-    $_SESSION['csrf_token'] = $csrf_token;
+    function csrf_id() {
+        $csrf_token = bin2hex(random_bytes(32));
+        $_SESSION['csrf_token'] = $csrf_token;
+    }
     $time_interval = 60 * 15;
+
 
     if (isset($_SESSION['user_id'])) {
         // Login Regen
+        csrf_id();
         regenerate_id();
+
     } elseif (isset($_SESSION['user_id']) && !isset($_SERVER['last_regeneration'])) {
-        // Login Regen
+        csrf_id();
         regenerate_id();
+
     } elseif (isset($_SESSION['user_id']) && time() - $_SESSION['last_regeneration'] >= $time_interval) {
-        // Login Regen
+        csrf_id();
         regenerate_id();
+
     } elseif (!isset($_SERVER['last_regeneration'])) {
+        csrf_id();
         regenerate_id();
+
     } elseif (time() - $_SESSION['last_regeneration'] >= $time_interval) {
+        csrf_id();
         regenerate_id();
+
     }
 
 ?>

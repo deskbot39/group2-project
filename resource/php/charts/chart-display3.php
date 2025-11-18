@@ -9,8 +9,15 @@
                     LIMIT 5";
         $stmt = $db->connect()->prepare($query);
         $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        echo json_encode($result);
+        
+        if($stmt->execute()) {
+            $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            echo json_encode($result);
+        } else {
+            $foo = array('bar', 'wow');
+            $result = json_encode($foo);
+	        echo $result;
+        };
 } else {
     header('location: ../../../admin-dashboard.php');
     die();

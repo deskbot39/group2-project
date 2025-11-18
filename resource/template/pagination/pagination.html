@@ -5,7 +5,7 @@
     <ul class="pagination">
         <?php if ($page > 1) { ?>
         <li class="page-item">
-            <a href="?page=<?= $page - 1; ?>" class="page-link"><span aria-hidden="true">&laquo;</span></a>
+            <a href="?page=<?= htmlspecialchars($page - 1 ?? ''); ?>" class="page-link"><span aria-hidden="true">&laquo;</span></a>
         </li>
         <?php } ?>
 
@@ -14,11 +14,11 @@
                 <?php $inrange = false; ?>
                 <?php if ($i == $page) { ?>
                     <li class="page-item">
-                        <a href="?page=<?= $i; ?>" class="page-link link-body-emphasis active"><?= $i; ?></a>
+                        <a href="?page=<?= htmlspecialchars($i ?? ''); ?>" class="page-link link-body-emphasis active"><?= $i; ?></a>
                     </li>
                 <?php } else { ?>
                 <li class="page-item">
-                    <a href="?page=<?= $i; ?>" class="page-link"><?= $i; ?></a>
+                    <a href="?page=<?= htmlspecialchars($i ?? ''); ?>" class="page-link"><?= $i; ?></a>
                 </li>
                 <?php } ?>
             <?php } else { ?>
@@ -33,7 +33,7 @@
 
         <?php if ($page < $total_pages ) { ?>
         <li class="page-item">
-            <a href="?page=<?= $page + 1; ?>" class="page-link"><span aria-hidden="true">&raquo;</span></a>
+            <a href="?page=<?= htmlspecialchars($page + 1 ?? ''); ?>" class="page-link"><span aria-hidden="true">&raquo;</span></a>
         </li>
         <?php } ?>
     </ul>

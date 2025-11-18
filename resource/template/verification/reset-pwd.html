@@ -2,7 +2,8 @@
     <div class="card-body">
         <h4 class="mb-3 text-center">Reset Password</h4>
         <form action="./resource/php/reset-verifierhandler.php" method="post">
-            <input type="hidden" name="token" value="<?= htmlspecialchars($token); ?>">
+            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token'] ?? ''); ?>" >
+            <input type="hidden" name="token" value="<?= htmlspecialchars($token ?? ''); ?>">
             <div class="form-floating mb-3">
                 <input class="form-control" type="password" name="reset-pass" id="rpass1" required>
                 <label class="form-label" for="rpass1">New Password</label>

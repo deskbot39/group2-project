@@ -1,21 +1,21 @@
 <div class="container my-5 py-5">
     <div class="row bg-body-tertiary m-1 p-5 rounded border">
         <div class="col-lg-6 mb-4">
-            <img class="img-fluid rounded" src="<?= htmlspecialchars($details['image_link']); ?>" alt="IMAGE of <?= htmlspecialchars($details['name']); ?>" height="500" width="500">
+            <img class="img-fluid rounded" src="<?= htmlspecialchars($details['image_link'] ?? ''); ?>" alt="IMAGE of <?= htmlspecialchars($details['name'] ?? ''); ?>" height="500" width="500">
         </div>
         <div class="col-lg-6">
-            <h2 class="mb-3"><?= htmlspecialchars($details['name']); ?></h2>
-            <p class="text-muted mb-4">&#8369; <?= htmlspecialchars($details['price']); ?></</p>
+            <h2 class="mb-3"><?= htmlspecialchars($details['name'] ?? ''); ?></h2>
+            <p class="text-muted mb-4">&#8369; <?= htmlspecialchars($details['price'] ?? ''); ?></</p>
             <p class="mb-4 lh-1">
-                <b>Stock:</b> <?= htmlspecialchars($details['stock']); ?></p>
+                <b>Stock:</b> <?= htmlspecialchars($details['stock'] ?? ''); ?></p>
             </p>
             <p class="mb-4">
-                <?= htmlspecialchars($details['description']); ?></p>
+                <?= htmlspecialchars($details['description'] ?? ''); ?></p>
             </p>
             <form class="row" action="./resource/php/producthandler.php" method="post">
-                <input type="hidden" name="cid" value="<?= htmlspecialchars($_SESSION['cart_id']); ?>">
-                <input type="hidden" name="cpid" value="<?= htmlspecialchars($details['product_id']); ?>">
-                <input type="hidden" name="price" value="<?= htmlspecialchars($details['price']); ?>">
+                <input type="hidden" name="cid" value="<?= htmlspecialchars($_SESSION['cart_id'] ?? ''); ?>">
+                <input type="hidden" name="cpid" value="<?= htmlspecialchars($details['product_id'] ?? ''); ?>">
+                <input type="hidden" name="price" value="<?= htmlspecialchars($details['price'] ?? ''); ?>">
                 <div class="btn-group mt-3">
                     <button class="btn btn-success" type="submit" name="add-p">
                         Add to Cart

@@ -4,8 +4,8 @@
     require_once './resource/php/loginviewer.php';
     roleLock();
     highRoleLock();
-    $head_desc = htmlspecialchars("Dashboard Users Page");
-    $head_title = htmlspecialchars("Dashboard | Users");
+    $head_desc = htmlspecialchars("Dashboard Users Page" ?? '');
+    $head_title = htmlspecialchars("Dashboard | Users" ?? '');
     $head_class = htmlspecialchars("");
     $js_locs = array();
     include('resource/template/html/html_head.html');
