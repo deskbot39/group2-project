@@ -3,7 +3,7 @@
         <?php include('./resource/template/admin-dashboard/admin-sidebar.html') ?>
         <main class="admdash-cont col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <div>
+                <div class="mt-3">
                     <h2>Wang Scent PH Dashboard</h2>
                 </div>
             </div>
@@ -80,7 +80,7 @@
             </div>
             <hr class="my-3">
             <!-- Chart -->
-            <canvas class="my-4 w-100" id="myChart" width="747" height="315" style="display: block; box-sizing: border-box; height: 394px; width: 934px;"></canvas>
+            <?php include('./resource/template/admin-dashboard/admin-chart.html'); ?>
         </main>
     </div>
 </div>

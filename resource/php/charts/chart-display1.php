@@ -1,0 +1,14 @@
+<?php
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        include '../classes/conf_db.php';
+        $db = new conf_db();
+        $query = "SELECT COUNT(*) AS 'count', `status` FROM orders GROUP BY `status`";
+        $stmt = $db->connect()->prepare($query);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($result); 
+} else {
+    header('location: ../../../admin-dashboard.php');
+    die();
+}
+?>

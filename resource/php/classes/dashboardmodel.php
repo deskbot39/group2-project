@@ -31,7 +31,7 @@
         }
         
         public function getTotalRevenue($month, $year) {
-            $query = "SELECT SUM(total_amount) AS revenue FROM orders WHERE MONTH(date_created) = :month AND YEAR(date_created) = :year";
+            $query = "SELECT SUM(total_amount) AS revenue FROM orders WHERE MONTH(date_created) = :month AND YEAR(date_created) = :year AND status = 'Received' OR status = 'Shipped'";
             $stmt = $this->connect()->prepare($query);
             $stmt->bindParam(":month", $month);
             $stmt->bindParam(":year", $year);
