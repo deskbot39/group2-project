@@ -41,6 +41,7 @@
                 $this->errorSetter('email_taken','Email is already used');
             } else {
                 $this->setUser($this->username,$this->email,$this->password,$this->phone);
+                $this->successSetter("register_user", "User registered! Check your email for verification");
                 unset($_SESSION['saved_input']);
             }
         }
@@ -49,8 +50,12 @@
             $error_arr = [];
             $error_arr[$code] = $text;
             $_SESSION['register_errors'] = $error_arr;
-            header('Location: ../../register-page.php');
-            die();
+        }
+
+        private function successSetter($code, $text) {
+            $succ_arr = [];
+            $succ_arr[$code] = $text;
+            $_SESSION['register_good'] = $succ_arr;
         }
 
         private function saveRegInputs() {

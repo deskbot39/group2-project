@@ -23,7 +23,7 @@
         $register = new registercontroller($username,$email,$password,$confirm_password,$phone);
         $register->registerUser();
         
-        header("location: ../../register-page.php?register=success");
+        header("location: ../../register-page.php");
         die();
 } else {
     header('location: ../../index.php');

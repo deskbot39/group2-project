@@ -28,9 +28,13 @@
                 include ('./resource/template/alerts/alert-warning.html');
             }
             unset($_SESSION['register_errors']);
-        } elseif (isset($_GET['register']) && $_GET['register'] === "success") {
-            include ('./resource/template/alerts/alert-success.html');
-            unset($_SESSION['saved_input']);    
+        } elseif (isset($_SESSION['register_good'])) {
+            $succs = $_SESSION['register_good'];
+            foreach ($succs as $succ) {
+                include ('./resource/template/alerts/alert-successOrder.html');
+            }
+            unset($_SESSION['register_good']);
+            unset($_SESSION['saved_input']);
         }
     }
 

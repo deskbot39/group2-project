@@ -1,5 +1,9 @@
 <?php
     declare(strict_types= 1);
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+
     class registermodel extends conf_db {
 
         protected function getUser(string $username) {
@@ -33,14 +37,51 @@
         }
 
         protected function setUser(string $username, string $email, string $pass, string $phone) {
+            require('../../vendor/PHPMailer/src/Exception.php');
+            require('../../vendor/PHPMailer/src/PHPMailer.php');
+            require('../../vendor/PHPMailer/src/SMTP.php');
             $hashed_pwd = password_hash($pass, PASSWORD_BCRYPT);
-            $query = "INSERT INTO users (`username`, `email`, `password`, `phone`) VALUES (:username, :email, :password1, :phone)";
+            $token = bin2hex(random_bytes(16));
+            $email_hash = hash("sha256", $token);
+            $mail = new PHPMailer(true);
+
+            $query = "INSERT INTO users (`username`, `email`, `password`, `phone`, `email_hash`) VALUES (:username, :email, :password1, :phone, :ehash)";
             $stmt = $this->connect()->prepare($query);
             $stmt->bindParam(":username", $username);
             $stmt->bindParam(":email", $email);
             $stmt->bindParam(":password1", $hashed_pwd);
             $stmt->bindParam(":phone", $phone);
+            $stmt->bindParam(":ehash", $email_hash);
             $stmt->execute();
+            $return = $stmt->rowCount();
+
+            if ($return) {
+                $mail->isSMTP();
+                $mail->SMTPAuth = true;
+
+                $mail->Host = "smtp.gmail.com";
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                $mail->Port = 587;
+                $mail->Username = "do.not.reply.project2@gmail.com";
+                $mail->Password = "hsec stvh ypkt mnpc";
+                $mail->isHtml(true);
+
+                $mail->setFrom("do.not.reply.project2@gmail.com");
+                $mail->addAddress($email);
+                $mail->Subject = "Wang Scent PH | Account Activation";
+                $mail->Body = <<<END
+                    Click <a href="localhost/group2-project/verify-email.php?token=$token">this link</a> to activate your email for your account.
+                END;
+                try {
+                    $mail->send();
+
+                } catch (Exception $e) {
+                    echo $mail->ErrorInfo;
+                    die();
+                }
+
+            }
+
         }
     }
 ?>

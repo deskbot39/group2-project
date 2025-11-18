@@ -26,11 +26,27 @@
         return $result;
     }
 
+    function errorSetter($code, $text) {
+        $error_arr = [];
+        $error_arr[$code] = $text;
+        $_SESSION['reset_errors'] = $error_arr;
+    }
+    
+    function successSetter($code, $text) {
+        $succ_arr = [];
+        $succ_arr[$code] = $text;
+        $_SESSION['reset_good'] = $succ_arr;
+    }
+
     $result = hashMatch($verify_hash);
     if ($result == NULL) {
-        die('Token not found');
+        errorSetter("no_toke", "Token Not Found");
+        header('location: forgot-pass.php');
+        die();
     }elseif (strtotime($result['pwd_token_expire']) <= time()) {
-        die('Token has expired');
+        errorSetter("toke_expire", "Token Link Expired");
+        header('location: forgot-pass.php');
+        die();
     }
 
     include('resource/template/html/html_head.html');

@@ -14,8 +14,9 @@
     $ord_table_canc = $ord->getAllUserOrderStatus($_SESSION['user_id'], 'Cancelled');
     
     $itm_per_page = 6;
-    $query = "SELECT COUNT(*) AS total FROM orders";
+    $query = "SELECT COUNT(*) AS total FROM orders WHERE user_id = :id";
     $stmt = $db->connect()->prepare($query);
+    $stmt->bindParam(':id', $_SESSION['user_id'], PDO::PARAM_INT);
     $stmt->execute();
     $total_result = $stmt->fetch(PDO::FETCH_ASSOC)['total'];
     $total_pages = ceil($total_result / $itm_per_page);
@@ -28,8 +29,9 @@
 
     $page = max(1, min($page, $total_pages));
     $start = ($page - 1) * $itm_per_page;
-    $query1 = "SELECT * FROM orders LIMIT :starter, :ipp";
+    $query1 = "SELECT * FROM orders WHERE user_id = :id LIMIT :starter, :ipp";
     $stmt = $db->connect()->prepare($query1);
+    $stmt->bindParam(':id', $_SESSION['user_id'], PDO::PARAM_INT);
     $stmt->bindValue(":starter", $start, PDO::PARAM_INT);
     $stmt->bindValue(":ipp", $itm_per_page, PDO::PARAM_INT);
     $stmt->execute();
