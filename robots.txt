@@ -12,3 +12,4 @@ Disallow: admin-order.php
 Disallow: admin-product.php
 Disallow: admin-user.php
 Disallow: user-dashboard.php
+Disallow: shopping-cart.php
