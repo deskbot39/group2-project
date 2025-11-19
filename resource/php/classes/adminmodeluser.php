@@ -40,6 +40,28 @@
             $result = $stmt->fetch(PDO::FETCH_ASSOC);
             return $result;
         }
+
+        protected function getUsername(int $uid, string $username) {
+            $query = "SELECT * FROM users WHERE username = :username AND user_id != :uid";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":uid", $uid);
+            $stmt->bindParam(":username", $username);
+            $stmt->execute();
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
+        
+        protected function getElecMail(int $uid, string $email) {
+            $query = "SELECT * FROM users WHERE email = :email AND user_id != :uid";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":uid", $uid);
+            $stmt->bindParam(":email", $email);
+            $stmt->execute();
+    
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
         
         protected function getEmail(string $email) {
             $query = "SELECT `user_id` FROM users WHERE email = :email";

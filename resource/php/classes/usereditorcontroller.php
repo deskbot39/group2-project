@@ -21,8 +21,13 @@
                 $this->errorSetter('empty_name', 'Empty username');
             } elseif ($this->usernameInvalid()) {
                 $this->errorSetter('invalid_name', 'Invalid username');
-
+                
             } elseif ($this->username !== $_SESSION['username']) {
+                $this->errorSetter('invalid_name', 'Invalid username');
+            } elseif ($this->userNameExists()) {
+                $this->errorSetter('invalid_name', 'Username already exists');
+                
+            } else {
                 $this->updateUsername($this->username, $this->id);
                 $this->successSetter("uname_upd", "Updated User Information!");
                 $_SESSION['username'] = $this->username;
@@ -35,8 +40,14 @@
                 
             } elseif ($this->emailInvalid()) {
                 $this->errorSetter('invalid_email', 'Invalid email');
-
+                
             } elseif ($this->email !== $_SESSION['email']) {
+                $this->errorSetter('invalid_email', 'Invalid email');
+                
+            } elseif ($this->elecMailExists()) {
+                $this->errorSetter('invalid_email', 'Email already exists');
+                
+            } else {
                 $this->updateEmail($this->email, $this->id);
                 $this->successSetter("email_upd", "Updated User Information!");
                 $_SESSION['email'] = $this->email;
@@ -138,6 +149,20 @@
                 return false;
             } else {
                 return true;
+            }
+        }
+        private function userNameExists() {
+            if ($this->getUsername($this->id, $this->username)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        private function elecMailExists() {
+            if ($this->getElecMail($this->id, $this->email)) {
+                return true;
+            } else {
+                return false;
             }
         }
     }
