@@ -125,5 +125,15 @@
                 return false;
             }
         }
+
+        protected function prodEmptyCheck(int $prod_id) {
+            $query = "SELECT * FROM products WHERE stock = 0 AND product_id = :pid";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":pid", $prod_id);
+            $stmt->execute();
+            
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
     }
 ?>

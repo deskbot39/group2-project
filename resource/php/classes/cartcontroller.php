@@ -15,6 +15,8 @@
                 $this->errorSetter('empty_data', 'Fill all fields');
             } elseif ($this->nullValue()) {
                 $this->errorSetter('invalid_val', 'Value cannot be negative');
+            } elseif($this->itemEmpty()) {
+                $this->errorSetter('no_stock', 'Product has no stock');
             } else {
                 $this->addProductQuantity($this->cart_id, $this->product_id);
                 $this->updateCartTotal($this->cart_id, $this->product_id);
@@ -26,6 +28,8 @@
                 $this->errorSetter('empty_data', 'Fill all fields');
             } elseif ($this->nullValue()) {
                 $this->errorSetter('invalid_val', 'Value cannot be negative or 0');
+            } elseif ($this->itemEmpty()) {
+                $this->errorSetter('no_stock', 'Product has no stock');
             } else {
                 $this->subtractProductQuantity($this->cart_id, $this->product_id);
                 $this->updateCartTotal($this->cart_id, $this->product_id);
@@ -55,6 +59,14 @@
 
         private function nullValue() {
             if ($this->quantity < 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        private function itemEmpty() {
+            if ($this->prodEmptyCheck($this->product_id)) {
                 return true;
             } else {
                 return false;
