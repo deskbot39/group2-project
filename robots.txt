@@ -1,0 +1,14 @@
+User-agent: *
+Disallow: /resource/css/
+Disallow: /resource/php/
+Disallow: /resource/js/
+Disallow: /vendor/
+Disallow: verify-email.php
+Disallow: logout.php
+Disallow: forgot-pass.php
+Disallow: change-pass.php
+Disallow: admin-dashboard.php
+Disallow: admin-order.php
+Disallow: admin-product.php
+Disallow: admin-user.php
+Disallow: user-dashboard.php

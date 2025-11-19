@@ -26,7 +26,7 @@
     }
     
     $itm_per_page = 6;
-    $query = "SELECT COUNT(*) AS total FROM products";
+    $query = "SELECT COUNT(*) AS total FROM products WHERE stock > 0";
     $stmt = $db->connect()->prepare($query);
     $stmt->execute();
     $total_result = $stmt->fetch(PDO::FETCH_ASSOC)['total'];
@@ -40,7 +40,7 @@
 
     $page = max(1, min($page, $total_pages));
     $start = ($page - 1) * $itm_per_page;
-    $query1 = "SELECT * FROM products LIMIT :starter, :ipp";
+    $query1 = "SELECT * FROM products WHERE stock > 0 LIMIT :starter, :ipp";
     $stmt = $db->connect()->prepare($query1);
     $stmt->bindValue(":starter", $start, PDO::PARAM_INT);
     $stmt->bindValue(":ipp", $itm_per_page, PDO::PARAM_INT);

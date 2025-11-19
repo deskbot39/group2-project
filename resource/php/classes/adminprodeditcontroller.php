@@ -28,6 +28,9 @@
             if (empty($this->name)) {
                 $this->errorSetter('empty_pname', 'Empty Product Name');
                 
+            } elseif ($this->checkNameEditExists($this->name, $this->id)) {
+                $this->errorSetter('exist_pname', 'Product Name Already Exists');
+
             } else {
                 $this->updateProductName($this->id, $this->name);
                 $this->successSetter("pname_upd", "Updated Item Name!");
@@ -36,7 +39,7 @@
 
         public function updateItemDesc() {
             if (empty($this->desc)) {
-                $this->errorSetter('empty_desc', 'Empty description');
+                $this->errorSetter('empty_desc', 'Empty Description');
 
             } else {
                 $this->updateProductDesc($this->id, $this->desc);
@@ -94,5 +97,6 @@
             $success_arr[$code] = $text;
             $_SESSION['admin_good'] = $success_arr;
         }
+
     }
 ?>

@@ -1,12 +1,12 @@
 <?php
-    if (isset($_POST['register-btn']) || $_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['csrf_token'] === $_SESSION['csrf_token']) {
+    require_once 'conf_session.php';
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && hash_equals($_POST['csrf_token'], $_SESSION['csrf_token'])) {
         $username = $_POST['username'];
         $email = $_POST['email'];
         $phone = $_POST['phone'];
         $confirm_password = $_POST['confirm_password'];
         $password = $_POST['password'];
 
-        require_once 'conf_session.php';
         include "classes/conf_db.php";
         include "classes/registermodel.php";
         include "classes/registercontroller.php";
@@ -25,8 +25,12 @@
         
         header("location: ../../register-page.php");
         die();
-} else {
-    header('location: ../../index.php');
-    die();
-}
+
+    } elseif(time() >= $_SESSION['csrf_expire']) {
+        header('location: ../../index.php');
+        die();
+    } else {
+        header('location: ../../index.php');
+        die();
+    }
 ?>

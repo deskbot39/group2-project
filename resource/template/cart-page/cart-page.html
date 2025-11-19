@@ -34,7 +34,11 @@
                             <div class="input-group">
                                 <button class="btn btn-outline-secondary btn-sm" type="submit" name="sub-citm">-</button>
                                 <input name="upd-citm" type="text" class="form-control form-control-sm text-center qty-input" value="<?= htmlspecialchars($item['quantity'] ?? ''); ?>" min="1" max="<?= htmlspecialchars($prod_info['stock'] ?? ''); ?>" readonly>
-                                <button class="btn btn-outline-secondary btn-sm" type="submit" name="add-citm">+</button>
+                                <?php if ($prod_info['stock'] > $item['quantity']) { ?>
+                                    <button class="btn btn-outline-secondary btn-sm" type="submit" name="add-citm">+</button>
+                                    <?php } else { ?>
+                                    <button class="btn btn-outline-secondary btn-sm" disabled type="submit" name="add-citm">+</button>
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="col-md-2 text-end">
@@ -71,6 +75,7 @@
                         <?php } ?>
                     </div>
                     <form action="./resource/php/orderhandler.php" method="post">
+                        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token'] ?? ''); ?>" >
                         <input type="hidden" name="ouid" value="<?= htmlspecialchars($_SESSION['user_id'] ?? ''); ?>">
                         <input type="hidden" name="ocid" value="<?= htmlspecialchars($_SESSION['cart_id'] ?? ''); ?>">
                         <input type="hidden" name="ototal" value="<?= htmlspecialchars($total ?? ''); ?>">

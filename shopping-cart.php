@@ -12,6 +12,10 @@
 ?>
 <main class="cart-cont">
 <?php
+    $csrf_token = bin2hex(random_bytes(32));
+    $csrf_expire = time() + 60 * 15;
+    $_SESSION['csrf_token'] = $csrf_token;
+    $_SESSION['csrf_expire'] = $csrf_expire;
     cart_order_error_display();
     include('./resource/template/cart-page/cart-page.html');
 ?>

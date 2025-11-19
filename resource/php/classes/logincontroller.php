@@ -29,6 +29,8 @@
                 $result = $this->getUser($this->email);
                 $cart_result = $this->getCart($result['user_id']);
                 $cart_item_count = $this->getCartItemCount($cart_result['cart_id']);
+                unset($_SESSION['csrf_token']);
+                unset($_SESSION['csrf_expire']);
                 $new_session = session_create_id();
                 $sessionID = $new_session . "_" . $result['user_id'];
                 $_SESSION['user_id'] = (int)$result['user_id'];
@@ -39,7 +41,6 @@
                 $_SESSION['phone'] = $result['phone'];
                 $_SESSION['role'] = $result['role'];
                 $_SESSION['last_regeneration'] = time();
-                $_SESSION['csrf_token'] = $_POST['csrf_token'];
                 session_id($sessionID);
             }
         }

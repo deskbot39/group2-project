@@ -109,5 +109,16 @@
             $stmt->bindParam(":stock", $stock);
             $stmt->execute();
         }
+
+        protected function checkNameEditExists(string $name, int $pid) {
+            $query = "SELECT * FROM products WHERE name = :name AND product_id != :pid";
+            $stmt = $this->connect()->prepare($query);
+            $stmt->bindParam(":name", $name);
+            $stmt->bindParam(":pid", $pid);
+            $stmt->execute();
+            
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $result;
+        }
 }
 ?>

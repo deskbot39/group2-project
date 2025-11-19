@@ -43,6 +43,8 @@
                 $this->setUser($this->username,$this->email,$this->password,$this->phone);
                 $this->successSetter("register_user", "User registered! Check your email for verification");
                 unset($_SESSION['saved_input']);
+                unset($_SESSION['csrf_token']);
+                unset($_SESSION['csrf_expire']);
             }
         }
 

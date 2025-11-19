@@ -1,6 +1,6 @@
 <?php
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        require_once 'conf_session.php';
+    require_once 'conf_session.php';
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && hash_equals($_POST['csrf_token'], $_SESSION['csrf_token'])) {
         include "classes/conf_db.php";
 
         $token = $_POST['token'];
@@ -86,8 +86,12 @@
             die();
         }
 
-} else {
-    header('location: ../../forgot-pass.php');
-    die();
-}
+    } elseif (time() >= $_SESSION['csrf_expire']) {
+        header('location: ../../forgot-pass.php');
+        die();
+    } else {
+        header('location: ../../forgot-pass.php');
+        die();
+
+    }
 ?>

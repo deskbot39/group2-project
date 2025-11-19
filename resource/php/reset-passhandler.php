@@ -2,12 +2,12 @@
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
+    require_once 'conf_session.php';
     
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && hash_equals($_POST['csrf_token'], $_SESSION['csrf_token'])) {
         require('../../vendor/PHPMailer/src/Exception.php');
         require('../../vendor/PHPMailer/src/PHPMailer.php');
         require('../../vendor/PHPMailer/src/SMTP.php');
-        require_once 'conf_session.php';
         include "classes/conf_db.php";
 
         $email = $_POST['reset-email'];
@@ -94,6 +94,9 @@
             die();
         }
         
+    } else if(time() >= $_SESSION['csrf_expire']) {
+        header('location: ../../forgot-pass.php');
+        die();
     } else {
         header('location: ../../forgot-pass.php');
         die();
