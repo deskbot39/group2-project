@@ -2,8 +2,8 @@ User-agent: *
 Disallow: /resource/css/
 Disallow: /resource/php/
 Disallow: /resource/js/
+Disallow: /resource/template/
 Disallow: /vendor/
-Disallow: /template/
 Disallow: verify-email.php
 Disallow: logout.php
 Disallow: forgot-pass.php
