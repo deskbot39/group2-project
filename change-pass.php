@@ -5,7 +5,7 @@
     include "./resource/php/classes/conf_db.php";
     $head_desc = htmlspecialchars("Reset Password Page" ?? '');
     $head_title = htmlspecialchars("Wang Scent PH | Reset Password" ?? '');
-    $head_class = htmlspecialchars("d-flex align-items-center justify-content-center py-4 bg-body-tertiary min-vh-100" ?? '');
+    $head_class = htmlspecialchars("d-flex align-items-center justify-content-center py-4 bg-body-tertiary min-vh-100 change-cont" ?? '');
     $js_locs = array("./resource/js/reset-validation.js");
     $csrf_token = bin2hex(random_bytes(32));
     $csrf_expire = time() + 60 * 15;

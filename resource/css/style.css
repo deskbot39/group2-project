@@ -29,6 +29,9 @@ html {
 }
 .form-cont {
     max-width: 340px;
+    box-shadow: 5px 5px 30px 5px rgba(255,215,143,0.75) !important;
+    -webkit-box-shadow: 5px 5px 30px 5px rgba(255,215,143,0.75) !important;
+    -moz-box-shadow: 5px 5px 30px 5px rgba(255,215,143,0.75) !important;
 }
 .link-rel, .gold {
     color:  #ffd78f !important;
@@ -50,6 +53,12 @@ html {
     transition: 0.5s;
 
 }
+.navbar-toggler {
+    border-color: #b8860b;
+}
+.navbar-toggler-icon {
+    filter: brightness(0) saturate(100%) invert(79%) sepia(35%) saturate(473%) hue-rotate(346deg) brightness(104%) contrast(101%);
+}
 .nav-top, .nav-foot {
     
 }
@@ -67,7 +76,7 @@ html {
     font-family: "Merriweather", serif;
 }
 .hero-bg {
-    background-image: url('../img/bgimage.webp');
+    background-image: linear-gradient(hsl(0 0% 0% / 0.5)), url('../img/bgimage.webp');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -80,8 +89,26 @@ html {
 }
 
 /* Login Page */
+.log-cont {
+    background: #060606 !important;
 
+}
 /* Register Page */
+.reg-cont {
+    background: #060606 !important;
+}
+
+/* Forgot Pass Page */
+.forgot-cont {
+    background: #060606 !important;
+    
+}
+
+/* Change Pass Page */
+.change-cont {
+    background: #060606 !important;
+
+}
 
 /* Contact Page */
 .contact-cont {

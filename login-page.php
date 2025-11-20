@@ -4,7 +4,7 @@
     require_once './resource/php/pwd-resetviewer.php';
     $head_desc = htmlspecialchars("Login Page of Wang Scent PH" ?? '');
     $head_title = htmlspecialchars("Wang Scent PH | Login" ?? '');
-    $head_class = htmlspecialchars("d-flex align-items-center justify-content-center py-4 bg-body-tertiary min-vh-100" ?? '');
+    $head_class = htmlspecialchars("d-flex align-items-center justify-content-center py-4 bg-body-tertiary min-vh-100 log-cont" ?? '');
     $js_locs = array();
     include('resource/template/html/html_head.html');
     login_error_display();
