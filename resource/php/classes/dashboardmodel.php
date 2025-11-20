@@ -11,7 +11,7 @@
         }
 
         public function getOrderCount($month, $year) {
-            $query = "SELECT COUNT(*) AS ordertotal FROM orders WHERE MONTH(date_created) = :month AND YEAR(date_created) = :year";
+            $query = "SELECT COUNT(*) AS ordertotal FROM orders WHERE MONTH(date_updated) = :month AND YEAR(date_created) = :year";
             $stmt = $this->connect()->prepare($query);
             $stmt->bindParam(":month", $month);
             $stmt->bindParam(":year", $year);
@@ -21,7 +21,7 @@
         }
 
         public function getTotalStock($month, $year) {
-            $query = "SELECT SUM(stock) AS stocktotal FROM products WHERE MONTH(date_created) = :month AND YEAR(date_created) = :year";
+            $query = "SELECT SUM(stock) AS stocktotal FROM products WHERE MONTH(date_updated) = :month AND YEAR(date_created) = :year";
             $stmt = $this->connect()->prepare($query);
             $stmt->bindParam(":month", $month);
             $stmt->bindParam(":year", $year);
@@ -31,7 +31,7 @@
         }
         
         public function getTotalRevenue($month, $year) {
-            $query = "SELECT SUM(total_amount) AS revenue FROM orders WHERE MONTH(date_created) = :month AND YEAR(date_created) = :year AND status = 'Received' OR status = 'Shipped'";
+            $query = "SELECT SUM(total_amount) AS revenue FROM orders WHERE MONTH(date_updated) = :month AND YEAR(date_created) = :year AND status = 'Received' OR status = 'Shipped'";
             $stmt = $this->connect()->prepare($query);
             $stmt->bindParam(":month", $month);
             $stmt->bindParam(":year", $year);
