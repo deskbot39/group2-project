@@ -1,15 +1,15 @@
 <div class="container py-5">
     <div class="text-start mb-4 mt-5">
-        <a href="./product-page.php" class="btn btn-outline-primary">
+        <a href="./product-page.php" class="btn btn-outline-primary gold-btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/></svg>
             Go to Products
         </a>
     </div>
-    <h2 class="mb-5">User Profile</h2>
+    <h2 class="mb-5 gold">User Profile</h2>
     <div class="row">
         <div class="col-lg-4">
             <div class="m-5" style="top: 50rem;">
-                <h4 class="my-3 text-center">User Information</h4>
+                <h4 class="my-3 text-center fw-bold gold">User Information</h4>
                 <div class="row mb-3">
                     <h5 class="col">Username</h5>
                     <span class="col"><?= htmlspecialchars($_SESSION['username']); ?></span>
@@ -25,7 +25,7 @@
                     <span class="col"><?= htmlspecialchars($_SESSION['phone']); ?></span>
                 </div>
                 <div class="row mb-2 d-flex px-3">
-                    <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#editusr">Edit User Info</button>
+                    <button class="btn gold-btn" data-bs-toggle="modal" data-bs-target="#editusr">Edit User Info</button>
                 </div>
             </div>
         </div>
@@ -74,28 +74,28 @@
         </div>
         <div class="col-lg-8">
             <div class="p-2">
-                <h4 class="my-3 text-center">Order History</h4>
+                <h4 class="my-3 text-center gold fw-bold">Order History</h4>
                 <ul class="nav nav-tabs flex-column flex-sm-row mb-4 justify-content-center bg-body-secondary rounded shadow-sm" role="tablist" id="table-tab">
                     <li class="nav-item" role="presentation">
-                        <button class="flex-sm-fill w-100 text-sm-center nav-link active" type="button" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" aria-controls="all" role="tab" aria-selected="true">All</button>
+                        <button class="flex-sm-fill w-100 text-sm-center nav-link gold active" type="button" id="all-tab" data-bs-toggle="tab" data-bs-target="#all" aria-controls="all" role="tab" aria-selected="true">All</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="flex-sm-fill w-100 text-sm-center nav-link" type="button" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending" aria-controls="pending" role="tab" aria-selected="false">Pending</button>
+                        <button class="flex-sm-fill w-100 text-sm-center nav-link gold" type="button" id="pending-tab" data-bs-toggle="tab" data-bs-target="#pending" aria-controls="pending" role="tab" aria-selected="false">Pending</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="flex-sm-fill w-100 text-sm-center nav-link" type="button" id="received-tab" data-bs-toggle="tab" data-bs-target="#received" aria-controls="received" role="tab" aria-selected="false">Received</button>
+                        <button class="flex-sm-fill w-100 text-sm-center nav-link gold" type="button" id="received-tab" data-bs-toggle="tab" data-bs-target="#received" aria-controls="received" role="tab" aria-selected="false">Received</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="flex-sm-fill w-100 text-sm-center nav-link" type="button" id="shipped-tab" data-bs-toggle="tab" data-bs-target="#shipped" aria-controls="shipped" role="tab" aria-selected="false">Shipped</button>
+                        <button class="flex-sm-fill w-100 text-sm-center nav-link gold" type="button" id="shipped-tab" data-bs-toggle="tab" data-bs-target="#shipped" aria-controls="shipped" role="tab" aria-selected="false">Shipped</button>
                     </li>
                     <li class="nav-item" role="presentation">
-                        <button class="flex-sm-fill w-100 text-sm-center nav-link" type="button" id="cancelled-tab" data-bs-toggle="tab" data-bs-target="#cancelled" aria-controls="cancelled" role="tab" aria-selected="false">Cancelled</button>
+                        <button class="flex-sm-fill w-100 text-sm-center nav-link gold" type="button" id="cancelled-tab" data-bs-toggle="tab" data-bs-target="#cancelled" aria-controls="cancelled" role="tab" aria-selected="false">Cancelled</button>
                     </li>
                 </ul>
                 <div class="tab-content" id="table-tab-content">
                     <div class="tab-pane fade active show" id="all" role="tabpanel" aria-labelledby="all-tab" tabindex="0">
                         <div class="table-responsive">
-                            <table class="table table-hover table-sm">
+                            <table class="table table-hover table-bordered table-sm">
                                 <thead>
                                     <th scope="col">Order No.</th>
                                     <th scope="col">Total Price</th>
@@ -112,11 +112,11 @@
                                 ?>
                                     <tr>
                                         <td scope="row"><?= htmlspecialchars($data['order_id']); ?></td>
-                                        <td><?= htmlspecialchars($data['total_amount']); ?></td>
+                                        <td>&#8369; <?= htmlspecialchars($data['total_amount']); ?></td>
                                         <td><?= htmlspecialchars($data['status']); ?></td>
                                         <td><?= htmlspecialchars($date); ?></td>
-                                        <td>
-                                            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#order<?= htmlspecialchars($data['order_id']); ?>">View</button>
+                                        <td class="text-center">
+                                            <button class="btn gold-btn btn-sm" data-bs-toggle="modal" data-bs-target="#order<?= htmlspecialchars($data['order_id']); ?>">View</button>
                                         </td>
                                     </tr>
                                     <div class="modal fade" id="order<?= htmlspecialchars($data['order_id']); ?>" aria-labelledby="<?= htmlspecialchars($data['order_id']); ?>" aria-hidden="true" tabindex="-1">
@@ -164,7 +164,7 @@
                     </div>
                     <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pending-tab" tabindex="0">
                         <div class="table-responsive">
-                            <table class="table table-hover table-sm">
+                            <table class="table table-hover table-bordered table-sm">
                                 <thead>
                                     <th scope="col">Order No.</th>
                                     <th scope="col">Total Price</th>
@@ -181,11 +181,11 @@
                                     ?>
                                     <tr>
                                         <td scope="row"><?= htmlspecialchars($data_p['order_id']); ?></td>
-                                        <td><?= htmlspecialchars($data_p['total_amount']); ?></td>
+                                        <td>&#8369; <?= htmlspecialchars($data_p['total_amount']); ?></td>
                                         <td><?= htmlspecialchars($data_p['status']); ?></td>
                                         <td><?= htmlspecialchars($date); ?></td>
-                                        <td>
-                                            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#orderp<?= htmlspecialchars($data_p['order_id']); ?>">View</button>
+                                        <td class="text-center">
+                                            <button class="btn gold-btn btn-sm" data-bs-toggle="modal" data-bs-target="#orderp<?= htmlspecialchars($data_p['order_id']); ?>">View</button>
                                         </td>
                                     </tr>
                                     <div class="modal fade" id="orderp<?= htmlspecialchars($data_p['order_id']); ?>" aria-labelledby="<?= htmlspecialchars($data_p['order_id']); ?>" aria-hidden="true" tabindex="-1">
@@ -229,7 +229,7 @@
                     </div>
                     <div class="tab-pane fade" id="shipped" role="tabpanel" aria-labelledby="shipped-tab" tabindex="0">
                         <div class="table-responsive">
-                            <table class="table table-hover table-sm">
+                            <table class="table table-hover table-bordered table-sm">
                                 <thead>
                                     <th scope="col">Order No.</th>
                                     <th scope="col">Total Price</th>
@@ -246,11 +246,11 @@
                                     ?>
                                     <tr>
                                         <td scope="row"><?= htmlspecialchars($data_s['order_id']); ?></td>
-                                        <td><?= htmlspecialchars($data_s['total_amount']); ?></td>
+                                        <td>&#8369; <?= htmlspecialchars($data_s['total_amount']); ?></td>
                                         <td><?= htmlspecialchars($data_s['status']); ?></td>
                                         <td><?= htmlspecialchars($date); ?></td>
-                                        <td>
-                                            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#orders<?= htmlspecialchars($data_s['order_id']); ?>">View</button>
+                                        <td class="text-center">
+                                            <button class="btn gold-btn btn-sm" data-bs-toggle="modal" data-bs-target="#orders<?= htmlspecialchars($data_s['order_id']); ?>">View</button>
                                         </td>
                                     </tr>
                                     <div class="modal fade" id="orders<?= htmlspecialchars($data_s['order_id']); ?>" aria-labelledby="<?= htmlspecialchars($data_s['order_id']); ?>" aria-hidden="true" tabindex="-1">
@@ -287,7 +287,7 @@
                     </div>
                     <div class="tab-pane fade" id="received" role="tabpanel" aria-labelledby="received-tab" tabindex="0">
                         <div class="table-responsive">
-                            <table class="table table-hover table-sm">
+                            <table class="table table-hover table-bordered table-sm">
                                 <thead>
                                     <th scope="col">Order No.</th>
                                     <th scope="col">Total Price</th>
@@ -304,11 +304,11 @@
                                     ?>
                                     <tr>
                                         <td scope="row"><?= htmlspecialchars($data_r['order_id']); ?></td>
-                                        <td><?= htmlspecialchars($data_r['total_amount']); ?></td>
+                                        <td>&#8369; <?= htmlspecialchars($data_r['total_amount']); ?></td>
                                         <td><?= htmlspecialchars($data_r['status']); ?></td>
                                         <td><?= htmlspecialchars($date); ?></td>
-                                        <td>
-                                            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#orderr<?= htmlspecialchars($data_r['order_id']); ?>">View</button>
+                                        <td class="text-center">
+                                            <button class="btn gold-btn btn-sm" data-bs-toggle="modal" data-bs-target="#orderr<?= htmlspecialchars($data_r['order_id']); ?>">View</button>
                                         </td>
                                     </tr>
                                     <div class="modal fade" id="orderr<?= htmlspecialchars($data_r['order_id']); ?>" aria-labelledby="<?= htmlspecialchars($data_r['order_id']); ?>" aria-hidden="true" tabindex="-1">
@@ -345,7 +345,7 @@
                     </div>
                     <div class="tab-pane fade" id="cancelled" role="tabpanel" aria-labelledby="cancelled-tab" tabindex="0">
                         <div class="table-responsive">
-                            <table class="table table-hover table-sm">
+                            <table class="table table-hover table-bordered table-sm">
                                 <thead>
                                     <th scope="col">Order No.</th>
                                     <th scope="col">Total Price</th>
@@ -362,11 +362,11 @@
                                     ?>
                                     <tr>
                                         <td scope="row"><?= htmlspecialchars($data_c['order_id']); ?></td>
-                                        <td><?= htmlspecialchars($data_c['total_amount']); ?></td>
+                                        <td>&#8369; <?= htmlspecialchars($data_c['total_amount']); ?></td>
                                         <td><?= htmlspecialchars($data_c['status']); ?></td>
                                         <td><?= htmlspecialchars($date); ?></td>
-                                        <td>
-                                            <button class="btn btn-outline-primary btn-sm" data-bs-toggle="modal" data-bs-target="#orderc<?= htmlspecialchars($data_c['order_id']); ?>">View</button>
+                                        <td class="text-center">
+                                            <button class="btn gold-btn btn-sm" data-bs-toggle="modal" data-bs-target="#orderc<?= htmlspecialchars($data_c['order_id']); ?>">View</button>
                                         </td>
                                     </tr>
                                     <div class="modal fade" id="orderc<?= htmlspecialchars($data_c['order_id']); ?>" aria-labelledby="<?= htmlspecialchars($data_c['order_id']); ?>" aria-hidden="true" tabindex="-1">

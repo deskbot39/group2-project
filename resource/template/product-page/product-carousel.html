@@ -6,13 +6,26 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <a href="./product-detail.php?product_id=<?= htmlspecialchars($prod_carousel[0]['product_id'] ?? ''); ?>">
-                <img class="d-block w-100" src="<?= htmlspecialchars($prod_carousel[0]['image_link'] ?? ''); ?>" alt="Image of <?= htmlspecialchars($prod_carousel[0]['name'] ?? ''); ?>" width="800" height="400">
+            <a href="./product-page.php#display">
+                <img class="d-block w-100 caro-img" src="./resource/img/featured_products.webp" alt="image_of_featured_product" width="auto" height="450">
             </a>
             <div class="container">
-                <div class="carousel-caption text-start">
-                    <h1><?= htmlspecialchars($prod_carousel[0]['name'] ?? ''); ?></h1>
-                    <p class="opacity-75">
+                <div class="carousel-caption text-start bg-black bg-opacity-50 p-2 rounded-3">
+                    <h3 class="gold">Our Signature Collection</h3>
+                    <p class="text-white lh-1">
+                        Discover our curated, artisanal scents — refined notes, lasting presence.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <a href="./product-detail.php?product_id=<?= htmlspecialchars($prod_carousel[0]['product_id'] ?? ''); ?>">
+                <img class="d-block w-100 caro-img" src="<?= htmlspecialchars($prod_carousel[0]['image_link'] ?? ''); ?>" alt="Image of <?= htmlspecialchars($prod_carousel[1]['name'] ?? ''); ?>" width="auto" height="450">
+            </a>
+            <div class="container">
+                <div class="carousel-caption text-start bg-black bg-opacity-50 p-2 rounded-3">
+                    <h3 class="gold"><?= htmlspecialchars($prod_carousel[0]['name'] ?? ''); ?></h3>
+                    <p class="text-white lh-1">
                         <?= htmlspecialchars($prod_carousel[0]['description'] ?? ''); ?>
                     </p>
                 </div>
@@ -20,26 +33,13 @@
         </div>
         <div class="carousel-item">
             <a href="./product-detail.php?product_id=<?= htmlspecialchars($prod_carousel[1]['product_id'] ?? ''); ?>">
-                <img class="d-block w-100" src="<?= htmlspecialchars($prod_carousel[1]['image_link'] ?? ''); ?>" alt="Image of <?= htmlspecialchars($prod_carousel[1]['name'] ?? ''); ?>" width="800" height="400">
+                <img class="d-block w-100 caro-img" src="<?= htmlspecialchars($prod_carousel[1]['image_link'] ?? ''); ?>" alt="Image of <?= htmlspecialchars($prod_carousel[2]['name'] ?? ''); ?>" width="auto" height="450">
             </a>
             <div class="container">
-                <div class="carousel-caption text-start">
-                    <h1><?= htmlspecialchars($prod_carousel[1]['name'] ?? ''); ?></h1>
-                    <p class="opacity-75">
+                <div class="carousel-caption text-start bg-black bg-opacity-50 p-2 rounded-3">
+                    <h3 class="gold"><?= htmlspecialchars($prod_carousel[1]['name'] ?? ''); ?></h3>
+                    <p class="text-white lh-1">
                         <?= htmlspecialchars($prod_carousel[1]['description'] ?? ''); ?>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <a href="./product-detail.php?product_id=<?= htmlspecialchars($prod_carousel[2]['product_id'] ?? ''); ?>">
-                <img class="d-block w-100" src="<?= htmlspecialchars($prod_carousel[2]['image_link'] ?? ''); ?>" alt="Image of <?= htmlspecialchars($prod_carousel[2]['name'] ?? ''); ?>" width="800" height="400">
-            </a>
-            <div class="container">
-                <div class="carousel-caption text-start">
-                    <h1><?= htmlspecialchars($prod_carousel[2]['name'] ?? ''); ?></h1>
-                    <p class="opacity-75">
-                        <?= htmlspecialchars($prod_carousel[2]['description'] ?? ''); ?>
                     </p>
                 </div>
             </div>

@@ -12,7 +12,7 @@
         }
 
         public function getCarouselProduct() {
-            $query = "SELECT * FROM products ORDER BY RAND() LIMIT 3";
+            $query = "SELECT * FROM products WHERE stock > 0 ORDER BY RAND(product_id) LIMIT 2";
             $stmt = $this->connect()->prepare($query);
             $stmt->execute();
 

@@ -1,4 +1,4 @@
-<div class="py-5 bg-body-tertiary">
+<div class="py-5 prod-display">
     <div class="container">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <!-- Column Start -->
@@ -7,7 +7,7 @@
                 <!-- card start -->
                 <div class="card shadow-sm h-100">
                     <a href="./product-detail.php?product_id=<?= htmlspecialchars($data['product_id'] ?? ''); ?>">
-                        <img class="card-img-top" height="200" width="200" src="<?= htmlspecialchars($data['image_link'] ?? ''); ?>" alt="Image of <?= htmlspecialchars($data['name'] ?? ''); ?>">
+                        <img class="card-img-top" height="300" width="75" src="<?= htmlspecialchars($data['image_link'] ?? ''); ?>" alt="Image of <?= htmlspecialchars($data['name'] ?? ''); ?>">
                     </a>
                     <div class="card-body">
                         <h5 class="fw-bold card-title"><?= htmlspecialchars($data['name'] ?? ''); ?></h5>
@@ -18,7 +18,7 @@
                                     <input type="hidden" name="cid" value="<?= htmlspecialchars($cart_id ?? ''); ?>">
                                     <input type="hidden" name="cpid" value="<?= htmlspecialchars($data['product_id'] ?? ''); ?>">
                                     <input type="hidden" name="price" value="<?= htmlspecialchars($data['price'] ?? ''); ?>">
-                                    <button class="btn btn-sm btn-success" type="submit" name="add-p">
+                                    <button class="btn btn-sm gold-btn" type="submit" name="add-p">
                                         Add to Cart
                                     </button>
                                 </form>

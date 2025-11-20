@@ -5,7 +5,7 @@
     <ul class="pagination">
         <?php if ($page > 1) { ?>
         <li class="page-item">
-            <a href="?page=<?= htmlspecialchars($page - 1 ?? ''); ?>" class="page-link"><span aria-hidden="true">&laquo;</span></a>
+            <a href="?page=<?= htmlspecialchars($page - 1 ?? ''); ?>" class="page-link gold"><span aria-hidden="true">&laquo;</span></a>
         </li>
         <?php } ?>
 
@@ -14,17 +14,17 @@
                 <?php $inrange = false; ?>
                 <?php if ($i == $page) { ?>
                     <li class="page-item">
-                        <a href="?page=<?= htmlspecialchars($i ?? ''); ?>" class="page-link link-body-emphasis active"><?= $i; ?></a>
+                        <a href="?page=<?= htmlspecialchars($i ?? ''); ?>" class="page-link link-body-emphasis active active-paginate fw-bold gold"><?= $i; ?></a>
                     </li>
                 <?php } else { ?>
                 <li class="page-item">
-                    <a href="?page=<?= htmlspecialchars($i ?? ''); ?>" class="page-link"><?= $i; ?></a>
+                    <a href="?page=<?= htmlspecialchars($i ?? ''); ?>" class="page-link gold"><?= $i; ?></a>
                 </li>
                 <?php } ?>
             <?php } else { ?>
                 <?php if (!$inrange) { ?>
                 <li class="page-item">
-                    <a class="page-link">...</a>
+                    <a class="page-link gold">...</a>
                 </li>
                 <?php } ?>
                 <?php $inrange = true; ?>
@@ -33,7 +33,7 @@
 
         <?php if ($page < $total_pages ) { ?>
         <li class="page-item">
-            <a href="?page=<?= htmlspecialchars($page + 1 ?? ''); ?>" class="page-link"><span aria-hidden="true">&raquo;</span></a>
+            <a href="?page=<?= htmlspecialchars($page + 1 ?? ''); ?>" class="page-link gold"><span aria-hidden="true">&raquo;</span></a>
         </li>
         <?php } ?>
     </ul>

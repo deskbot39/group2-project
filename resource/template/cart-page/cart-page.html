@@ -1,13 +1,13 @@
 <div class="container my-5 py-5">
     <!-- Back to Shopping Start -->
     <div class="text-start mb-4">
-        <a href="./product-page.php" class="btn btn-outline-primary">
+        <a href="./product-page.php" class="btn btn-outline-primary gold-btn">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/></svg>
             Continue Shopping
         </a>
     </div>
     <!-- Back to Shopping End -->
-    <h1 class="mb-5">Your Shopping Cart <span class="badge text-bg-danger"><?= htmlspecialchars($_SESSION['cart_item_count'] ?? ''); ?></span></h1>
+    <h1 class="mb-5 gold">Your Shopping Cart <span class="badge text-bg-danger"><?= htmlspecialchars($_SESSION['cart_item_count'] ?? ''); ?></span></h1>
     <div class="row">
         <div class="col-lg-8">
             <!-- Product Cont Start -->
@@ -35,12 +35,12 @@
                                 $disabler = '';
                             ?>
                                 <div class="input-group">
-                                    <button class="btn btn-outline-secondary btn-sm" type="submit" name="sub-citm">-</button>
+                                    <button class="btn btn-danger btn-sm" type="submit" name="sub-citm">-</button>
                                     <input name="upd-citm" type="text" class="form-control form-control-sm text-center qty-input" value="<?= htmlspecialchars($item['quantity'] ?? ''); ?>" min="1" max="<?= htmlspecialchars($prod_info['stock'] ?? ''); ?>" readonly>
                                     <?php if ($prod_info['stock'] > $item['quantity']) { ?>
-                                        <button class="btn btn-outline-secondary btn-sm" type="submit" name="add-citm">+</button>
+                                        <button class="btn btn-success btn-sm" type="submit" name="add-citm">+</button>
                                         <?php } else { ?>
-                                        <button class="btn btn-outline-secondary btn-sm" disabled type="submit" name="add-citm">+</button>
+                                        <button class="btn btn-success btn-sm" disabled type="submit" name="add-citm">+</button>
                                     <?php } ?>
                                 </div>
                             <?php } else { 
@@ -71,7 +71,7 @@
         <div class="col-lg-4">
             <div class="position-sticky cart bg-body-tertiary p-2 border border-2 rounded" style="top: 10rem;">
                 <div class="card-body">
-                    <h5 class="card-title mb-4">Order Details</h5>
+                    <h5 class="card-title mb-4 text-center gold fw-bold">Order Details</h5>
                     <div class="d-flex justify-content-between mb-4">
                         <strong>Shipping Cost?</strong>
                         <strong>Price</strong>
@@ -89,7 +89,7 @@
                         <input type="hidden" name="ouid" value="<?= htmlspecialchars($_SESSION['user_id'] ?? ''); ?>">
                         <input type="hidden" name="ocid" value="<?= htmlspecialchars($_SESSION['cart_id'] ?? ''); ?>">
                         <input type="hidden" name="ototal" value="<?= htmlspecialchars($total ?? ''); ?>">
-                        <button class="btn btn-primary w-100" type="submit" name="order-btn" <?= htmlspecialchars($disabler ?? ''); ?> >Order Now</button>
+                        <button class="btn gold-btn w-100" type="submit" name="order-btn" <?= htmlspecialchars($disabler ?? ''); ?> >Order Now</button>
                     </form>
                 </div>
             </div>
