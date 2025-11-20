@@ -1,15 +1,22 @@
 /* Custom CSS Here */
+html {
+    scroll-behavior: smooth !important;
+}
 :target::before {
   content: "";
   display: block;
   height: 5rem;
   margin: -5rem 0 0;
 }
+* {
+    font-family: "Montserrat", Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
 /* Universal */
 .foot-cont {
     min-height: 5vh;
     background-color: #2c2c2c;
-
+    
     .footah {
         svg {
             transform: 0.5s;
@@ -23,20 +30,58 @@
 .form-cont {
     max-width: 340px;
 }
-.logreg-link {
-    color: blue;
-    transform: 0.5s;
+.link-rel, .gold {
+    color:  #ffd78f !important;
+    transition: 0.5s;
 }
-.logreg-link:hover {
-    color: aqua;
-    transform: 0.5s;
+.link-rel:hover {
+    color: #b8860b !important;
+    transition: 0.5s;
 }
+.gold-btn {
+    color: #0b0b0b !important;
+    background: linear-gradient(90deg, #b8860b, #ffd78f);
+    border-color: #b8860b !important;
+    transition: 0.5s;
+}
+.gold-btn:hover {
+    color: white !important;
+    transform:translateY(-3px); box-shadow:0 10px 26px rgba(184,134,11,0.18);
+    transition: 0.5s;
+
+}
+.nav-top, .nav-foot {
+    
+}
+
 
 /* Landing Page */
 #home {
     min-height: 100vh;
     padding-top: 5rem;
+    background: #060606;
+
+    
 }
+.land-text {
+    font-family: "Merriweather", serif;
+}
+.hero-bg {
+    background-image: url('../img/bgimage.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    min-height: 55vh;
+}
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Login Page */
+
+/* Register Page */
 
 /* Contact Page */
 .contact-cont {
@@ -72,8 +117,5 @@
             max-width: 100px;
             height: auto;
         }
-    }
-    .qty-input {
-        /* width: 50px; */
     }
 }
