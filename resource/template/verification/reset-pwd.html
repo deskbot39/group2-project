@@ -1,0 +1,28 @@
+<div class="card shadow form-cont">
+    <div class="card-header">
+        <h4 class="mb-3 text-center pt-2 gold">Reset Password</h4>
+    </div>
+    <div class="card-body">
+        <form action="./resource/php/reset-verifierhandler.php" method="post">
+            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token'] ?? ''); ?>" >
+            <input type="hidden" name="token" value="<?= htmlspecialchars($token ?? ''); ?>">
+            <div class="form-floating mb-3">
+                <input class="form-control" type="password" name="reset-pass" id="rpass1" required>
+                <label class="form-label" for="rpass1">New Password</label>
+                <div class="form-text text-center text-danger" id="rpass1-err"></div>
+            </div>
+            <div class="form-floating mb-3">
+                <input class="form-control" type="password" name="reset-cpass" id="rpass2" required>
+                <label class="form-label" for="rpass2">Confirm New Password</label>
+                <div class="form-text text-center text-danger" id="rpass2-err"></div>
+            </div>
+            <button class="btn btn-outline-primary w-100 d-grid gold-btn rounded-pill" type="submit">Update Password</button>
+        </form>
+        <div class="text-center mt-4">
+            <a class="text-decoration-none link-rel" href="./login-page.php">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5"/></svg>
+                Back to Login
+            </a>
+        </div>
+    </div>
+</div>

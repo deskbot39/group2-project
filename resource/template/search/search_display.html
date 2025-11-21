@@ -1,0 +1,25 @@
+<div class="py-3">
+    <div class="container">
+        <p class="fw-bold text-muted">
+            Items found: <span class="gold"><?= htmlspecialchars(count($search) ?? ''); ?></span>
+        </p>
+        <?php foreach($search as $prod) { ?>
+            <div class="row">
+                <div class="col">
+                    <div class="card mb-3 p-3 shadow-sm">
+                        <a class="link-rel text-decoration-none" href="./product-detail.php?product_id=<?= htmlspecialchars($prod['product_id'] ?? '') ?>">
+                            <h5 class="card-title fw-bold">
+                                <?= htmlspecialchars($prod['name']); ?>
+                            </h5>
+                        </a>
+                        <p class="card-text">
+                            <?= htmlspecialchars($prod['description']); ?>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        <?php } ?>
+        </div>
+    </div>
+</div>

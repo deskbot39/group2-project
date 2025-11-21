@@ -1,18 +1,26 @@
 <?php
-    require_once './resource/php/loader.php';
+    require_once './resource/php/conf_session.php';
+    require_once './resource/php/cartviewer.php';
+    require_once './resource/php/loginviewer.php';
+    roleLock();
+    $head_desc = htmlspecialchars("User Shopping Cart" ?? '');
+    $head_title = htmlspecialchars("Wang Scent PH | Shopping Cart" ?? '');
+    $head_class = htmlspecialchars("" ?? '');
+    $js_locs = array();
+    include('resource/template/html/html_head.html');
+    userLoginDisplay();
 ?>
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-        <link rel="stylesheet" href="./resource/css/style.css">
-        <title>Shopping Cart</title>
-    </head>
-    <body>
-        <h1>User Shopping Cart</h1>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    </body>
-</html>
+<main class="cart-cont">
+<?php
+    $csrf_token = bin2hex(random_bytes(32));
+    $csrf_expire = time() + 60 * 15;
+    $_SESSION['csrf_token'] = $csrf_token;
+    $_SESSION['csrf_expire'] = $csrf_expire;
+    cart_order_error_display();
+    include('./resource/template/cart-page/cart-page.html');
+?>
+</main>
+<?php
+    include('./resource/template/footer/footer.html');
+    include('./resource/template/html/html_foot.html');
+?>
