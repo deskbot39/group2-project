@@ -1,6 +1,6 @@
 <?php
     require_once 'conf_session.php';
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && hash_equals($_POST['csrf_token'], $_SESSION['csrf_token'])) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
         $ouid = $_POST['ouid'];
         $ocid = $_POST['ocid'];
         $ototal = $_POST['ototal'];
@@ -21,7 +21,7 @@
         header('location: ../../shopping-cart.php');
         die();
     } else {
-        header('location: ../../shopping-cart.php');
+        header('location: ../../logout.php');
         die();
     }
 ?>

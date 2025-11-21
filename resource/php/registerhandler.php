@@ -1,6 +1,6 @@
 <?php
     require_once 'conf_session.php';
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && hash_equals($_POST['csrf_token'], $_SESSION['csrf_token'])) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
         $username = $_POST['username'];
         $email = $_POST['email'];
         $phone = $_POST['phone'];

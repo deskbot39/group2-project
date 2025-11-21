@@ -1,9 +1,9 @@
 <?php
     require_once 'conf_session.php';
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && hash_equals($_POST['csrf_token'], $_SESSION['csrf_token'])) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
         $email = $_POST['email'];
         $password = $_POST['password'];
-        
+
         include "classes/conf_db.php";
         include "classes/loginmodel.php";
         include "classes/logincontroller.php";

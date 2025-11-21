@@ -46,9 +46,9 @@
             $mail = new PHPMailer(true);
             
             if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
-                $link = 'https://' . $_SERVER['HTTP_HOST'];
+                $link = 'https://' . $_SERVER['SERVER_NAME'];
             } else {
-                $link = 'http://' . $_SERVER['HTTP_HOST'];
+                $link = 'http://' . $_SERVER['SERVER_NAME'];
             }
 
             $query = "INSERT INTO users (`username`, `email`, `password`, `phone`, `email_hash`) VALUES (:username, :email, :password1, :phone, :ehash)";

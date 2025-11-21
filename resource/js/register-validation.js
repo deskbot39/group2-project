@@ -25,7 +25,7 @@ function pwdValid() {
     const reg_num = /[0-9]/;
     const reg_low = /[a-z]/;
     const reg_upr = /[A-Z]/;
-    const reg_schar = /[!@#$%^&*]/;
+    const reg_schar = /[\W]/;
     const reg_space = /[\s]/;
     const pass1 = password.value;
 

@@ -5,15 +5,14 @@
     ini_set('session.cookie_secure', 1);
     date_default_timezone_set('Asia/Manila');
 
-    // Will auto change the domain name
-    $domain = $_SERVER['SERVER_NAME'];
-
     // Turn off Errors During Prod, Comment these off during Dev
     ini_set('display_errors', false);
     ini_set('ignore_repeated_errors', true);
     ini_set('log_errors', true);
     ini_set('error_log', './resource/logs/errors.log');
-
+    
+    // Change domain depending on site
+    $domain = $_SERVER['SERVER_NAME'];
     session_set_cookie_params([
         'lifetime' => 21600,
         'domain' => $domain,

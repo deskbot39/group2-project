@@ -51,9 +51,9 @@
         if (filter_var($email, FILTER_VALIDATE_EMAIL) && mailNotFound($email) !== NULL) {
 
             if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
-                $link = 'https://' . $_SERVER['HTTP_HOST'];
+                $link = 'https://' . $_SERVER['SERVER_NAME'];
             } else {
-                $link = 'http://' . $_SERVER['HTTP_HOST'];
+                $link = 'http://' . $_SERVER['SERVER_NAME'];
             }
 
             $query = "UPDATE users SET pwd_token = :rhash, pwd_token_expire = :expiry WHERE email = :mail";
