@@ -7,8 +7,8 @@
         $year = date('Y');
         $query = "SELECT SUM(total_amount) AS `amount`, CAST(date_created AS DATE) AS `day` 
                 FROM orders
-                WHERE status = 'Received' OR status = 'Shipped' 
-                AND MONTH(date_created) = :mo 
+                WHERE status = 'Received'
+                AND MONTH(date_updated) = :mo 
                 AND YEAR(date_created) = :yr
                 GROUP BY CAST(date_created AS DATE)
                 ORDER BY `day`";

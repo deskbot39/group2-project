@@ -44,7 +44,12 @@
             $token = bin2hex(random_bytes(16));
             $email_hash = hash("sha256", $token);
             $mail = new PHPMailer(true);
-            $link = $_SERVER['HTTP_HOST'];
+            
+            if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
+                $link = 'https://' . $_SERVER['HTTP_HOST'];
+            } else {
+                $link = 'http://' . $_SERVER['HTTP_HOST'];
+            }
 
             $query = "INSERT INTO users (`username`, `email`, `password`, `phone`, `email_hash`) VALUES (:username, :email, :password1, :phone, :ehash)";
             $stmt = $this->connect()->prepare($query);
@@ -71,7 +76,7 @@
                 $mail->addAddress($email);
                 $mail->Subject = "Wang Scent PH | Account Activation";
                 $mail->Body = <<<END
-                    Click <a href="$link/group2-project/verify-email.php?token=$token">this link</a> to activate your email for your account.
+                    Click <a href="$link/verify-email.php?token=$token">this link</a> to activate your email for your account.
                 END;
                 try {
                     $mail->send();

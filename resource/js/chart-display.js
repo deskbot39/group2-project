@@ -5,10 +5,11 @@ const chart3 = document.getElementById('adminChart3');
 const chart4 = document.getElementById('adminChart4');
 
 //  Chart 1
-fetch("resource/php/charts/chart-display1.php", {
+fetch("./resource/php/charts/chart-display1.php", {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
+        "ngrok-skip-browser-warning": "1",
     }
 })
 .then((Response) => {
@@ -19,10 +20,11 @@ fetch("resource/php/charts/chart-display1.php", {
 });
 
 //  Chart 2
-fetch("resource/php/charts/chart-display2.php", {
+fetch("./resource/php/charts/chart-display2.php", {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
+        "ngrok-skip-browser-warning": "1",
     }
 })
 .then((Response) => {
@@ -33,10 +35,11 @@ fetch("resource/php/charts/chart-display2.php", {
 });
 
 // Chart 3
-fetch("resource/php/charts/chart-display3.php", {
+fetch("./resource/php/charts/chart-display3.php", {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
+        "ngrok-skip-browser-warning": "1",
     }
 })
 .then((Response) => {
@@ -47,10 +50,11 @@ fetch("resource/php/charts/chart-display3.php", {
 });
 
 // Chart 4
-fetch("resource/php/charts/chart-display4.php", {
+fetch("./resource/php/charts/chart-display4.php", {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
+        "ngrok-skip-browser-warning": "1",
     }
 })
 .then((Response) => {

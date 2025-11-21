@@ -49,7 +49,13 @@
         }
 
         if (filter_var($email, FILTER_VALIDATE_EMAIL) && mailNotFound($email) !== NULL) {
-            $link = $_SERVER['HTTP_HOST'];
+
+            if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') {
+                $link = 'https://' . $_SERVER['HTTP_HOST'];
+            } else {
+                $link = 'http://' . $_SERVER['HTTP_HOST'];
+            }
+
             $query = "UPDATE users SET pwd_token = :rhash, pwd_token_expire = :expiry WHERE email = :mail";
             $stmt = $db->connect()->prepare($query);
             $stmt->bindParam(":rhash", $reset_hash);
@@ -73,7 +79,7 @@
                 $mail->addAddress($email);
                 $mail->Subject = "Wang Scent PH | Password Reset";
                 $mail->Body = <<<END
-                    Click <a href="$link/group2-project/change-pass.php?token=$token">this link</a> to reset your password. Link will expire in 30 minutes.
+                    Click <a href="$link/change-pass.php?token=$token">this link</a> to reset your password. Link will expire in 30 minutes.
                 END;
                 try {
                     $mail->send();
