@@ -4,7 +4,7 @@
     use PHPMailer\PHPMailer\Exception;
     require_once 'conf_session.php';
     
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && hash_equals($_POST['csrf_token'], $_SESSION['csrf_token'])) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
         require('../../vendor/PHPMailer/src/Exception.php');
         require('../../vendor/PHPMailer/src/PHPMailer.php');
         require('../../vendor/PHPMailer/src/SMTP.php');
@@ -71,7 +71,7 @@
                 $mail->Host = "smtp.gmail.com";
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
-                $mail->Username = "";
+                $mail->Username = "do.not.reply.project2@gmail.com";
                 $mail->Password = "";
                 $mail->isHtml(true);
 
