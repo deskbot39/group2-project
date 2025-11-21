@@ -68,11 +68,11 @@
                 $mail->Host = "smtp.gmail.com";
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
-                $mail->Username = "do.not.reply.project2@gmail.com";
-                $mail->Password = "hsec stvh ypkt mnpc";
+                $mail->Username = "";
+                $mail->Password = "";
                 $mail->isHtml(true);
 
-                $mail->setFrom("do.not.reply.project2@gmail.com");
+                $mail->setFrom("");
                 $mail->addAddress($email);
                 $mail->Subject = "Wang Scent PH | Account Activation";
                 $mail->Body = <<<END

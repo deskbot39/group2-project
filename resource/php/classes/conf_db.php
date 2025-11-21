@@ -1,9 +1,9 @@
 <?php
     // Database Configuration
     class conf_db {
-        private $usr = "root";
+        private $usr = "";
         private $pwd = "";
-        private $info = "mysql:host=localhost;dbname=prototype;";
+        private $info = "";
         
         public function connect() {
             try {
