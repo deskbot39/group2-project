@@ -1,38 +1,29 @@
 /* Custom CSS Here */
+:target::before {
+    content: "";
+    display: block;
+    height: 5rem;
+    margin: -5rem 0 0;
+}
+
+/* Universal */
 html {
     scroll-behavior: smooth !important;
-}
-:target::before {
-  content: "";
-  display: block;
-  height: 5rem;
-  margin: -5rem 0 0;
 }
 * {
     font-family: "Montserrat", Inter, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* Universal */
-.foot-cont {
-    min-height: 5vh;
-    background-color: #2c2c2c;
-    
-    .footah {
-        svg {
-            transform: 0.5s;
-        }
-        svg:hover {
-            color: aqua;
-            transform: 0.5s;
-        }
-    }
-}
+
+/* Box Shadow for Form Containers*/
 .form-cont {
     max-width: 340px;
-    box-shadow: 5px 5px 30px 5px rgba(255,215,143,0.75) !important;
-    -webkit-box-shadow: 5px 5px 30px 5px rgba(255,215,143,0.75) !important;
-    -moz-box-shadow: 5px 5px 30px 5px rgba(255,215,143,0.75) !important;
+    box-shadow: 0px 0px 50px 15px rgba(255,215,143,0.75) !important;
+    -webkit-box-shadow: 0px 0px 50px 15px rgba(255,215,143,0.75) !important;
+    -moz-box-shadow: 0px 0px 50px 15px rgba(255,215,143,0.75) !important;
 }
+
+/* Styling for the links*/
 .link-rel, .gold {
     color:  #ffd78f !important;
     transition: 0.5s;
@@ -41,6 +32,8 @@ html {
     color: #b8860b !important;
     transition: 0.5s;
 }
+
+/* Styling for the majority of the buttons */
 .gold-btn {
     color: #0b0b0b !important;
     background: linear-gradient(90deg, #b8860b, #ffd78f);
@@ -53,14 +46,18 @@ html {
     transition: 0.5s;
 
 }
+
+/* Navbar Toggle Styling */
 .navbar-toggler {
     border-color: #b8860b;
 }
 .navbar-toggler-icon, .togglah {
     filter: brightness(0) saturate(100%) invert(79%) sepia(35%) saturate(473%) hue-rotate(346deg) brightness(104%) contrast(101%);
 }
-.nav-top, .nav-foot {
-    
+
+/* For paragraphs */
+.land-text {
+    font-family: "Merriweather", serif;
 }
 
 
@@ -69,24 +66,56 @@ html {
     min-height: 100vh;
     padding-top: 5rem;
     background: #060606;
-
-    
-}
-.land-text {
-    font-family: "Merriweather", serif;
 }
 .hero-bg {
-    background-image: linear-gradient(hsl(0 0% 0% / 0.5)), url('../img/bgimage.webp');
+    background-image: linear-gradient(hsl(0 0% 0% / 0.5)), url('../img/bgimage.webp'); /* Makes the hero text readable */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     position: relative;
-    min-height: 55vh;
+    min-height: 80vh;
 }
-.hero-content {
-    position: relative;
-    z-index: 1;
+
+/* Landing Page Animations */
+/* Transferred Animation to CSS instead of JS and converted the .jpegs to .webp in order to improve performance*/
+/* Respect reduced motion. Scroll Animations still have limited support in other web browsers so "@supports" is used */
+@media(prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+        .featurette-image, .sec-title, .sec-lead {
+            animation: fade-in linear forwards;
+            animation-timeline: view();
+            animation-range-start: cover;
+            animation-range-end: contain 5px;
+        }
+    
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        
+            animation: fade-out linear;
+            animation-timeline: view();
+            animation-range: exit -20px;
+        }
+    }
 }
+
+@keyframes fade-in {
+    from {
+        scale: 0.8;
+        opacity: 0;
+    }
+    to {
+        scale: 1;
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    to {
+        opacity: 0;
+    }
+}
+
 
 /* Login Page */
 .log-cont {
