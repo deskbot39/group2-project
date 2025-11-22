@@ -18,19 +18,18 @@
         'domain' => $domain,
         'path' => '/',
         'secure' => true,
-        'httponly' => true
+        'httponly' => true,
+        'samesite' => 'strict'
     ]);
-
-
+    
     session_start();
-
+    
     // Session ID regen
     function regenerate_id() {
         session_regenerate_id();
         $_SESSION['last_regeneration'] = time();
     }
     $time_interval = 60 * 15;
-
 
     if (isset($_SESSION['user_id'])) {
         // Login Regen
