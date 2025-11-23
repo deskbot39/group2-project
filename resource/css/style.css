@@ -181,6 +181,11 @@ html {
     min-height: 100vh;
     background: #0b0b0b !important;
 }
+/* User Information */
+.user-info {
+    top: 50rem;
+}
+
 
 /* Admin Dashboard Page */
 .admdash-cont {
@@ -198,4 +203,9 @@ html {
         max-width: 100px;
         height: auto;
     }
+}
+
+/* For Item Details */
+.item-deets {
+    top: 10rem;
 }
